@@ -1,0 +1,42 @@
+//
+//  appController.h
+//  debugger
+//
+//  Created by Matt Poppe on 2/18/11.
+//  Copyright 2011 Poppe. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import "usbDriver.h"
+#import "usbCentral.h"
+
+
+@class usbCentral, alarmLog;
+
+@interface appController : NSObject <usbCentralDelegate>{
+	usbDriver *driver;
+	usbCentral *central;
+	
+	IBOutlet alarmLog *log;
+	
+	volatile BOOL isAlarmChecking;
+	
+	NSButton *led1, *led2, *led3;
+	NSTextField *usbName, *usbCheck;
+}
+
+@property(retain) usbDriver *driver;
+@property(retain) usbCentral *central;
+@property(assign) IBOutlet NSButton *led1, *led2, *led3;
+@property(assign) IBOutlet NSTextField *usbName, *usbCheck;
+
+- (IBAction)ledToggle1:(id)sender;
+- (IBAction)ledToggle2:(id)sender;
+- (IBAction)ledToggle3:(id)sender;
+- (IBAction)connectToUSB:(id)sender;
+- (IBAction)readUSB:(id)sender;
+- (IBAction)checkZigbee:(id)sender;
+- (void)runningCheckAlarms;
+
+
+@end

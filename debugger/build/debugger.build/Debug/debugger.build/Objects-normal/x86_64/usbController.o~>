@@ -1,0 +1,35 @@
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: In function '-[usbController startupUSBdrivers]':
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:114: warning: passing argument 4 of 'IOServiceAddMatchingNotification' from incompatible pointer type
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:125: warning: implicit declaration of function 'getDevice'
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:125: warning: assignment makes pointer from integer without a cast
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:130: warning: implicit declaration of function 'mach_port_deallocate'
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: At top level:
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:135: error: conflicting types for 'getDevice'
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:125: error: previous implicit declaration of 'getDevice' was here
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: In function 'getDevice':
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:155: error: nested functions are disabled, use -fnested-functions to re-enable
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:162: error: 'deviceAdded' undeclared (first use in this function)
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:162: error: (Each undeclared identifier is reported only once
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:162: error: for each function it appears in.)
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:162: error: expected ';' before ':' token
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:254: error: expected declaration or statement at end of input
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: At top level:
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:254: warning: '@end' missing in implementation context
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:254: warning: incomplete implementation of class 'usbController'
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:254: warning: method definition for '-deviceAdded:withIterator:' not found
+/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:254: warning: method definition for '-startupUSBDrivers' not found
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_0
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_REFERENCES_$_1
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_1
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_REFERENCES_$_2
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_2
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_3
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_4
+{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_REFERENCES_$_3
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_5
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_6
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_7
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_8
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_9
+{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_10
