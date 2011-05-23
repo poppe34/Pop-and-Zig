@@ -17,7 +17,7 @@
 			[NSDictionary dictionaryWithObjectsAndKeys: 
 			 [NSNumber numberWithLong:kDefaultProdID], @"productID",
 			 [NSNumber numberWithUnsignedShort:kDefaultVendID], @"vendorID",
-			 [NSString stringWithString:@"No Device"], @"name", NULL], 
+			 [NSString stringWithString:kDefaultName], @"name", NULL], 
 			
 			NULL];
 }

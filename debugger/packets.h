@@ -18,6 +18,9 @@
     IBOutlet NSButton *addAlarm;
     IBOutlet id totalPacketsString;
     IBOutlet id zigbeeOutputView;
+    IBOutlet NSButton *macLayerDecodeTgl, *nwkLayerDecodeTgl, *apsLayerDecodeTgl;
+    IBOutlet NSTextView *zigbeeTextView;
+
 
 }
 
@@ -30,4 +33,8 @@
 - (int)numberOfRowsInTableView:(NSTableView *)tableView;
 - (void)verboseZigbeePacket:(zigPacket *)pkt
                 rowSelected:(int)row;    
+- (IBAction)decodeMacSelected:(id)sender;
+- (void)newPacket:(voidPtr)pkt;
+- (void)addPacketWithData:(voidPtr)pkt;
+
 @end

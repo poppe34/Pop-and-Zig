@@ -38,6 +38,19 @@ typedef struct mac_fcf{
                 uint8_t mac_src_addr_mode:2))
 }mac_fcf_t;
 END_PACKED
+
+START_PACKED
+typedef struct nwk_fcf{
+    COMBINE(3, (uint8_t frameType:2,
+                uint8_t protoVer:4,
+                uint8_t discoverRoute:2))
+    COMBINE(6, (uint8_t MulticastFlag:1,
+                uint8_t Security:1,
+                uint8_t sourceRoute:1,
+                uint8_t destAddrAvail:1,
+                uint8_t srcAddrAvail:1,
+                uint8_t reserved:3))
+}nwk_fcf_t;
 typedef struct mac
 {
     mac_fcf_t mac_fcf;
@@ -53,6 +66,24 @@ typedef struct mac
         uint64_t src_lAddr;
     };
 }mac_t;
+
+typedef struct nwk
+{
+    nwk_fcf_t fcf;
+    uint16_t destAddr;
+    uint16_t srcAddr;
+    uint8_t radius;
+    uint8_t seqNum;
+    uint64_t destIEEEAddr;
+    uint64_t srcIEEEAddr;
+    uint8_t multicastControl;
+}nwk_t;
+
+enum nwk_frame_type
+{
+    nwk_data = 0x00,
+    nwk_command = 0x01,
+};
 
 enum mac_frame_type
 {

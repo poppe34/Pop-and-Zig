@@ -21,17 +21,13 @@
     {
         zigbeePackets = [[NSMutableArray alloc] init];
     }
-    zigPacket *pkt = [[zigPacket alloc]init];
-    
-    [zigbeePackets addObject:pkt];
-    
-    [zigbeeView reloadData];
     
     return self;
 }
 
 - (void)dealloc
 {
+    [zigbeePackets release];
     [super dealloc];
 }
 
@@ -59,13 +55,20 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {   
-    [self verboseZigbeePacket:[self.zigbeePackets objectAtIndex:0]
-                  rowSelected:[zigbeeView selectedRow]];
-	
+    int8_t row = [zigbeeView selectedRow];
+    if (row >= 0) {
+        
+    [self verboseZigbeePacket:[self.zigbeePackets objectAtIndex:row]
+                  rowSelected:row];
+	}
+    else
+    {
+        [zigbeeOutputView setStringValue:@" "];   
+    }
 	[zigbeeView reloadData];
 	
 }
-- (IBAction)addPacketButton:(id)sender;
+- (IBAction)addPacketButton:(id)sender
 {
     zigPacket *newPack = [[zigPacket alloc]init];
     
@@ -73,20 +76,78 @@
     
     [zigbeeView reloadData];
 }
+- (void)addPacketWithData:(voidPtr)pkt
+{
+    zigPacket *newPack = [[zigPacket alloc]initWithData:pkt];
+    
+    [self.zigbeePackets addObject:newPack];
+    
+    [zigbeeView reloadData];
+}
+- (void)newPacket:(voidPtr)pkt
+{
+    
+}
 
 - (void)verboseZigbeePacket:(zigPacket *)pkt
                 rowSelected:(int)row    
 {
+    NSRange endRange;
+    
     if ([zigbeeView isRowSelected:row]) 
     {
-        if(!pkt.decodedStr)
+        if(!pkt.decodedMACStr)
         [zigbeeOutputView setStringValue:@"I am just trying to get this to work"];
         else
         {
-            [zigbeeOutputView setStringValue:(pkt.decodedStr)];
+            if([macLayerDecodeTgl state])
+                {
+                    [zigbeeOutputView setStringValue:pkt.decodedMACStr];
+                    
+                    endRange.location = [[zigbeeTextView textStorage] length];
+                    
+                    endRange.length = 0;
+                    
+                    [zigbeeTextView setString:(pkt.packetStr)];// withString:(pkt.packetStr)];
+                    
+                    endRange.length = [(pkt.packetStr) length];
+                    
+                    [zigbeeTextView scrollRangeToVisible:endRange];
+                }
+            if([nwkLayerDecodeTgl state]) 
+                [zigbeeOutputView setStringValue:pkt.decodedNWKStr];
+            if([apsLayerDecodeTgl state])
+                [zigbeeOutputView setStringValue:pkt.decodedAPSStr];
         }
     }
+    
     else
         [zigbeeOutputView setStringValue:@""];
+}
+- (IBAction)decodeMacSelected:(id)sender
+{
+    NSInteger temp = 0;
+    int8_t row = [zigbeeView selectedRow];
+    
+    if([[sender title] isEqualToString:@"NWK Layer"]) 
+    {
+        [macLayerDecodeTgl setState:temp];
+        [apsLayerDecodeTgl setState:temp];
+    }
+    if([[sender title] isEqualToString:@"MAC Layer"]) 
+    {
+        [nwkLayerDecodeTgl setState:temp];
+        [apsLayerDecodeTgl setState:temp];
+    }
+    if([[sender title] isEqualToString:@"APS Layer"]) 
+    {
+        [nwkLayerDecodeTgl setState:temp];
+        [macLayerDecodeTgl setState:temp];
+    }
+    if (row >= 0) 
+    [self verboseZigbeePacket:[self.zigbeePackets objectAtIndex:row]
+                  rowSelected:row];
+    // NSLog(@"Looking at row %i",row);
+
 }
 @end

@@ -11,11 +11,13 @@
 
 @interface zigPacket : NSObject {
 //@private
-    uint8_t len;  
+    uint8_t packetLen;  
     NSMutableDictionary *zigPacketDiction;
-    NSMutableString *decodedStr;
+    NSMutableString *decodedMACStr, *decodedNWKStr, *decodedAPSStr, *packetStr;
     mac_t mac_layer;
+    nwk_t nwk_layer;
     NSNumber *testNum, *src, *dest, *srcPanId, *destPanId;
+    NSString *frameType;
     uint8_t frame[128];
     
 }
@@ -23,10 +25,11 @@
                                         packet+=sizeof(var)
 
 
-@property(assign) uint8_t len;
+@property(assign) uint8_t packetLen;
 @property(assign) NSMutableDictionary *zigPacketDiction;
-@property(assign) NSMutableString *decodedStr;
+@property(assign) NSMutableString *decodedMACStr, *decodedNWKStr, *decodedAPSStr, *packetStr;
 @property(assign) mac_t mac_layer;
+@property(assign) nwk_t nwk_layer;
 @property(assign) NSNumber *testNum;
 
 - (id)init;
@@ -34,10 +37,15 @@
 - (id)initWithData:(voidPtr)zig;
 
 - (void)zigbee_breakdown:(voidPtr)zig;
+- (void)zigbee_packetDisplay:(voidPtr)zig;
 
 /* MAC Layer */
-- (void)zigbee_macBreakdown:(voidPtr)zig;
+- (voidPtr)zigbee_macBreakdown:(voidPtr)zig;
 - (void)zigbee_macFCF_breakdown;
+
+/* NWK Layer */
+- (voidPtr)zigbee_nwkBreakdown:(voidPtr)zig;
+- (void)zigbee_nwkFCF_breakdown;
 
 int zigbee_hexToBin(int val, uint8_t cnt);
 @end

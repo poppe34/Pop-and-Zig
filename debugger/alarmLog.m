@@ -71,11 +71,18 @@
 		alrmString = [NSString stringWithUTF8String:str];
         [newAlarm.alarmDiction setObject:alrmString forKey:@"alarmValue"];
 	
-	[self.alarmLogArray addObject:newAlarm];
-		[alarmView reloadData];
+        [self.alarmLogArray addObject:newAlarm];
+
+        [alarmView reloadData];
 	}
 }
 
+- (void)removeAlarm:(MyAlarms *)alrm
+{
+    [alarmLogArray removeObject:alrm];
+    [alrm release];
+    [alrm dealloc];
+}
 
 -(IBAction) buttonAddAlarm:(id)sender{
 	MyAlarms *newAlrm = [[MyAlarms alloc]init];
@@ -90,10 +97,13 @@
 }
 
 -(void)ackAlarms:(MyAlarms *)alrm{
-	
-	NSString *temp = [[NSString alloc]initWithString:@"string"];
-	temp = temp;
-	
+	MyAlarms *selAlarm;
+    uint8_t cnt = [alarmLogArray count];
+    
+    for (uint8_t x = 0; x<cnt; x++) {
+        selAlarm = [self.alarms objectAtIndex:x];
+        [selAlarm ackAlarm];
+    }	
 }
 				
 				

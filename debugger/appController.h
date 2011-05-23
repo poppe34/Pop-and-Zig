@@ -11,14 +11,14 @@
 #import "usbCentral.h"
 
 
-@class usbCentral, alarmLog;
+@class usbCentral, alarmLog, packets;
 
 @interface appController : NSObject <usbCentralDelegate>{
 	usbDriver *driver;
 	usbCentral *central;
 	
 	IBOutlet alarmLog *log;
-	
+	IBOutlet packets *zigPackets;
 	volatile BOOL isAlarmChecking;
 	
 	NSButton *led1, *led2, *led3;

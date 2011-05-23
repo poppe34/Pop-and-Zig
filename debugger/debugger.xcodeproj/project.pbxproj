@@ -47,6 +47,7 @@
 		9A6AFC6F130093D100DF5FA0 /* myTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTypes.h; sourceTree = "<group>"; };
 		9A6AFC831300987F00DF5FA0 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
 		9A6AFC841300987F00DF5FA0 /* debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = debug.c; sourceTree = "<group>"; };
+		9AB5B3B4137A977600FCCE16 /* misc_stringControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc_stringControl.h; sourceTree = "<group>"; };
 		9AE9AC2012EA2E4C007E518D /* MyAlarms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAlarms.h; sourceTree = "<group>"; };
 		9AE9AC2112EA2E4C007E518D /* MyAlarms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlarms.m; sourceTree = "<group>"; };
 		9AE9ACCA12EA8832007E518D /* alarmLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarmLog.h; sourceTree = "<group>"; };
@@ -209,6 +210,7 @@
 				9AF9AD7013648A7600DACD64 /* zigPacket.h */,
 				9AF9AD7113648A7600DACD64 /* zigPacket.m */,
 				9AF9AD73136ECF2000DACD64 /* zigbee_layers.h */,
+				9AB5B3B4137A977600FCCE16 /* misc_stringControl.h */,
 			);
 			name = "zigbee sniffer";
 			sourceTree = "<group>";

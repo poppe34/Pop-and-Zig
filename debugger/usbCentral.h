@@ -49,8 +49,9 @@ IONotificationPortRef notifyPort;	//Port for notifications from IOKit to mainThr
 - (void)deviceAdded:(usbInfo *)info
 	   withIterator:(io_iterator_t)iterator;
 - (void)startupUSBdrivers;
-- (void)dummySend;
-
+//- (void)dummySend; May not need delete in the future if I don't want it
+- (void)deviceRemoved:(usbInfo *)info;
+- (void)debuggerLost:(usbInfo *)info;
 
 @end
 

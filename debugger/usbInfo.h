@@ -24,7 +24,7 @@
 
 @property long venId, prodId, locId;
 @property(copy) NSString *name;
-@property Class driverClass;
+@property(assign) Class driverClass;
 @property io_object_t notification;
 @property(assign) id driver;
 @property(assign) usbCentral *central;

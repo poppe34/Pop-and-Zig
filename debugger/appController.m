@@ -12,6 +12,8 @@
 #import "usbInfo.h"
 #import "alarmLog.h"
 #import "debug.h"
+#import "myAVRdebugger.h"
+#import "packets.h"
 
 @implementation appController 
 
@@ -117,7 +119,7 @@
                                                          userInfo:nil
                                                           repeats:YES] retain];
     */
-    [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
 }
 
 -(IBAction)checkZigbee:(id)sender
@@ -128,13 +130,25 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
     NSLog(@"Checking Zigbee");
  
-    if([driver zigbeeAvail]) [driver checkZigbee];
+    if([driver zigbeeAvail])
+    {
+        [driver checkZigbee];
     
-    [driver readUSB_TEMP:packet];
+        [driver readUSB_TEMP:packet];
     
-    len = packet[3];
-    printf("The packet count is:%i \n", len);
+        len = packet[3];
+        printf("The packet count is:%i \n", len);
     
+        while (len) 
+        {
+            [driver getFirstZigbee];
+            [driver readUSB_TEMP:packet];
+        
+            [zigPackets addPacketWithData:packet];
+        
+            len--;
+        }
+    }    
     [pool drain];
     
 }
@@ -180,6 +194,9 @@
 }
 - (void)debuggerLost:(usbInfo *)info
 {
-	[self deinitButtons];
+	self.driver = info.driver;
+    [self deinitButtons];
+    [usbName setStringValue:info.name];
+    
 }
 @end

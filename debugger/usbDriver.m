@@ -39,7 +39,7 @@
 - (BOOL)transferData:(char *)buf
 			  length:(UInt32)num
 {
-    UInt32 to;
+    UInt32 to = 200;
     UInt32 tto = 200;
     
 	if(alarmIntf){
@@ -51,7 +51,7 @@
 	return NO;
 }
 
-- (void)readUSB_TEMP:(char *)buf
+- (void)readUSB_TEMP:(voidPtr)buf
 {
 	IOReturn err = 0;
 	UInt32 num = 64;
@@ -88,7 +88,7 @@
 	
 	
 	err = IOMasterPort(MACH_PORT_NULL, &myMasterPort);
-	
+	IO_ERR(3, "(usbDriver)interfaceInteraction: Get Master Port",err);
 	vendID = info.venId;
 	prodID = info.prodId;
 		
@@ -113,6 +113,7 @@
 		
 	//Get the matching services
 	err = IOServiceGetMatchingServices(myMasterPort, myDictionaryRef, &iterator);	
+    IO_ERR(3, "(usbDriver)interfaceInteraction: Get Matching Services",err);
 	//IO_ERR(3, "connectUSB: Get IO Service Matching", err);
 		
 	myDictionaryRef = 0;
@@ -242,10 +243,14 @@
 	IO_ERR(3, "(usbDriver)interfaceInteraction: Open Interface port", err);
 	
 	err = (**intfPtr)->GetInterfaceClass(*intfPtr, &interfaceClass);
-	err = (**intfPtr)->GetInterfaceSubClass(*intfPtr, &interfaceSubClass);
+    IO_ERR(3, "(usbDriver)interfaceInteraction: Get Interface Class",err);
+	
+    err = (**intfPtr)->GetInterfaceSubClass(*intfPtr, &interfaceSubClass);
+    IO_ERR(3, "(usbDriver)interfaceInteraction: Get Interface Sub Class",err);
 	//NSLog(@"OpenInterface: interface Class:%d Interface Sub Class:%d", interfaceClass, interfaceSubClass);
 	
 	err = (**intfPtr)->GetNumEndpoints(*intfPtr, &interfaceNumEndpoints);
+    IO_ERR(3, "(usbDriver)interfaceInteraction: Get Number of Endpoints Properties",err);
 	//NSLog(@"OpenInterface: Number of Endpoints is:%d", interfaceNumEndpoints);
 	
 	for(pipeRef = 1; pipeRef <= interfaceNumEndpoints; pipeRef++)
@@ -327,9 +332,27 @@
 	return NO;
 }
 
+- (void)getFirstAlarm
+{
+    
+}
+
+- (void)checkForAlarms
+{
+    
+}
 -(BOOL)zigbeeAvail
 {
     return NO;
+}
+- (void)checkZigbee
+{
+    
+}
+
+- (void)getFirstZigbee
+{
+    
 }
 - (void)ledOn:(UInt8)num{
 	
@@ -337,6 +360,7 @@
 - (void)ledOff:(UInt8)num{
 	
 }
+
 
 
 @end

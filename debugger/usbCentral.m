@@ -209,7 +209,7 @@ void DeviceRemoved( void *refCon,io_service_t service,natural_t messageType,void
     if (info)
 	{
 	
-	//if(info) NSLog(@"Good Bye: %S",[(info.controller).usbName ]);
+	if(info) NSLog(@"Good Bye: %@", (info.name));
 	
 		[info.central deviceRemoved:info];
 		
@@ -218,8 +218,11 @@ void DeviceRemoved( void *refCon,io_service_t service,natural_t messageType,void
 
 - (void)deviceRemoved:(usbInfo *)info
 {
-	displayError(8, "Device Was Removed", "(usbCentral):deviceRemoved");
-	[self debuggerLost:info];
+	usbInfo *defaultInfo = [devicesInfo objectAtIndex:0];
+    
+    displayError(8, "Device Was Removed", "(usbCentral):deviceRemoved");
+    
+	[self debuggerLost:defaultInfo];
 }
 
 

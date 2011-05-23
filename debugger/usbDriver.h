@@ -60,9 +60,15 @@ typedef enum ledOperation{
 - (void)ledOff:(UInt8)num;
 - (BOOL)ledsAvail;
 
+    /* Alarms */
 - (BOOL)alarmsAvail;
-- (BOOL)checkForAlarms;
+- (void)checkForAlarms;
 - (void)getFirstAlarm;
+    
+    /* Zigbee */
+-(BOOL)zigbeeAvail;
+-(void)checkZigbee;
+-(void)getFirstZigbee;
 
 //USB Methods
 - (void)getDevice:(io_service_t)usbDevice;
@@ -71,7 +77,7 @@ typedef enum ledOperation{
 					 service:(io_service_t)Ref;
 - (BOOL)transferData:(char *)buf
 			  length:(UInt32)num;
-- (void)readUSB_TEMP:(char *)buf;
+- (void)readUSB_TEMP:(voidPtr)buf;
 
 //Available periphials
 -(BOOL)ledsAvail;

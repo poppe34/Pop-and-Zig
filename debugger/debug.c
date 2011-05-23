@@ -8,6 +8,7 @@
  */
 
 #include "debug.h"
+#include "stdio.h"
 static uint8_t systemDebugLevel = 10;
 
 void ErrorName (IOReturn err, char* out_buf) {
@@ -96,11 +97,11 @@ void ErrorName (IOReturn err, char* out_buf) {
 
 }
 
-void ShowErrorWithOK(IOReturn err, char* where) 
+void ShowErrorWithOK(IOReturn err, char *where) 
 {
     char buf[256];
     if (where) {
-        printf(where);
+        printf(where, nil);
         printf(": ");
     }
     if (err==0) {
@@ -108,22 +109,22 @@ void ShowErrorWithOK(IOReturn err, char* where)
     } else {
         printf("Error: ");
         ErrorName(err,buf);
-        printf(buf);
+        printf(buf, nil);
     }
     printf("\n");
 }
 
-void ShowErrorWithOutOK(IOReturn err, char* where)
+void ShowErrorWithOutOK(IOReturn err, char *where)
 {
     char buf[256];
     if (where) {
-        printf(where);
-        printf(": ");
+        printf(where, nil);
+        printf(": ", nil);
     }
 	if (err) {
         printf("Error: ");
         ErrorName(err,buf);
-        printf(buf);
+        printf(buf, nil);
     }
     printf("\n");
 }
@@ -150,9 +151,9 @@ void setDebugLevel(debugLevel level){
 void displayError(debugLevel level, char *error, char *where)
 {
 	if (level <= systemDebugLevel) {
-		printf(where);
+		printf(where, nil);
 		printf(": ");
-		printf(error);
+		printf(error, nil);
 		printf("\n");
 	}
 }

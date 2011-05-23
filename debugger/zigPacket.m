@@ -7,39 +7,44 @@
 //
 
 #import "zigPacket.h"
-
+#import "misc_stringControl.h"
+#import "stdlib.h"
 
 @implementation zigPacket
 
-@synthesize len, zigPacketDiction, decodedStr;
-@synthesize mac_layer;
+@synthesize packetLen, zigPacketDiction, decodedMACStr, decodedNWKStr, decodedAPSStr, packetStr;
+@synthesize mac_layer, nwk_layer;
 @synthesize testNum;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        uint8_t x = 3;
-        while (x<64) {
-            frame[x] = x-2;
+
+        int testing = rand();
+        int *newTest = (int *)frame;
+        *newTest = testing;
+        
+        uint8_t x = 2;
+        packetLen = 126;
+        while (x<128) {
+            frame[x] = x-1;
             x++;
         }
-        frame[0] = 0x09;
-        frame[1] = 0x7C;
-        frame[2] = 0xcc;
-            
-        
         src = [[NSNumber alloc] initWithInt:0];
         dest = [[NSNumber alloc] initWithInt:0];
         srcPanId = [[NSNumber alloc] initWithInt:0];
         destPanId = [[NSNumber alloc] initWithInt:0];
-        
+        frameType = [[NSString alloc] initWithString:@"hello"];
         self.testNum = [[NSNumber alloc] initWithInt:1232234];
+
+        packetStr = [[NSMutableString alloc]init];
         
-        [self zigbee_breakdown:&frame[1]];
+        [self zigbee_packetDisplay:frame];
+        [self zigbee_breakdown:frame];
         
         NSArray *keys = [NSArray arrayWithObjects:@"packetNum", @"packetValue",@"packetDestAddr", @"packetDestPanId", @"packetSrcAddr", @"packetSrcPanId", nil];
-        NSArray *values = [NSArray arrayWithObjects:@"Pizza", self.testNum, dest, destPanId, src, srcPanId, nil];
+        NSArray *values = [NSArray arrayWithObjects:@"Pizza", frameType, dest, destPanId, src, srcPanId, nil];
         
         zigPacketDiction = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
         
@@ -52,10 +57,15 @@
 }
 - (id)initWithData:(voidPtr)zig
 {
-    self = [super init];
+    self = [self init];
+    
+    for (uint8_t x=0; x<128; x++) {
+        frame[x] = *(uint8_t *)zig++;
+    }
+    
     if(self)
     {
-        self.len = packet_read(zig, uint8_t);
+        self.packetLen = 128;//packet_read(zig, uint8_t);
     }
     
     return self;
@@ -63,7 +73,7 @@
 
 - (void)dealloc
 {
-    [decodedStr release];
+    [decodedMACStr release];
     [zigPacketDiction release];
     [super dealloc];
 }
@@ -72,15 +82,22 @@
 {
     [self dealloc];
 }
-
-- (void)zigbee_macBreakdown:(voidPtr)zig
+- (voidPtr)zigbee_nwkBreakdown:(voidPtr)zig
+{
+    nwk_layer.fcf = packet_read(zig, nwk_fcf_t);
+    [self zigbee_nwkFCF_breakdown];
+    
+    return zig;
+    
+}
+- (voidPtr)zigbee_macBreakdown:(voidPtr)zig
 {
     mac_layer.mac_fcf = packet_read(zig, mac_fcf_t);
 
     [self zigbee_macFCF_breakdown];
     
     mac_layer.mac_seq_num = packet_read(zig, uint8_t);
-    
+    [decodedMACStr appendFormat:@"Sequence Number: %i\n", mac_layer.mac_seq_num];
     if(self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x02 || self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x03)
     {
         mac_layer.destPanID = packet_read(zig, uint16_t);
@@ -90,26 +107,32 @@
             mac_layer.dest_sAddr = packet_read(zig, uint16_t);
             [dest release];
             
-            NSLog(@"Destination ADDR: %.4x\n", mac_layer.dest_sAddr);
+            NSLog(@"Destination ADDR: %#.4x\n", mac_layer.dest_sAddr);
             
             dest = [[NSNumber alloc]initWithInt:mac_layer.dest_sAddr];
             [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
+
+            [decodedMACStr appendFormat:@"Destination Address: %1$i (%1$#.4X)\n", mac_layer.dest_sAddr];
+            
         } 
         else 
         {
             mac_layer.dest_lAddr = packet_read(zig, uint64_t);
             [dest release];
             
-            NSLog(@"Destination ADDR: %.16llX\n", mac_layer.dest_lAddr);
-            
-            dest = [[NSNumber alloc]initWithInt:mac_layer.dest_lAddr];
+            NSLog(@"Destination ADDR: %#.16qx\n", mac_layer.dest_lAddr);
+
+            dest = [[NSNumber alloc]initWithLongLong:mac_layer.dest_lAddr];
             [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
+            [decodedMACStr appendFormat:@"Destination Address: %1$qu (%1$#.16qx)\n", self.mac_layer.dest_lAddr];
         }
         [destPanId release];
         mac_layer.destPanID = packet_read(zig, uint16_t);
         
         destPanId = [[NSNumber alloc]initWithInt:mac_layer.destPanID];
+        [decodedMACStr appendFormat:@"Destination Pan ID: %1$i (%1$#.4x)\n", mac_layer.destPanID];
         [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
+
         
     }
     if(self.mac_layer.mac_fcf.mac_src_addr_mode == 0x02 || self.mac_layer.mac_fcf.mac_src_addr_mode == 0x03)
@@ -121,51 +144,87 @@
             mac_layer.src_sAddr = packet_read(zig, uint16_t);
             [src release];
             
-            NSLog(@"Source ADDR: %.4x\n", mac_layer.src_sAddr);
+            NSLog(@"Source ADDR: %#.4x\n", mac_layer.src_sAddr);
             
             src = [[NSNumber alloc]initWithInt:mac_layer.src_sAddr];
             [self.zigPacketDiction setObject:src forKey:@"packetSrcAddr"];
+            
+            [decodedMACStr appendFormat:@"Source Address: %1$i (%1$#.4x)\n", mac_layer.src_sAddr];
         } 
         else 
         {
             mac_layer.src_lAddr = packet_read(zig, uint64_t);
             [src release];
             
-            NSLog(@"Source ADDR: %.16llX\n", mac_layer.src_lAddr);
+            NSLog(@"Source ADDR: %#.16qx\n", mac_layer.src_lAddr);
             
-            src = [[NSNumber alloc]initWithInt:mac_layer.src_lAddr];
+            src = [[NSNumber alloc]initWithLongLong:mac_layer.src_lAddr];
             [self.zigPacketDiction setObject:src forKey:@"packetSrcAddr"];
+            [decodedMACStr appendFormat:@"Source Address: %1$qu (%1$#.16qx)\n", self.mac_layer.src_lAddr];
+
         }
         [srcPanId release];
         mac_layer.srcPanID = packet_read(zig, uint16_t);
-        
+        [decodedMACStr appendFormat:@"Source Pan ID: %1$i (%1$#.4x)\n", mac_layer.srcPanID];
         srcPanId = [[NSNumber alloc]initWithInt:mac_layer.srcPanID];
         [self.zigPacketDiction setObject:src forKey:@"packetSrcAddr"];
     }
     
+    return zig;
+}
+- (void)zigbee_nwkFCF_breakdown
+{
+    NSString *nwkFT;
+    switch (nwk_layer.fcf.frameType)
+    {
+        case nwk_data:
+            nwkFT = [NSString stringWithString:@"NWK Data Frame\n"];
+            break;
+        case nwk_command:
+            nwkFT = [NSString stringWithString:@"NWK Command Frame\n"];
+            break;
+        default:
+            nwkFT = [NSString stringWithString:@"Unknown NWK Frame Type\n"];
+    }
+
+    [decodedNWKStr appendFormat:@"NWK FCF: %1$i (%1$#.4X)\n", nwk_layer.fcf];
+    [decodedNWKStr appendFormat:@"\tFrame Type:\t\t\t--------------%.2x",zigbee_hexToBin(self.nwk_layer.fcf.frameType, 2)];
+    STRING_TAB(decodedNWKStr);
+    [decodedNWKStr appendString:nwkFT];
+    [decodedNWKStr appendFormat:@"\tProtocal Version:\t\t\t----------%.4x--\n",zigbee_hexToBin(self.nwk_layer.fcf.protoVer,4)];
+    [decodedNWKStr appendFormat:@"\tFrame Pending:\t\t\t-----------%X----\n",mac_layer.mac_fcf.mac_frame_pending];
+    [decodedNWKStr appendFormat:@"\tAck Request:\t\t\t----------%X-----\n",self.mac_layer.mac_fcf.mac_ack_request];
+    [decodedNWKStr appendFormat:@"\tPAN ID Compression:\t\t---------%X------\n",self.mac_layer.mac_fcf.mac_panID_compress];
+    [decodedNWKStr appendFormat:@"\tRESERVED:\t\t\t\t------%.2X%X-------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_reserved2, 2)), self.mac_layer.mac_fcf.mac_reserved1];
+    [decodedNWKStr appendFormat:@"\tDestination Addr Mode:\t----%.2X----------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_dest_addr_mode, 2))];
+    [decodedNWKStr appendFormat:@"\tFrame Version:\t\t\t--%.2X------------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_frame_ver, 2))];
+    [decodedNWKStr appendFormat:@"\tSource Addr Mode:\t\t%.2X--------------",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_src_addr_mode, 2))];
     
+    [nwkFT release];
 }
 - (void)zigbee_macFCF_breakdown
 {
-    NSString *frameType, *destMode, *srcMode;
+    NSString *destMode, *srcMode;
     
     switch (self.mac_layer.mac_fcf.mac_frame_type) {
         case mac_beacon:
-            frameType = [[NSString alloc]initWithString:@"\tMAC Beacon\n"];
+            frameType = [[NSString alloc]initWithString:@"MAC Beacon\n"];
             break;
         case mac_data:
-            frameType = [[NSString alloc]initWithString:@"\tMAC Data\n"];
+            frameType = [[NSString alloc]initWithString:@"MAC Data\n"];
             break;
         case mac_ack:
-            frameType = [[NSString alloc]initWithString:@"\tMAC Ackownledgment\n"];
+            frameType = [[NSString alloc]initWithString:@"MAC Ackownledgment\n"];
             break;
         case mac_command:
-            frameType = [[NSString alloc]initWithString:@"\tMAC Command\n"];
+            frameType = [[NSString alloc]initWithString:@"MAC Command\n"];
             break;
         default:
-            frameType = [[NSString alloc]initWithString:@"\tUnknown Packet Type\n"];
+            frameType = [[NSString alloc]initWithString:@"Unknown Packet Type\n"];
             break;
     }
+    [frameType release];
+    [self.zigPacketDiction setObject:frameType forKey:@"packetValue"];
     
     switch (self.mac_layer.mac_fcf.mac_dest_addr_mode) {
         case mac_addr_not_pres:
@@ -196,30 +255,84 @@
             break;
     }
     
-    [self.decodedStr appendFormat:@"MAC FCF: %1$i (%1$#.4X)\n", self.mac_layer.mac_fcf];
-    [self.decodedStr appendFormat:@"\tFrame Type:\t\t\t-------------%.3X",zigbee_hexToBin(self.mac_layer.mac_fcf.mac_frame_type, 3)];
-    [self.decodedStr appendString:frameType];
-    [self.decodedStr appendFormat:@"\tSecurity Enabled:\t\t\t------------%X---\n",self.mac_layer.mac_fcf.mac_security_enbl];
-    [self.decodedStr appendFormat:@"\tFrame Pending:\t\t\t-----------%X----\n",self.mac_layer.mac_fcf.mac_frame_pending];
-    [self.decodedStr appendFormat:@"\tAck Request:\t\t\t----------%X-----\n",self.mac_layer.mac_fcf.mac_ack_request];
-    [self.decodedStr appendFormat:@"\tPAN ID Compression:\t\t---------%X------\n",self.mac_layer.mac_fcf.mac_panID_compress];
-    [self.decodedStr appendFormat:@"\tRESERVED:\t\t\t\t------%.2X%X-------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_reserved2, 2)), self.mac_layer.mac_fcf.mac_reserved1];
-    [self.decodedStr appendFormat:@"\tDestination Addr Mode:\t----%.2X----------",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_dest_addr_mode, 2))];
-    [self.decodedStr appendString:destMode];
-    [self.decodedStr appendFormat:@"\tFrame Version:\t\t\t--%.2X------------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_frame_ver, 2))];
-    [self.decodedStr appendFormat:@"\tSource Addr Mode:\t\t%.2X--------------",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_src_addr_mode, 2))];
-    [self.decodedStr appendString:srcMode];
-    
-    [frameType release];
+    [decodedMACStr appendFormat:@"MAC FCF: %1$i (%1$#.4X)\n", self.mac_layer.mac_fcf];
+    [decodedMACStr appendFormat:@"\tFrame Type:\t\t\t-------------%.3X",zigbee_hexToBin(self.mac_layer.mac_fcf.mac_frame_type, 3)];
+    STRING_TAB(decodedMACStr);
+    [decodedMACStr appendString:frameType];
+    [decodedMACStr appendFormat:@"\tSecurity Enabled:\t\t\t------------%X---\n",mac_layer.mac_fcf.mac_security_enbl];
+    [decodedMACStr appendFormat:@"\tFrame Pending:\t\t\t-----------%X----\n",mac_layer.mac_fcf.mac_frame_pending];
+    [decodedMACStr appendFormat:@"\tAck Request:\t\t\t----------%X-----\n",self.mac_layer.mac_fcf.mac_ack_request];
+    [decodedMACStr appendFormat:@"\tPAN ID Compression:\t\t---------%X------\n",self.mac_layer.mac_fcf.mac_panID_compress];
+    [decodedMACStr appendFormat:@"\tRESERVED:\t\t\t\t------%.2X%X-------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_reserved2, 2)), self.mac_layer.mac_fcf.mac_reserved1];
+    [decodedMACStr appendFormat:@"\tDestination Addr Mode:\t----%.2X----------",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_dest_addr_mode, 2))];
+    [decodedMACStr appendString:destMode];
+    [decodedMACStr appendFormat:@"\tFrame Version:\t\t\t--%.2X------------\n",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_frame_ver, 2))];
+    [decodedMACStr appendFormat:@"\tSource Addr Mode:\t\t%.2X--------------",(zigbee_hexToBin(self.mac_layer.mac_fcf.mac_src_addr_mode, 2))];
+    [decodedMACStr appendString:srcMode];
+
+    //[frameType release];
     [destMode release];
     [srcMode release];
-
+    
 }
+
+- (void)zigbee_packetDisplay:(voidPtr)zig
+{
+    uint8_t x = 0;
+    uint8_t remainder = packetLen%10;
+    uint8_t iterations = packetLen/10;
+    
+    for (uint8_t y=0; y<iterations; y++) {
+        x=0;
+        while (x<10)
+        {
+            [packetStr appendFormat:@"%.2#x ", *((uint8_t *)zig+(y*10+x))];
+            x++;
+        }
+        x=0;
+            [packetStr appendString:@"\t\t"];
+        while (x<10) 
+        {
+            if((*(((uint8_t *)zig)+(y*10+x)))>32)
+                [packetStr appendFormat:@"%#c", *((char *)zig+(y*10+x))];
+            x++;
+        }
+                [packetStr appendString:@"\n"];
+    }
+
+    x=0;
+    while (x<remainder)
+    {
+        [packetStr appendFormat:@"%.2#x ", *((uint8_t *)zig+(iterations*10+x))];
+        x++;
+    }
+    x=0;
+    [packetStr appendString:@"\t\t"];
+    
+    for (uint8_t tabs = 0; tabs<(10-remainder); tabs++) 
+    {
+        [packetStr appendString:@"\t"];
+    } 
+           
+    while (x<remainder) 
+    {
+        if((*(((uint8_t *)zig)+(iterations*10+x)))>32)
+            [packetStr appendFormat:@"%#c", *((char *)zig+(iterations*10+x))];
+            x++;
+    }
+    
+    [packetStr appendString:@"\n"];
+    
+}
+    
 - (void)zigbee_breakdown:(voidPtr)zig
 {
-    self.decodedStr = [[NSMutableString alloc]init];
+    decodedMACStr = [[NSMutableString alloc]init];
+    decodedNWKStr = [[NSMutableString alloc]init];
+    decodedAPSStr = [[NSMutableString alloc]init];
     
-    [self zigbee_macBreakdown:zig];
+    zig = [self zigbee_macBreakdown:zig];
+    zig = [self zigbee_nwkBreakdown:zig];
 }
 
 

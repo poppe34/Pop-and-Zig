@@ -11,9 +11,28 @@
 
 #define kDefaultProdID	0
 #define kDefaultVendID	0
-#define kDefaultName	"No Device";
+#define kDefaultName	@"No Device is Connected at this time"
 @interface defaultDevice : usbDriver {
 
 }
+/*
++ (NSArray *)usbDescriptor;
+- (id)init;
+- (void)ledOn:(UInt8)num;
+- (void)ledOff:(UInt8)num;
+- (BOOL)ledsAvail;
+- (BOOL)initLeds;
 
+//Alarms
+- (BOOL)alarmsAvail;
+- (void)checkForAlarms;
+- (void)getFirstAlarm;
+
+
+//Zigbee
+-(BOOL)zigbeeAvail;
+-(void)checkZigbee;
+-(void)getFirstZigbee;
+ 
+ */
 @end

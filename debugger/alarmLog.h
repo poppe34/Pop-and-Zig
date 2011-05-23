@@ -29,11 +29,12 @@
 - (IBAction) buttonAddAlarm:(id)sender;
 
 - (NSInteger)numNonAckAlarms:(int)rows;
-- (void)addAlarm:(MyAlarms *)alrm;
+//- (void)addAlarm:(MyAlarms *)alrm;
 - (void)ackAlarms:(MyAlarms *)alrm;
 - (void)deactivateAlarm:(MyAlarms *)alrm;
 - (int)numberOfRowsInTableView:(NSTableView *)tableView;
-- (int)numberofUnackAlarms:(NSInteger)count;
+//d- (int)numberofUnackAlarms:(NSInteger)count;
+- (void)removeAlarm:(MyAlarms *)alrm;
 
 
 @property(assign) NSMutableArray *alarmLogArray;
