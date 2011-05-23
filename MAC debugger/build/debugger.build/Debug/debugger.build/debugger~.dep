@@ -1,0 +1,9 @@
+d707fceac8b4bb5b789803643b3a5d87 3a9add931fca39997411cb59ded1a79b ffffffffffffffffffffffffffffffff 102 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app
+6f582a5a6ba8efc700ffc3e7f339222b ad664ccd25d310b5b935f927e231ee5c ffffffffffffffffffffffffffffffff 14696 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger
+000000004d39f646000000000002bb76 029ea84226950f4e8d273a45d8de2bcd ffffffffffffffffffffffffffffffff 34397 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/MainMenu.nib
+000000004d39f646000000000000002d 17a7323fa05a4b674c7503e1f2ee0166 ffffffffffffffffffffffffffffffff 92 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings
+00000000000000000000000000000000 505d2ee4dd108e7cc7ce89b9d8afbb18 ffffffffffffffffffffffffffffffff 8 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/PkgInfo
+00000000000000000000000000000000 505d2ee4dd108e7cc7ce89b9d8afbb18 ffffffffffffffffffffffffffffffff 889 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist
+42b97ff8012fb99a95377364784529a8 e6057fac41404253007deae88e954b26 ffffffffffffffffffffffffffffffff 21416 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o
+42b97ff84c164ff1953773647845293d 895d55f660ddb1320082290f7daccc96 ffffffffffffffffffffffffffffffff 5000 /Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o
+000000000dfd5c2e0000000000000176 42b97ff84c164ff19537736478452952 ffffffffffffffffffffffffffffffff 54265616 /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch

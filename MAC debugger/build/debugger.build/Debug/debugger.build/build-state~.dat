@@ -1,0 +1,196 @@
+Tdebugger
+v7
+r0
+t317337070.700593
+cCheck dependencies
+cProcessInfoPlistFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist" debugger-Info.plist
+cCopyStringsFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+cCompileXIB "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib"
+cProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cLd "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger" normal x86_64
+cTouch "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004C5342BA00000000000000EE
+t1280524986
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004B5FA877000000000000A5E0
+t1264560247
+s42464
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/InfoPlist.strings
+c000000004D39F646000000000000002D
+t1295644230
+s45
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib
+c000000004D39F646000000000002BB76
+t1295644230
+s179062
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app
+t1295644270
+s102
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist
+t1295644267
+s889
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger
+t1295644270
+s14696
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/PkgInfo
+t1295644267
+s8
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1295644267
+s92
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/MainMenu.nib
+t1295644267
+s34397
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debugger.LinkFileList
+c000000004D39F66B00000000000000F7
+t1295644267
+s247
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o
+t1295644270
+s21416
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o
+t1295644270
+s5000
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.h
+c000000004D39F646000000000000013C
+t1295644230
+s316
+i<Cocoa/Cocoa.h>
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m
+c000000004D39F66B0000000000000155
+t1295644267
+s341
+i"debuggerAppDelegate.h"
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch
+c000000004D39F6460000000000000093
+t1295644230
+s147
+i<Cocoa/Cocoa.h>
+
+N/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m
+c000000004D39F64600000000000000FC
+t1295644230
+s252
+i<Cocoa/Cocoa.h>
+
+N/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch
+t1295644270
+s54265616
+
+Ndebugger-Info.plist
+c000000004D39F64600000000000003EA
+t1295644230
+s1002
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies317337067#317337067#0(0"0(0#1#0"8800331712#0"0#
+
+CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317337070.518320
+e317337070.665585
+r1
+xCompileC
+xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m317337070#317337070#0(0"0(0#0#66"/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m8799873600#1588"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o"0#
+
+CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317337070.517292
+e317337070.652015
+r1
+xCompileC
+xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@59"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/main.m317337070#317337070#0(0"0(0#0#51"/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m8678764064#1558"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o"0#
+
+CCompileXIB "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib"
+s317337067.268286
+e317337067.630292
+r1
+xCompileXIB
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib317337067#317337067#0(0"0(0#0#71"/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib8800496832#389"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/MainMenu.nib" "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib" --sdk /Developer/SDKs/MacOSX10.6.sdk0#
+
+CCopyStringsFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+s317337067.265297
+e317337067.311316
+r1
+xCopyStringsFile
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings317337067#317337067#0(0"0(0#0#76"/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/InfoPlist.strings8800501920#382"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj"0#
+
+CLd "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger" normal x86_64
+s317337070.665695
+e317337070.698014
+r1
+xLd
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger
+xnormal
+xx86_64
+lSLF07#2@98"Link /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger317337070#317337070#0(0"0(0#0#0"8800508000#587"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" -filelist "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debugger.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger"0#
+
+CProcessInfoPlistFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist" debugger-Info.plist
+s317337067.170837
+e317337067.265205
+r1
+xProcessInfoPlistFile
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist
+xdebugger-Info.plist
+lSLF07#2@27"Process debugger-Info.plist317337067#317337067#0(0"0(0#0#64"/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger-Info.plist8800508608#337"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    builtin-infoPlistUtility debugger-Info.plist -genpkginfo "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/PkgInfo" -expandbuildsettings -platform macosx -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist"0#
+
+CProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317337067.630397
+e317337070.517093
+r1
+xProcessPCH
+x/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch
+xdebugger_Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile debugger_Prefix.pch317337067#317337070#0(0"0(0#0#64"/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch8800564672#1455"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch" -o /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch0#
+
+CTouch "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"
+s317337070.698097
+e317337070.700561
+r1
+xTouch
+x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app
+lSLF07#2@75"Touch /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app317337070#317337070#0(0"0(0#0#0"8799818336#148"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    /usr/bin/touch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"0#
+

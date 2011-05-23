@@ -1,3 +1,0 @@
-/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: incomplete implementation of class 'usbDriver'
-/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: method definition for '-readUSB_TEMP:' not found
-/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:14: warning: 'out_buf' defined but not used

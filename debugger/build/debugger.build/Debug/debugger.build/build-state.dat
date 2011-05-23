@@ -1,962 +1,0 @@
-Tdebugger
-v7
-r0
-t321477496.545255
-cCheck dependencies
-cProcessInfoPlistFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist" debugger-Info.plist
-cCopyStringsFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
-cCompileXIB "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib"
-cProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/MyAlarms.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmLog.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debug.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c" normal x86_64 c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myAVRdebugger.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbCentral.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbInfo.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/appController.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/defaultDevice.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-cLd "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger" normal x86_64
-cTouch "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"
-
-N/Developer/SDKs/MacOSX10.6.sdk
-c000000004C5342BA00000000000000EE
-t1280524986
-s238
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
-c0000000040C4AA6800000000000001E5
-t1086630504
-s485
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CFNumber.h
-c000000004C4DF5510000000000000EAB
-t1280177489
-s3755
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004C46BD4600000000000013E6
-t1279704390
-s5094
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOCFPlugIn.h
-c000000004C4DF7F500000000000008FD
-t1280178165
-s2301
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOKitLib.h
-c000000004C4DF7F50000000000012048
-t1280178165
-s73800
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/Headers/IOMessage.h
-c000000004C4DE4AD0000000000000DE0
-t1280173229
-s3552
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/Headers/hid/IOHIDLib.h
-c000000004C4DF7F50000000000000609
-t1280178165
-s1545
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/Headers/usb/IOUSBLib.h
-c000000004C44E45D000000000002BF93
-t1279583325
-s180115
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/IOKit.framework/IOKit
-c000000004C5342AC000000000003AB6C
-t1280524972
-s240492
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/mach/mach.h
-c000000004AFD6AD20000000000001057
-t1258121938
-s4183
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdio.h
-c000000004AC59C820000000000004174
-t1254464642
-s16756
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdlib.h
-c000000004AC59C820000000000002DF5
-t1254464642
-s11765
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/sys/param.h
-c000000004C4DE4B300000000000027BE
-t1280173235
-s10174
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/unistd.h
-c000000004AC59C82000000000000563E
-t1254464642
-s22078
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdint.h
-c000000004AC59DB7000000000000190C
-t1254464951
-s6412
-
-N/System/Library/Frameworks/Cocoa.framework/Cocoa
-c000000004B5FA877000000000000A5E0
-t1264560247
-s42464
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/InfoPlist.strings
-c000000004D39F646000000000000002D
-t1295644230
-s45
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib
-c000000004D74E3F20000000000039E5C
-t1299506162
-s237148
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.h
-c000000004D3F12CE00000000000001D4
-t1295979214
-s468
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m
-c000000004D669F0A0000000000000339
-t1298571018
-s825
-i"MyAlarms.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSArrayController.h
-c000000004D3DD7DD0000000000000141
-t1295898589
-s321
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSArrayController.m
-c000000004D3DD7DD000000000000014C
-t1295898589
-s332
-i"NSArrayController.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSTableColumn.h
-c000000004D3DD7AD00000000000000C7
-t1295898541
-s199
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSTableColumn.m
-c000000004D3DD7AD00000000000000BE
-t1295898541
-s190
-i"NSTableColumn.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSWindow.h
-c000000004D3DD75B00000000000002F0
-t1295898459
-s752
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/NSWindow.m
-c000000004D3DD75B00000000000002EA
-t1295898459
-s746
-i"NSWindow.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h
-c000000004D3EE77100000000000000EF
-t1295968113
-s239
-i<Foundation/Foundation.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m
-c000000004D3E34B30000000000000116
-t1295922355
-s278
-i"ackStatus.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.h
-c000000004D66C7FE0000000000000360
-t1298581502
-s864
-i<Cocoa/Cocoa.h>
-i"MyAlarms.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m
-c000000004D66C9630000000000000AB4
-t1298581859
-s2740
-i"alarmLog.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.h
-c000000004D3A5B710000000000000111
-t1295670129
-s273
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m
-c000000004D3A5B7100000000000000EC
-t1295670129
-s236
-i"alarmsController.h"
-i"MyAlarms.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.h
-c000000004D66C7ED000000000000033A
-t1298581485
-s826
-i<Cocoa/Cocoa.h>
-i"usbDriver.h"
-i"usbCentral.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m
-c000000004D66C7ED0000000000000B20
-t1298581485
-s2848
-i"appController.h"
-i"usbDriver.h"
-i"usbCentral.h"
-i"usbInfo.h"
-i"alarmLog.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app
-t1299506170
-s102
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist
-t1295644267
-s889
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger
-t1298581860
-s82328
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/PkgInfo
-t1295644267
-s8
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings
-t1295644267
-s92
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/MainMenu.nib
-t1299506170
-s45682
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/MyAlarms.o
-t1298571019
-s13972
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSArrayController.o
-t2
-s0
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSTableColumn.o
-t2
-s0
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSWindow.o
-t2
-s0
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/ackStatus.o
-t2
-s0
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmLog.o
-t1298581860
-s34984
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmsController.o
-t1295780657
-s5960
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/appController.o
-t1298581502
-s47564
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debug.o
-t1298338186
-s16652
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debugger.LinkFileList
-c000000004D62603E000000000000053D
-t1298292798
-s1341
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o
-t1298581502
-s22000
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/defaultDevice.o
-t1298484029
-s9268
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o
-t1297009716
-s5000
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myAVRdebugger.o
-t1298497431
-s26316
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o
-t1297886887
-s23996
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbCentral.o
-t1298484029
-s45760
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbController.o
-t1297935991
-s26900
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o
-t1298484029
-s35412
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbInfo.o
-t1298291556
-s19512
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c
-c000000004D63118900000000000024D3
-t1298338185
-s9427
-i"debug.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.h
-c000000004D5978450000000000000332
-t1297709125
-s818
-i<IOKit/IOKitLib.h>
-i<IOKit/IOCFPlugIn.h>
-i<IOKit/usb/IOUSBLib.h>
-i<stdint.h>
-i<stdlib.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.h
-c000000004D39F646000000000000013C
-t1295644230
-s316
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m
-c000000004D5ED8BB00000000000001D1
-t1298061499
-s465
-i"debuggerAppDelegate.h"
-i"MyAlarms.h"
-i"alarmLog.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch
-c000000004D39F6460000000000000093
-t1295644230
-s147
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.h
-c000000004D6260B90000000000000133
-t1298292921
-s307
-i<Cocoa/Cocoa.h>
-i"usbDriver.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m
-c000000004D6260900000000000000215
-t1298292880
-s533
-i"defaultDevice.h"
-i"usbHeaders.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m
-c000000004D39F64600000000000000FC
-t1295644230
-s252
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.h
-c000000004D65490A0000000000000245
-t1298483466
-s581
-i<Cocoa/Cocoa.h>
-i"usbDriver.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m
-c000000004D657F970000000000000819
-t1298497431
-s2073
-i"myAVRdebugger.h"
-i"usbDriver.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myTypes.h
-c000000004D506ABB00000000000000C8
-t1297115835
-s200
-i"debug.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c
-c000000004D5C2EA40000000000002273
-t1297886884
-s8819
-i"myUSB.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.h
-c000000004D5A680000000000000003FE
-t1297770496
-s1022
-i<stdio.h>
-i<mach/mach.h>
-i<CoreFoundation/CFNumber.h>
-i<IOKit/IOKitLib.h>
-i<IOKit/IOCFPlugIn.h>
-i<IOKit/usb/IOUSBLib.h>
-i"myUSB.h"
-i"myTypes.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m
-c000000004D5A42CE0000000000003566
-t1297760974
-s13670
-i"myUSB.h"
-i"myTypes.h"
-i<stdio.h>
-i"mach/mach.h"
-i<CoreFoundation/CFNumber.h>
-i<IOKit/hid/IOHIDLib.h>
-i<sys/param.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.h
-c000000004D6105220000000000000480
-t1298203938
-s1152
-i<Cocoa/Cocoa.h>
-i"usbHeaders.h"
-i<CoreFoundation/CFNumber.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m
-c000000004D6347D50000000000001B24
-t1298352085
-s6948
-i"usbCentral.h"
-i"usbInfo.h"
-i"defaultDevice.h"
-i"myAVRdebugger.h"
-i"usbDriver.h"
-i"myTypes.h"
-i<IOKit/IOMessage.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.h
-c000000004D5CEE3D000000000000042A
-t1297935933
-s1066
-i<Cocoa/Cocoa.h>
-i<IOKit/IOKitLib.h>
-i<IOKit/IOCFPlugIn.h>
-i<IOKit/usb/IOUSBLib.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m
-c000000004D5CEE330000000000001389
-t1297935923
-s5001
-i"usbController.h"
-i"usbInfo.h"
-i"myAVRdebugger.h"
-i"usbDriver.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c
-c000000004D595A0C0000000000001E8B
-t1297701388
-s7819
-i"usbDriver.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.h
-c000000004D654B3C0000000000000521
-t1298484028
-s1313
-i<Cocoa/Cocoa.h>
-i"usbHeaders.h"
-i"myTypes.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m
-c000000004D654AB8000000000000212B
-t1298483896
-s8491
-i"usbDriver.h"
-i"usbInfo.h"
-i"MyAlarms.h"
-i"usbHeaders.h"
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbHeaders.h
-c000000004D62603D0000000000000122
-t1298292797
-s290
-i"myTypes.h"
-i<IOKit/IOKitLib.h>
-i<IOKit/IOCFPlugIn.h>
-i<IOKit/usb/IOUSBLib.h>
-i<mach/mach.h>
-i<unistd.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.h
-c000000004D625B5E000000000000022C
-t1298291550
-s556
-i<Cocoa/Cocoa.h>
-
-N/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m
-c000000004D625B5E00000000000001CE
-t1298291550
-s462
-i"usbInfo.h"
-
-N/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch
-t1297009715
-s54265616
-
-N/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch.gch
-t1297114876
-s2195824
-
-Ndebugger-Info.plist
-c000000004D39F64600000000000003EA
-t1295644230
-s1002
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies321477496#321477496#0(0"0(0#1#0"3343187568374212096#0"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/MyAlarms.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320263818.851853
-e320263819.224000
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/MyAlarms.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@63"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m320263818#320263819#0(0"0(0#0#55"/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m8671942624#1566"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/MyAlarms.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/MyAlarms.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSArrayController.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/NSArrayController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSTableColumn.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/NSTableColumn.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/NSWindow.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/NSWindow.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/ackStatus.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s317660965.139584
-e317660965.271967
-r0
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/ackStatus.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-oIn file included from /Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:9:
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h:15: error: expected specifier-qualifier-list before 'ackStatus_t'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m: In function '-[ackStatus init]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: 'status' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: (Each undeclared identifier is reported only once
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: for each function it appears in.)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: 'activeNotAckd' undeclared (first use in this function)
-lSLF07#2@64"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m317660965#317660965#0(757"In file included from /Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:9:/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h:15: error: expected specifier-qualifier-list before 'ackStatus_t'/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m: In function '-[ackStatus init]':/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: 'status' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: (Each undeclared identifier is reported only once/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: for each function it appears in.)/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m:16: error: 'activeNotAckd' undeclared (first use in this function)3(4@54"Expected specifier-qualifier-list before 'ackStatus_t'317660965#82#123#2(7@78"In file included from /Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m317660965#18446744073709551615#0#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m317615155#9#0#9#0#0"0(13@114"Expected specifier-qualifier-list before 'ackStatus_t' in /Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h317660965#18446744073709551615#0#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h317660913#15#0#15#0#0"0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.h317660913#15#0#15#0#19"expected * before *0(4@48"'status' undeclared (first use in this function)317660965#296#117#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m317615155#16#0#16#0#43"'*' undeclared (first use in this function)0(4@55"'activeNotAckd' undeclared (first use in this function)317660965#633#124#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m317615155#16#0#16#0#43"'*' undeclared (first use in this function)0(0#0#56"/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m8617277472#1568"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/ackStatus.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/ackStatus.o"1#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmLog.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320274659.827083
-e320274660.402240
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmLog.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: incomplete implementation of class 'alarmLog'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: method definition for '-numberofUnackAlarms:' not found
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: method definition for '-addAlarm:' not found
-lSLF07#2@63"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m320274659#320274660#0(357"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: incomplete implementation of class 'alarmLog'/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: method definition for '-numberofUnackAlarms:' not found/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m:135: warning: method definition for '-addAlarm:' not found3(22@45"Incomplete implementation of class 'alarmLog'320274660#0#116#0(6@55"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m320274659#135#0#135#0#38"incomplete implementation of class '*'0(22@55"Method definition for '-numberofUnackAlarms:' not found320274660#116#126#0(6@55"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m320274659#135#0#135#0#35"method definition for '*' not found0(22@44"Method definition for '-addAlarm:' not found320274660#242#115#0(6@55"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m320274659#135#0#135#0#35"method definition for '*' not found0(0#0#55"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m8663002400#1566"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmLog.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmLog.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmsController.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s317473457.793297
-e317473457.967298
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmsController.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@71"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m317473457#317473457#0(0"0(0#0#63"/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m8619082784#1582"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/alarmsController.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/alarmsController.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/appController.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320274302.484889
-e320274302.717651
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/appController.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@68"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m320274302#320274302#0(0"0(0#0#60"/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m8659980224#1576"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/appController.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/appController.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debug.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s320030986.156553
-e320030986.914275
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debug.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ErrorName':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:16: warning: implicit declaration of function 'sprintf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:16: warning: incompatible implicit declaration of built-in function 'sprintf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ShowErrorWithOK':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: implicit declaration of function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: format not a string literal and no format arguments
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:107: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:109: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:111: warning: format not a string literal and no format arguments
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:113: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ShowErrorWithOutOK':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:120: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:120: warning: format not a string literal and no format arguments
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:124: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:126: warning: format not a string literal and no format arguments
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:128: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'displayError':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:153: warning: incompatible implicit declaration of built-in function 'printf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:153: warning: format not a string literal and no format arguments
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:155: warning: format not a string literal and no format arguments
-lSLF07#2@60"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030986#320030986#0(2445"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ErrorName':/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:16: warning: implicit declaration of function 'sprintf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:16: warning: incompatible implicit declaration of built-in function 'sprintf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ShowErrorWithOK':/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: implicit declaration of function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:103: warning: format not a string literal and no format arguments/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:107: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:109: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:111: warning: format not a string literal and no format arguments/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:113: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'ShowErrorWithOutOK':/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:120: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:120: warning: format not a string literal and no format arguments/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:124: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:126: warning: format not a string literal and no format arguments/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:128: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c: In function 'displayError':/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:153: warning: incompatible implicit declaration of built-in function 'printf'/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:153: warning: format not a string literal and no format arguments/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c:155: warning: format not a string literal and no format arguments17(22@42"Implicit declaration of function 'sprintf'320030986#79#109#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#16#0#16#0#36"implicit declaration of function '*'0(22@64"Incompatible implicit declaration of built-in function 'sprintf'320030986#188#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#16#0#16#0#0"0(22@41"Implicit declaration of function 'printf'320030986#404#109#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#103#0#103#0#36"implicit declaration of function '*'0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#513#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#103#0#103#0#0"0(22@51"Format not a string literal and no format arguments320030986#644#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#103#0#103#0#51"format not a string literal and no format arguments0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#763#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#107#0#107#0#0"0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#894#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#109#0#109#0#0"0(22@51"Format not a string literal and no format arguments320030986#1025#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#111#0#111#0#51"format not a string literal and no format arguments0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#1144#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#113#0#113#0#0"0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#1363#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#120#0#120#0#0"0(22@51"Format not a string literal and no format arguments320030986#1494#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#120#0#120#0#51"format not a string literal and no format arguments0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#1613#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#124#0#124#0#0"0(22@51"Format not a string literal and no format arguments320030986#1744#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#126#0#126#0#51"format not a string literal and no format arguments0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#1863#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#128#0#128#0#0"0(22@63"Incompatible implicit declaration of built-in function 'printf'320030986#2076#131#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#153#0#153#0#0"0(22@51"Format not a string literal and no format arguments320030986#2207#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#153#0#153#0#51"format not a string literal and no format arguments0(22@51"Format not a string literal and no format arguments320030986#2326#119#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c320030985#155#0#155#0#51"format not a string literal and no format arguments0(0#0#52"/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c8691319104#1550"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debug.c" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debug.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320274302.222125
-e320274302.483801
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@74"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m320274302#320274302#0(0"0(0#0#66"/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m8672990912#1588"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debuggerAppDelegate.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debuggerAppDelegate.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/defaultDevice.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320176829.413112
-e320176829.621655
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/defaultDevice.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@68"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m320176829#320176829#0(0"0(0#0#60"/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m8623292768#1576"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/defaultDevice.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/defaultDevice.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s318702515.978205
-e318702516.210967
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@59"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/main.m318702515#318702516#0(0"0(0#0#51"/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m8615451168#1558"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/main.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/main.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myAVRdebugger.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320190231.129887
-e320190231.654748
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myAVRdebugger.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m:114: warning: incomplete implementation of class 'myAVRdebugger'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m:114: warning: method definition for '-readUSB_TEMP' not found
-lSLF07#2@68"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m320190231#320190231#0(249"/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m:114: warning: incomplete implementation of class 'myAVRdebugger'/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m:114: warning: method definition for '-readUSB_TEMP' not found2(22@50"Incomplete implementation of class 'myAVRdebugger'320190231#0#126#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m320190231#114#0#114#0#38"incomplete implementation of class '*'0(22@47"Method definition for '-readUSB_TEMP' not found320190231#126#123#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m320190231#114#0#114#0#35"method definition for '*' not found0(0#0#60"/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m8616283904#1576"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/myAVRdebugger.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myAVRdebugger.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s319579687.673953
-e319579687.948352
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c: In function 'getInterface':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:112: warning: implicit declaration of function 'usleep'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c: In function 'asyncWriteCB':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:284: warning: cast from pointer to integer of different size
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:284: warning: cast from pointer to integer of different size
-lSLF07#2@60"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c319579687#319579687#0(501"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c: In function 'getInterface':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:112: warning: implicit declaration of function 'usleep'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c: In function 'asyncWriteCB':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:284: warning: cast from pointer to integer of different size/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c:284: warning: cast from pointer to integer of different size3(22@41"Implicit declaration of function 'usleep'319579687#82#109#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c319579684#112#0#112#0#36"implicit declaration of function '*'0(22@46"Cast from pointer to integer of different size319579687#273#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c319579684#284#0#284#0#46"cast from pointer to integer of different size0(22@46"Cast from pointer to integer of different size319579687#387#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c319579684#284#0#284#0#46"cast from pointer to integer of different size0(0#0#52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c8658228032#1550"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.c" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s319453780.871529
-e319453781.200364
-r0
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB connectHidUSB]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:71: warning: unused variable 'deviceIndex'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB connectUSB]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:144: warning: implicit declaration of function 'deviceInteraction'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:99: warning: unused variable 'configDesc'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:97: warning: unused variable 'usbInterfaceRef'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:96: warning: unused variable 'interfaceRequest'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:95: warning: unused variable 'numConf'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:94: warning: unused variable 'locID'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:93: warning: unused variable 'score'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB deviceInteraction:]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:168: warning: cast to pointer from integer of different size
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: 'locID' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: (Each undeclared identifier is reported only once
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: for each function it appears in.)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:183: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:191: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:191: error: 'numConf' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:197: error: invalid type argument of '->'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:197: error: 'configDesc' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:201: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:205: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:219: error: invalid type argument of 'unary *'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB usbControlWritePipe:buffer:length:]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:344: warning: control reaches end of non-void function
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB transferData:length:]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:386: warning: cast to pointer from integer of different size
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function 'asyncWriteCB':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:453: warning: cast from pointer to integer of different size
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:453: warning: cast from pointer to integer of different size
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: At top level:
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:457: warning: incomplete implementation of class 'myUSB'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:457: warning: method definition for '-receiveData:InPipe:OutPipe:' not found
-o{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_0
-o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0
-o{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_1
-lSLF07#2@60"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453780#319453781#0(3715"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB connectHidUSB]':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:71: warning: unused variable 'deviceIndex'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB connectUSB]':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:144: warning: implicit declaration of function 'deviceInteraction'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:99: warning: unused variable 'configDesc'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:97: warning: unused variable 'usbInterfaceRef'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:96: warning: unused variable 'interfaceRequest'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:95: warning: unused variable 'numConf'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:94: warning: unused variable 'locID'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:93: warning: unused variable 'score'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB deviceInteraction:]':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:168: warning: cast to pointer from integer of different size/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: 'locID' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: (Each undeclared identifier is reported only once/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:176: error: for each function it appears in.)/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:183: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:191: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:191: error: 'numConf' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:197: error: invalid type argument of '->'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:197: error: 'configDesc' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:201: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:205: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:219: error: invalid type argument of 'unary *'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB usbControlWritePipe:buffer:length:]':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:344: warning: control reaches end of non-void function/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function '-[myUSB transferData:length:]':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:386: warning: cast to pointer from integer of different size/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: In function 'asyncWriteCB':/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:453: warning: cast from pointer to integer of different size/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:453: warning: cast from pointer to integer of different size/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m: At top level:/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:457: warning: incomplete implementation of class 'myUSB'/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m:457: warning: method definition for '-receiveData:InPipe:OutPipe:' not found{standard input}:unknown:Undefined local symbol L_OBJC_CLASSLIST_SUP_REFS_$_0{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_0{standard input}:unknown:Undefined local symbol L_OBJC_SELECTOR_REFERENCES_126(22@29"Unused variable 'deviceIndex'319453781#92#96#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#71#0#71#0#19"unused variable '*'0(22@52"Implicit declaration of function 'deviceInteraction'319453781#277#120#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#144#0#144#0#36"implicit declaration of function '*'0(22@28"Unused variable 'configDesc'319453781#397#95#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#99#0#99#0#19"unused variable '*'0(22@33"Unused variable 'usbInterfaceRef'319453781#492#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#97#0#97#0#19"unused variable '*'0(22@34"Unused variable 'interfaceRequest'319453781#592#101#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#96#0#96#0#19"unused variable '*'0(22@25"Unused variable 'numConf'319453781#693#92#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#95#0#95#0#19"unused variable '*'0(22@23"Unused variable 'locID'319453781#785#90#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#94#0#94#0#19"unused variable '*'0(22@23"Unused variable 'score'319453781#875#90#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#93#0#93#0#19"unused variable '*'0(22@46"Cast to pointer from integer of different size319453781#1062#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#168#0#168#0#46"cast to pointer from integer of different size0(4@34"Invalid type argument of 'unary *'319453781#1176#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#176#0#176#0#0"0(4@47"'locID' undeclared (first use in this function)319453781#1276#113#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#176#0#176#0#43"'*' undeclared (first use in this function)0(4@34"Invalid type argument of 'unary *'319453781#1603#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#183#0#183#0#0"0(4@34"Invalid type argument of 'unary *'319453781#1703#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#191#0#191#0#0"0(4@49"'numConf' undeclared (first use in this function)319453781#1803#115#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#191#0#191#0#43"'*' undeclared (first use in this function)0(4@29"Invalid type argument of '->'319453781#1918#95#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#197#0#197#0#0"0(4@52"'configDesc' undeclared (first use in this function)319453781#2013#118#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#197#0#197#0#43"'*' undeclared (first use in this function)0(4@34"Invalid type argument of 'unary *'319453781#2131#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#201#0#201#0#0"0(4@34"Invalid type argument of 'unary *'319453781#2231#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#205#0#205#0#0"0(4@34"Invalid type argument of 'unary *'319453781#2331#100#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#219#0#219#0#0"0(22@40"Control reaches end of non-void function319453781#2544#108#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#344#0#344#0#40"control reaches end of non-void function0(22@46"Cast to pointer from integer of different size319453781#2751#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#386#0#386#0#46"cast to pointer from integer of different size0(22@46"Cast from pointer to integer of different size319453781#2947#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#453#0#453#0#46"cast from pointer to integer of different size0(22@46"Cast from pointer to integer of different size319453781#3061#114#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#453#0#453#0#46"cast from pointer to integer of different size0(23@13"At top level:319453781#3175#68#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#0#0#0#0#0"0(22@42"Incomplete implementation of class 'myUSB'319453781#3243#110#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#457#0#457#0#38"incomplete implementation of class '*'0(22@62"Method definition for '-receiveData:InPipe:OutPipe:' not found319453781#3353#130#0(6@52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m319453774#457#0#457#0#35"method definition for '*' not found0(0#0#52"/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m8680171072#1560"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/myUSB.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/myUSB.o"1#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbCentral.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320176828.752612
-e320176829.106749
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbCentral.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function '-[usbCentral registerDevice:]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:79: warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:79: warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function 'DeviceRemoved':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: 'usbCentral' may not respond to '-deviceRemoved:'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: (Messages without a matching method signature
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: will be assumed to return 'id' and accept
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: '...' as arguments.)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function '-[usbCentral deviceRemoved:]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:222: warning: 'usbCentral' may not respond to '-debuggerLost:'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: At top level:
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:286: warning: incomplete implementation of class 'usbCentral'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:286: warning: method definition for '-dummySend' not found
-lSLF07#2@65"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320176828#320176829#0(1449"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function '-[usbCentral registerDevice:]':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:79: warning: format '%d' expects type 'int', but argument 2 has type 'long int'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:79: warning: format '%d' expects type 'int', but argument 3 has type 'long int'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function 'DeviceRemoved':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: 'usbCentral' may not respond to '-deviceRemoved:'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: (Messages without a matching method signature/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: will be assumed to return 'id' and accept/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:214: warning: '...' as arguments.)/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: In function '-[usbCentral deviceRemoved:]':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:222: warning: 'usbCentral' may not respond to '-debuggerLost:'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m: At top level:/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:286: warning: incomplete implementation of class 'usbCentral'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m:286: warning: method definition for '-dummySend' not found8(22@66"Format '%d' expects type 'int', but argument 2 has type 'long int'320176828#104#138#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#79#0#79#0#56"format '*' expects type '*', but argument * has type '*'0(22@66"Format '%d' expects type 'int', but argument 3 has type 'long int'320176828#242#138#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#79#0#79#0#56"format '*' expects type '*', but argument * has type '*'0(22@49"'usbCentral' may not respond to '-deviceRemoved:'320176828#468#122#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#214#0#214#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)320176828#590#118#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#214#0#214#0#0"0(22@48"'usbCentral' may not respond to '-debuggerLost:'320176828#1018#121#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#222#0#222#0#26"'*' may not respond to '*'0(23@13"At top level:320176828#1139#73#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#0#0#0#0#0"0(22@47"Incomplete implementation of class 'usbCentral'320176828#1212#120#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#286#0#286#0#38"incomplete implementation of class '*'0(22@44"Method definition for '-dummySend' not found320176828#1332#117#0(6@57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m320044885#286#0#286#0#35"method definition for '*' not found0(0#0#57"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m8607421312#1570"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbCentral.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbCentral.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbController.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s319628791.287320
-e319628791.642172
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbController.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: In function '-[usbController startupUSBdrivers]':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:113: warning: passing argument 4 of 'IOServiceAddMatchingNotification' from incompatible pointer type
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:124: warning: implicit declaration of function 'getDevice'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:124: warning: assignment makes pointer from integer without a cast
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:131: warning: implicit declaration of function 'displayError'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:133: warning: 'return' with a value, in function returning void
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: At top level:
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:235: warning: incomplete implementation of class 'usbController'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:235: warning: method definition for '-startupUSBDrivers' not found
-lSLF07#2@68"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628791#319628791#0(1101"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: In function '-[usbController startupUSBdrivers]':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:113: warning: passing argument 4 of 'IOServiceAddMatchingNotification' from incompatible pointer type/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:124: warning: implicit declaration of function 'getDevice'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:124: warning: assignment makes pointer from integer without a cast/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:131: warning: implicit declaration of function 'displayError'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:133: warning: 'return' with a value, in function returning void/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m: At top level:/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:235: warning: incomplete implementation of class 'usbController'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m:235: warning: method definition for '-startupUSBDrivers' not found8(22@87"Passing argument 4 of 'IOServiceAddMatchingNotification' from incompatible pointer type319628791#112#163#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#113#0#113#0#56"passing argument * of '*' from incompatible pointer type0(22@44"Implicit declaration of function 'getDevice'319628791#275#120#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#124#0#124#0#36"implicit declaration of function '*'0(22@52"Assignment makes pointer from integer without a cast319628791#395#128#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#124#0#124#0#0"0(22@47"Implicit declaration of function 'displayError'319628791#523#123#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#131#0#131#0#36"implicit declaration of function '*'0(22@49"'return' with a value, in function returning void319628791#646#125#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#133#0#133#0#0"0(23@13"At top level:319628791#771#76#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#0#0#0#0#0"0(22@50"Incomplete implementation of class 'usbController'319628791#847#126#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#235#0#235#0#38"incomplete implementation of class '*'0(22@52"Method definition for '-startupUSBDrivers' not found319628791#973#128#0(6@60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m319628723#235#0#235#0#35"method definition for '*' not found0(0#0#60"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m8703521760#1576"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbController.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbController.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c" normal x86_64 c com.apple.compilers.gcc.4_2
-s319394188.728356
-e319394188.998508
-r0
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:12: error: expected identifier or '(' before 'IOUSBDeviceInterface320'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: In function 'openDevice':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: 'err' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: (Each undeclared identifier is reported only once
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: for each function it appears in.)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:99: error: 'usbDebug' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:103: warning: control reaches end of non-void function
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: At top level:
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:105: error: expected identifier or '(' before 'IOUSBInterfaceInterface300'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: In function 'openInterface':
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:167: warning: implicit declaration of function 'ERR'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:167: error: 'self' undeclared (first use in this function)
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:175: warning: implicit declaration of function 'NSLog'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:175: error: expected expression before '@' token
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:179: error: expected ')' before ';' token
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:250: error: expected ';' before '}' token
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:164: warning: unused variable 'message'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:163: warning: unused variable 'pipeRef'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:162: warning: unused variable 'maxPacketSize'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:161: warning: unused variable 'interfaceNumEndpoints'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:161: warning: unused variable 'interfaceSubClass'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'interval'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'transfertype'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'number'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'direction'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'interfaceClass'
-lSLF07#2@64"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#319394189#0(2724"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:12: error: expected identifier or '(' before 'IOUSBDeviceInterface320'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: In function 'openDevice':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: 'err' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: (Each undeclared identifier is reported only once/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:98: error: for each function it appears in.)/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:99: error: 'usbDebug' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:103: warning: control reaches end of non-void function/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: At top level:/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:105: error: expected identifier or '(' before 'IOUSBInterfaceInterface300'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c: In function 'openInterface':/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:167: warning: implicit declaration of function 'ERR'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:167: error: 'self' undeclared (first use in this function)/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:175: warning: implicit declaration of function 'NSLog'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:175: error: expected expression before '@' token/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:179: error: expected ')' before ';' token/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:250: error: expected ';' before '}' token/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:164: warning: unused variable 'message'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:163: warning: unused variable 'pipeRef'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:162: warning: unused variable 'maxPacketSize'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:161: warning: unused variable 'interfaceNumEndpoints'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:161: warning: unused variable 'interfaceSubClass'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'interval'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'transfertype'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'number'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'direction'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c:160: warning: unused variable 'interfaceClass'22(4@59"Expected identifier or '(' before 'IOUSBDeviceInterface320'319394188#0#128#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#12#0#12#0#19"expected * before *0(4@45"'err' undeclared (first use in this function)319394188#212#114#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#98#0#98#0#43"'*' undeclared (first use in this function)0(4@50"'usbDebug' undeclared (first use in this function)319394188#546#119#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#99#0#99#0#43"'*' undeclared (first use in this function)0(22@40"Control reaches end of non-void function319394188#665#112#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#103#0#103#0#40"control reaches end of non-void function0(23@13"At top level:319394188#777#72#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#0#0#0#0#0"0(4@62"Expected identifier or '(' before 'IOUSBInterfaceInterface300'319394188#849#132#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#105#0#105#0#19"expected * before *0(22@38"Implicit declaration of function 'ERR'319394188#1068#110#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#167#0#167#0#36"implicit declaration of function '*'0(4@46"'self' undeclared (first use in this function)319394188#1178#116#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#167#0#167#0#43"'*' undeclared (first use in this function)0(22@40"Implicit declaration of function 'NSLog'319394188#1294#112#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#175#0#175#0#36"implicit declaration of function '*'0(4@36"Expected expression before '@' token319394188#1406#106#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#175#0#175#0#19"expected * before *0(4@29"Expected ')' before ';' token319394188#1512#99#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#179#0#179#0#19"expected * before *0(4@29"Expected ';' before '}' token319394188#1611#99#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#250#0#250#0#19"expected * before *0(22@25"Unused variable 'message'319394188#1710#97#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#164#0#164#0#19"unused variable '*'0(22@25"Unused variable 'pipeRef'319394188#1807#97#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#163#0#163#0#19"unused variable '*'0(22@31"Unused variable 'maxPacketSize'319394188#1904#103#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#162#0#162#0#19"unused variable '*'0(22@39"Unused variable 'interfaceNumEndpoints'319394188#2007#111#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#161#0#161#0#19"unused variable '*'0(22@35"Unused variable 'interfaceSubClass'319394188#2118#107#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#161#0#161#0#19"unused variable '*'0(22@26"Unused variable 'interval'319394188#2225#98#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#160#0#160#0#19"unused variable '*'0(22@30"Unused variable 'transfertype'319394188#2323#102#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#160#0#160#0#19"unused variable '*'0(22@24"Unused variable 'number'319394188#2425#96#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#160#0#160#0#19"unused variable '*'0(22@27"Unused variable 'direction'319394188#2521#99#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#160#0#160#0#19"unused variable '*'0(22@32"Unused variable 'interfaceClass'319394188#2620#104#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c319394188#160#0#160#0#19"unused variable '*'0(0#0#56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c8619103360#1558"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.c" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o"1#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s320176829.106930
-e320176829.413019
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: incomplete implementation of class 'usbDriver'
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: method definition for '-readUSB_TEMP:' not found
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: method definition for '-checkForAlarms' not found
-o/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:14: warning: 'out_buf' defined but not used
-lSLF07#2@64"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m320176829#320176829#0(460"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: incomplete implementation of class 'usbDriver'/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: method definition for '-readUSB_TEMP:' not found/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:312: warning: method definition for '-checkForAlarms' not found/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m:14: warning: 'out_buf' defined but not used4(22@46"Incomplete implementation of class 'usbDriver'320176829#0#118#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m320176696#312#0#312#0#38"incomplete implementation of class '*'0(22@48"Method definition for '-readUSB_TEMP:' not found320176829#118#120#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m320176696#312#0#312#0#35"method definition for '*' not found0(22@49"Method definition for '-checkForAlarms' not found320176829#238#121#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m320176696#312#0#312#0#35"method definition for '*' not found0(22@30"'out_buf' defined but not used320176829#359#101#0(6@56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m320176696#14#0#14#0#24"'*' defined but not used0(0#0#56"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m8618471168#1568"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbDriver.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbDriver.o"0#
-
-CCompileC build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbInfo.o "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m" normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s319984350.506203
-e319984356.513807
-r1
-xCompileC
-xbuild/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbInfo.o
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@62"Compile /Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m319984350#319984356#0(0"0(0#0#54"/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m8698667616#1564"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -include /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/usbInfo.m" -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/usbInfo.o"0#
-
-CCompileXIB "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib"
-s321198970.024692
-e321198970.485661
-r1
-xCompileXIB
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib
-lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib321198970#321198970#0(0"0(0#0#71"/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib31244147622412336#389"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/MainMenu.nib" "/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/MainMenu.xib" --sdk /Developer/SDKs/MacOSX10.6.sdk0#
-
-CCopyStringsFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
-s317337067.265297
-e317337067.311316
-r1
-xCopyStringsFile
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj/InfoPlist.strings
-xEnglish.lproj/InfoPlist.strings
-lSLF07#2@36"Copy English.lproj/InfoPlist.strings317337067#317337067#0(0"0(0#0#76"/Users/mattpoppe/Xcode Projects/AVR/debugger/English.lproj/InfoPlist.strings8800501920#382"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Resources/English.lproj"0#
-
-CLd "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger" normal x86_64
-s320274660.402480
-e320274660.481285
-r1
-xLd
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger
-xnormal
-xx86_64
-lSLF07#2@98"Link /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger320274660#320274660#0(0"0(0#0#0"8665378240#604"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" -filelist "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/Objects-normal/x86_64/debugger.LinkFileList" -mmacosx-version-min=10.6 -framework Cocoa -framework IOKit -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/MacOS/debugger"0#
-
-CProcessInfoPlistFile "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist" debugger-Info.plist
-s317337067.170837
-e317337067.265205
-r1
-xProcessInfoPlistFile
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist
-xdebugger-Info.plist
-lSLF07#2@27"Process debugger-Info.plist317337067#317337067#0(0"0(0#0#64"/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger-Info.plist8800508608#337"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    builtin-infoPlistUtility debugger-Info.plist -genpkginfo "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/PkgInfo" -expandbuildsettings -platform macosx -o "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app/Contents/Info.plist"0#
-
-CProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
-s318702510.662267
-e318702515.977753
-r1
-xProcessPCH
-x/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch
-xdebugger_Prefix.pch
-xnormal
-xx86_64
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@30"Precompile debugger_Prefix.pch318702510#318702515#0(0"0(0#0#64"/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch8629464960#1455"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch" -o /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-fqhicxcbsgsyzoayprzjlnrloiwl/debugger_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch.gch debugger_Prefix.pch normal x86_64 c com.apple.compilers.gcc.4_2
-s318807676.269388
-e318807676.355868
-r1
-xProcessPCH
-x/var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch.gch
-xdebugger_Prefix.pch
-xnormal
-xx86_64
-xc
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@30"Precompile debugger_Prefix.pch318807676#318807676#0(0"0(0#0#64"/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch8633513920#1445"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-generated-files.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-own-target-headers.hmap" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-all-target-headers.hmap" -iquote "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/debugger-project-headers.hmap" "-F/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/include" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources/x86_64" "-I/Users/mattpoppe/Xcode Projects/AVR/debugger/build/debugger.build/Debug/debugger.build/DerivedSources" -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/debugger_Prefix.pch" -o /var/folders/-E/-Ev10LjmExq5atp8auOwPE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/debugger_Prefix-ftqgtpfsbtzjxpfyznqidjgymbib/debugger_Prefix.pch.gch0#
-
-CTouch "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"
-s321198970.487453
-e321198970.507783
-r1
-xTouch
-x/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app
-lSLF07#2@75"Touch /Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app321198970#321198970#0(0"0(0#0#0"8609673920#148"    cd "/Users/mattpoppe/Xcode Projects/AVR/debugger"    /usr/bin/touch -c "/Users/mattpoppe/Xcode Projects/AVR/debugger/build/Debug/debugger.app"0#
-
