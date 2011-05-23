@@ -284,9 +284,13 @@
     
     for (uint8_t y=0; y<iterations; y++) {
         x=0;
+        [packetStr appendFormat:@"%.4i     ", y];
+        
         while (x<10)
         {
-            [packetStr appendFormat:@"%.2#x ", *((uint8_t *)zig+(y*10+x))];
+            [packetStr appendFormat:@"%.2x  ", *((uint8_t *)zig+(y*10+x))];
+            if(x==4)
+                [packetStr appendString:@"      "];
             x++;
         }
         x=0;
@@ -294,22 +298,25 @@
         while (x<10) 
         {
             if((*(((uint8_t *)zig)+(y*10+x)))>32)
-                [packetStr appendFormat:@"%#c", *((char *)zig+(y*10+x))];
+                [packetStr appendFormat:@"%c", *((char *)zig+(y*10+x))];
+            else
+                [packetStr appendString:@"."];
             x++;
         }
                 [packetStr appendString:@"\n"];
     }
 
     x=0;
+    [packetStr appendFormat:@"%.4i     ", iterations];
     while (x<remainder)
     {
-        [packetStr appendFormat:@"%.2#x ", *((uint8_t *)zig+(iterations*10+x))];
+        [packetStr appendFormat:@"%.2x   ", *((uint8_t *)zig+(iterations*10+x))];
         x++;
     }
     x=0;
     [packetStr appendString:@"\t\t"];
     
-    for (uint8_t tabs = 0; tabs<(10-remainder); tabs++) 
+    for (uint8_t tabs = 0; tabs<((10-remainder)/2); tabs++) 
     {
         [packetStr appendString:@"\t"];
     } 
@@ -318,6 +325,8 @@
     {
         if((*(((uint8_t *)zig)+(iterations*10+x)))>32)
             [packetStr appendFormat:@"%#c", *((char *)zig+(iterations*10+x))];
+        else
+            [packetStr appendString:@"."];
             x++;
     }
     
