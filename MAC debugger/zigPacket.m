@@ -21,16 +21,9 @@
     self = [super init];
     if (self) {
 
-        int testing = rand();
-        int *newTest = (int *)frame;
-        *newTest = testing;
-        
-        uint8_t x = 2;
+
         packetLen = 126;
-        while (x<128) {
-            frame[x] = x-1;
-            x++;
-        }
+    
         src = [[NSNumber alloc] initWithInt:0];
         dest = [[NSNumber alloc] initWithInt:0];
         srcPanId = [[NSNumber alloc] initWithInt:0];
@@ -39,10 +32,7 @@
         self.testNum = [[NSNumber alloc] initWithInt:1232234];
 
         packetStr = [[NSMutableString alloc]init];
-        
-        [self zigbee_packetDisplay:frame];
-        [self zigbee_breakdown:frame];
-        
+
         NSArray *keys = [NSArray arrayWithObjects:@"packetNum", @"packetValue",@"packetDestAddr", @"packetDestPanId", @"packetSrcAddr", @"packetSrcPanId", nil];
         NSArray *values = [NSArray arrayWithObjects:@"Pizza", frameType, dest, destPanId, src, srcPanId, nil];
         
@@ -60,13 +50,17 @@
     self = [self init];
     
     for (uint8_t x=0; x<128; x++) {
-        frame[x] = *(uint8_t *)zig++;
+        frame[x] = *(uint8_t *)zig;
+        zig++;
     }
     
     if(self)
     {
         self.packetLen = 128;//packet_read(zig, uint8_t);
     }
+    
+    [self zigbee_packetDisplay:frame];
+    [self zigbee_breakdown:frame];
     
     return self;
 }
@@ -100,7 +94,7 @@
     [decodedMACStr appendFormat:@"Sequence Number: %i\n", mac_layer.mac_seq_num];
     if(self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x02 || self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x03)
     {
-        mac_layer.destPanID = packet_read(zig, uint16_t);
+       // mac_layer.destPanID = packet_read(zig, uint16_t);
         
         if(mac_layer.mac_fcf.mac_dest_addr_mode == 0x02)
         {
@@ -126,12 +120,13 @@
             [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
             [decodedMACStr appendFormat:@"Destination Address: %1$qu (%1$#.16qx)\n", self.mac_layer.dest_lAddr];
         }
-        [destPanId release];
+
         mac_layer.destPanID = packet_read(zig, uint16_t);
-        
+        [destPanId release];
         destPanId = [[NSNumber alloc]initWithInt:mac_layer.destPanID];
         [decodedMACStr appendFormat:@"Destination Pan ID: %1$i (%1$#.4x)\n", mac_layer.destPanID];
         [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
+        [self.zigPacketDiction setObject:destPanId forKey:@"packetDestPanId"];
 
         
     }
@@ -284,7 +279,7 @@
     
     for (uint8_t y=0; y<iterations; y++) {
         x=0;
-        [packetStr appendFormat:@"%.4i     ", y];
+        [packetStr appendFormat:@"%.4i     ", (y*10)];
         
         while (x<10)
         {
@@ -301,17 +296,21 @@
                 [packetStr appendFormat:@"%c", *((char *)zig+(y*10+x))];
             else
                 [packetStr appendString:@"."];
+            
             x++;
         }
                 [packetStr appendString:@"\n"];
     }
 
     x=0;
-    [packetStr appendFormat:@"%.4i     ", iterations];
+    [packetStr appendFormat:@"%.4i     ", iterations*10];
     while (x<remainder)
     {
-        [packetStr appendFormat:@"%.2x   ", *((uint8_t *)zig+(iterations*10+x))];
+        [packetStr appendFormat:@"%.2x  ", *((uint8_t *)zig+(iterations*10+x))];
+        if(x==4)
+            [packetStr appendString:@"      "];
         x++;
+        
     }
     x=0;
     [packetStr appendString:@"\t\t"];

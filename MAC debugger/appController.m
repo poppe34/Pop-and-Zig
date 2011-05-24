@@ -144,7 +144,7 @@
             [driver getFirstZigbee];
             [driver readUSB_TEMP:packet];
         
-            [zigPackets addPacketWithData:packet];
+            [zigPackets addPacketWithData:&packet[4]];
         
             len--;
         }

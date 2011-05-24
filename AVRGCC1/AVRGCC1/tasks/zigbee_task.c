@@ -54,8 +54,16 @@ void zigbee_packetQTY(void)
 	    pkt->len = BYTES_NEEDED_FOR_LENGTH;
 	    pkt->task = task_zigbee;
 	    pkt->subTask = zigbeePacketQty;
-	    pkt->buf[0] = list_length(zPackets);
-	    pkt->dir = to_usb;
+
+#ifdef DEBUG_SERVER
+		pkt->dir = to_usb;
+		pkt->buf[0] = list_length(zPackets);
+#endif
+#ifdef DEBUG_CLIENT
+
+	    pkt->dir = to_device;
+#endif 
+
 	}	
 }
 
@@ -82,7 +90,7 @@ void zigbee_newPacket(uint8_t *buf, uint8_t zlen)
 	packet_t *pkt = TM_newPacket();
 	
 	pkt->len = zlen;
-	pkt->ptr = pkt->buf;
+	pkt->ptr = (pkt->buf)+1;
 	
 	while(zlen)
 	{
@@ -92,11 +100,12 @@ void zigbee_newPacket(uint8_t *buf, uint8_t zlen)
 #ifdef DEBUG_CLIENT
 	pkt->dir = to_usb;
 #endif
+	pkt->dir = from_usb;
 	pkt->task = task_zigbee;
 	pkt->subTask = zigbeePacketFirst;
 	
 #ifdef DEBUG_SERVER
-    list_add(zPackets,pkt);
+    list_add(zPackets, pkt);
 	TM_removeTask(pkt);
 #endif
 }
