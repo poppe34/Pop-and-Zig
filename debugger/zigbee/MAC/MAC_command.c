@@ -31,21 +31,15 @@ uint8_t data_request(void){
 
 	mpdu->source = mpib->macLongAddress;
 
-	*fr->ptr++ = 0x00;
-	*fr->ptr++ = 0x00;
-	fr->dataLength = 2;
-
-	*fr->ptr++ = 0x04;
-	fr->dataLength++;
-
-
 	MAC_createFrame(mpdu, fr);
 
 	seq_num = mpdu->seq_num;
 
-	free_frame(fr);
+	frame_sendWithFree(fr);
 	free(mpdu);
 
+    //TODO: Add code here to added waiting for ack shouldn't have to return seq_num unless 
+    //      I see need for it in the future.
 	return seq_num;
 
 }

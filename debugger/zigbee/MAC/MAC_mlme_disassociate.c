@@ -13,7 +13,7 @@ mac_disassocHandler_t disassocHandler;
 void mac_mlme_disassoc_request(mac_disassoc_reason_t reason, void *cb){
 	disassocHandler = (mac_disassocHandler_t *)cb;
 
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
 
 	mac_pib_t *mpib = get_macPIB();
@@ -34,29 +34,28 @@ void mac_mlme_disassoc_request(mac_disassoc_reason_t reason, void *cb){
 	mpdu->destination = mpib->macCoordShortAddress;//TODO: This needs to point somewhere else maybe??? 9.23.10 I think this might be right
 
 	mpdu->source = mpib->macLongAddress;
-
-//Add room for CRC
-	*fr->ptr++ = 0x00;
-	*fr->ptr++ = 0x00;
-
-	fr->dataLength = 2;
-//Reason for the Disassociation
-	*fr->ptr++ = reason;
+    
+    //Form mac frame
+    status = MAC_createFrame(mpdu, fr);
+    
+    //Comand Frame Type
+	*fr->ptr++ = command;
 	fr->dataLength++;
 
-//Comand Frame Type
-	*fr->ptr++ = command;
+    //Reason for the Disassociation
+	*fr->ptr++ = reason;
 	fr->dataLength++;
 
 
 //Format the frame and send it out
 	MAC_setTxCB(&MAC_disassoc_cb);
-	status = MAC_createFrame(mpdu, fr);
+
 	seq_num = mpdu->seq_num;
 
 // Free the memory
+    frame_sendWithFree(fr);
 	free(mpdu);
-	free_frame(fr);
+
 }//end MAC_mlme_disassocReq
 
 void MAC_disassoc_cb(phy_trac_t trac){

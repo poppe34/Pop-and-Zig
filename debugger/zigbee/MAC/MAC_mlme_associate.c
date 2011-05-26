@@ -14,14 +14,14 @@ mac_assocHandler_t assocHandler;
 void MAC_mlme_assocReq(mlme_assoc_t *assoc, void *cb){
 	assocHandler = (mac_assocHandler_t *)cb;
 
-	//	variables used in the function
+//	variables used in the function
 	mac_status_t status = MAC_INIT;
 
 //	Reset the MAC
 	mac_init();
 
 //	Start a frame and get the PIB data needed to generate an assoc req.
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 	mpdu_t	*mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
 
 	mac_pib_t *mpib = get_macPIB();
@@ -62,25 +62,22 @@ void MAC_mlme_assocReq(mlme_assoc_t *assoc, void *cb){
 
 
 
-//start the setup of the frame
+//1. get the MAC setup of the frame
 
-// 1. cfc
-	*fr->ptr++ = 0x00;
-	*fr->ptr++ = 0x00;
-	fr->dataLength = 2;
-
-//2. device's capabilities
-	*(fr->ptr)++ = assoc->CapabilityInfo; //TODO: this should be the capability field I should have a procedure on how to get this.
-	fr->dataLength++;
-
-	*(fr->ptr)++ = 0x01; //TODO: create a defined function for 0x01
-	fr->dataLength++;
-
-	MAC_setTxCB(&MAC_assocReq_cb);
 	MAC_createFrame(mpdu, fr);
 
-	free(mpdu);
-	free_frame(fr);
+//2. device's capabilities
+	//command type
+	*(fr->ptr)++ = 0x01; //TODO: create a defined function for 0x01
+	fr->dataLength++;
+    //capibilities fo the command type
+    *(fr->ptr)++ = assoc->CapabilityInfo; //TODO: this should be the capability field I should have a procedure on how to get this.
+	fr->dataLength++;
+    
+	MAC_setTxCB(&MAC_assocReq_cb);
+
+	frame_sendWithFree(fr);
+    free(mpdu);
 }
 
 mac_status_t MAC_mlme_assocInd(mlme_assoc_t assoc){
@@ -114,14 +111,11 @@ mac_status_t mlme_assoc_confirm(mlme_assoc_t assoc){
 void MAC_mlme_assocData(frame_t *fr){
 
 //	TODO:	Write to code to receive a long addr too....
-	uint8_t temp_addr[2];
 	uint8_t	command_status;
 
-	temp_addr[0] = *(fr->ptr)++;
-	temp_addr[1] = *(fr->ptr)++;
-
-	MAC_setShortAddr(temp_addr);
-
+	MAC_setShortAddr(*((uint16_t *)(fr->ptr)));
+    fr->ptr += 2;
+    
 //	TODO:	Somehow I need to get this error code returned as well I think I could add that to the data confirm....
 	command_status = *fr->ptr++;
 }

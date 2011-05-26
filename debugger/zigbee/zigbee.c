@@ -21,6 +21,7 @@ void zigbee_init(void){
 	uint8_t status = 0;
     
     time_init();
+    frame_init();
 	rf230_init();
 	phy_init();
 	mac_init();

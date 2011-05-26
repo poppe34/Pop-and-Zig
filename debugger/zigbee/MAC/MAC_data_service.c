@@ -53,6 +53,9 @@ mac_status_t MAC_dataRequest(mpdu_t *mpdu, frame_t *fr){
 
 	MAC_createFrame(mpdu, fr);
 
+    frame_sendWithFree(fr);
+    free(mpdu);
+    
 	return status;
 
 }

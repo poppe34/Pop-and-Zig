@@ -16,6 +16,8 @@
 
 /*
  * 		This section may very well be a temporary section due to the way i need to handle this in the future...
+ *
+ *      TODO: 05/25/11 Get rid of most of the code and add a linked list and utilize list.h
  */
 uint8_t acks[20];
 uint8_t num_of_acks = 0x00;

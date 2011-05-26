@@ -10,7 +10,7 @@
 
 #include "compiler.h"
 
-#define frame_pool_size (10)
+#define kFRAME_POOL_SIZE (10)
 
 #define BITS_1(f1) f1;
 #define BITS_2(f1, f2) f1; f2;
@@ -46,8 +46,16 @@
 										*frame->ptr++ = (uint8_t)info;\
 										frame->dataLength +=8
 
+#define SET_FRAME_DATA_try(frame, value, type)     *((type *)frame->ptr) = value; \
+                                                    frame->ptr += sizeof(type)
+
+
+
 #define SET_FRAME_DATA(frame, info, size) SET_FRAME_DATA_##size(frame,info)
 
+
+#define GET_FRAME_DATA(frame, type) *((type *)(frame->ptr));\
+                                        frame->dataLength += sizeof(type);
 
 #define GET_FRAME_DATA_1(frame, size) *frame->ptr++; \
 										frame->dataLength++
@@ -60,6 +68,7 @@
 											frame->ptr +=size
 
 #define GET_FRAME_DATA(frame, size) GET_FRAME_DATA_##size(frame, size)
+
 
 typedef uint16_t PANid_t;
 typedef uint16_t short_addr_t;
@@ -120,9 +129,10 @@ typedef struct FRAME_DATA{
 /**************************************************
  * 	PROTOTYPES
  **************************************************/
-//uint8_t frame_init(void);
+void frame_init(void);
 frame_t *get_frame(void);
-void free_frame(frame_t *frame);
-//void clear_frame_pool(void);
+void frame_free(frame_t *fr);
+void frame_sendWithFree(frame_t *fr);
+void frame_clearAll(void);
 
 #endif /* FRAME_H_ */

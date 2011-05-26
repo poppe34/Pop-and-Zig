@@ -40,6 +40,16 @@ trx_cb_t trx_cb;
 /*================================= SOURCE CODE      =========================*/
 
 
+/*--------------------------------------------------------------------------------
+*   function:     Mac_createFrame
+*
+*   Discription:  This function populates the frame with MAC data
+*
+*   Argument 1:   MAC data
+*
+*   Argument 2:   Frame
+--------------------------------------------------------------------------------*/
+
 mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 	mac_fcf_t fcf_temp;
 	mac_status_t status = MAC_SUCCESS;
@@ -62,11 +72,62 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 //
 //	Found Error: 	I had the frame setup backwards... I decided just to add the frame from the tail to the front..
 //					FCF is the first to be transmiteed my frame is FILO (first in last out)
+//                  
+//                  I reversed the frame again(first byte is at fr[0]) now it should look cleaner for the programmer 
 
-	//*******************************
-	//Source Address & PAN ID
-	//*******************************
+//*******************************
+//
+//  FCF
+//
+//*******************************
+    
+	uint16_t *tempfcf = (uint16_t *)&mpdu->fcf;
+    
+	SET_FRAME_DATA(fr, *tempfcf, 2);
 
+//*******************************
+//
+//  Sequence Number
+//
+//*******************************
+    
+    if(mpdu->fcf.MAC_fcf_Frame_Type != MAC_ACK)
+		mpdu->seq_num = get_MAC_seqNum();
+    
+	SET_FRAME_DATA(fr, mpdu->seq_num, 1);
+    
+//*******************************************
+//
+//  Destination Address & PAN ID
+//
+//******************************************    
+	switch(mpdu->fcf.MAC_fcf_DstAddr_Mode){
+            
+        case(MAC_NO_ADDRESS): //TODO Finish the source address switch
+			break;
+        case(MAC_none):
+			break;
+        case(MAC_SHORT_ADDRESS):
+                SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr, mpdu->destination.shortAddr, 2);
+            break;
+            
+        case(MAC_LONG_ADDRESS):
+                SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr, mpdu->destination.extAddr, 8);
+            break;
+            
+	}
+    
+//*******************************
+//
+//  Source Address & PAN ID
+//
+//*******************************
+
+    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
+        SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
+    
 	switch(mpdu->fcf.MAC_fcf_SrcAddr_Mode){
 
 	case(MAC_NO_ADDRESS): //TODO Finish the source address switch
@@ -74,85 +135,38 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 	case(MAC_none):
 			break;
 	case(MAC_SHORT_ADDRESS):
-
-
-		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2);
-
-		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
-			SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
-		}
+		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2)
 		break;
-
 	case(MAC_LONG_ADDRESS):
 		SET_FRAME_DATA(fr, mpdu->source.extAddr, 8);
-
-		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
-			SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
-		}
 	break;
 
 	}
-	//*******************************************
-	//Destination Address & PAN ID
-	//*******************************************
+//	TODO:	I need to go throught this and have better status detection. If possible
 
-	switch(mpdu->fcf.MAC_fcf_DstAddr_Mode){
-
-	case(MAC_NO_ADDRESS): //TODO Finish the source address switch
-			break;
-	case(MAC_none):
-			break;
-	case(MAC_SHORT_ADDRESS):
-
-		SET_FRAME_DATA(fr, mpdu->destination.shortAddr, 2);
-
-		SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
-
-		break;
-
-	case(MAC_LONG_ADDRESS):
-
-		SET_FRAME_DATA(fr, mpdu->destination.extAddr, 8);
-
-		SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
-
-	break;
-
-	}
-
-	//TODO: right now I am going to leave this in but it is my plan not to use this in ack anymore the ack creates its own frame
-
-	if(mpdu->fcf.MAC_fcf_Frame_Type != MAC_ACK){
-		mpdu->seq_num = get_MAC_seqNum();
-	}
-
-
-	SET_FRAME_DATA(fr, mpdu->seq_num, 1);
-
-	//*******************************
-	//FCF
-	//*******************************
-
-	uint16_t *tempfcf = (uint16_t *)&mpdu->fcf;
-
-	SET_FRAME_DATA(fr, *tempfcf, 2);
-
-	rc_send_frame(fr->dataLength, fr->frame);
-
-
-//	TODO:	I need to go throught this and have better status detection.
-
+// CHANGE IN FUNCTIONALITY: I got rid of the send to radio command at the end.  I will now add
+// a function in the frame section to send then free
 }
 
+//--------------------------------------------------------------------------------
+//function:     Mac_breakdownFrame
+//
+//Discription:  This function decodes the MAC data from an incoming frame
+//
+//Argument 1:   MAC data reference
+//
+//Argument 2:   Frame
+//--------------------------------------------------------------------------------
+
 mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
-	uint16_t fcf_temp = 0x0000;
+	mac_fcr_t fcf_temp;
 	mac_pib_t *mpib = get_macPIB();
 	mac_filter_t filtered = NOT_FILTERED;
 
 	/****************************
 	 * Incoming fcf
 	 *****************************/
-	fcf_temp = GET_FRAME_DATA(fr, 2);
+	/*fcf_temp = GET_FRAME_DATA(fr, 2); I am trying to get the fcf without all the shifting
 
 	mpdu->fcf.MAC_fcf_Frame_Type = ((fcf_temp >> MAC_FCF_FRAME_TYPE_SHIFT)& 0x07);
 	mpdu->fcf.MAC_fcf_Sec_enabled = ((fcf_temp >> MAC_FCF_SEC_ENABLE_SHIFT)& 0x01);
@@ -162,21 +176,24 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	mpdu->fcf.MAC_fcf_DstAddr_Mode = ((fcf_temp >> MAC_FCF_DEST_ADDR_MODE_SHIFT)& 0x03);
 	mpdu->fcf.MAC_fcf_Frame_Ver = ((fcf_temp >> MAC_FCF_FRAME_VERSION_SHIFT)& 0x03);
 	mpdu->fcf.MAC_fcf_SrcAddr_Mode = ((fcf_temp >> MAC_FCF_SRC_ADDR_MODE_SHIFT)& 0x03);
-
-
+     */
+    
+    mpdu->fcf = *((mac_fcf_t *)(fr->ptr));
+    fr->ptr += sizeof(mac_fcf_t);
+    
 	//TODO: see if there is any way to set the mpdu->fcf equal to the frame so I won't have to break down the bits
 	uint16_t *temp = &mpdu->fcf;
 
 	mpdu->source.mode = mpdu->fcf.MAC_fcf_SrcAddr_Mode;
 	mpdu->destination.mode = mpdu->fcf.MAC_fcf_DstAddr_Mode;
-	/***************************************
-	 * Sequence Number
-	 ***************************************/
+/***************************************
+ * Sequence Number
+ ***************************************/
 	mpdu->seq_num = GET_FRAME_DATA(fr, 1);
 
-	/***************************************
-	 * Incoming dest PAN ID and Address
-	 ***************************************/
+/***************************************
+* Incoming dest PAN ID and Address
+***************************************/
 	switch(mpdu->fcf.MAC_fcf_DstAddr_Mode){
 
 	case(MAC_NO_ADDRESS):
@@ -255,6 +272,13 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	return NOT_FILTERED;
 }
 
+//--------------------------------------------------------------------------------
+//function:     Mac_secondLevelFilter
+//
+//Discription:  This function filters out any and all un neccessary frames
+//
+//Argument 1:   MAC data
+//--------------------------------------------------------------------------------
 mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 	mac_filter_t filter = NOT_FILTERED;
 	mac_pib_t *mpib = get_macPIB();
@@ -325,29 +349,48 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 	return filter;
 }
 
+//--------------------------------------------------------------------------------
+//function:     Mac_issueAck
+//
+//Discription:  This function issues the ack back for a frame
+//
+//Argument 1:   sequence number of the incoming frame
+//--------------------------------------------------------------------------------
 void MAC_issueACK(uint8_t seq_num){
 // I am creating a new space in memory so I don't have to use up space in the the frame pool
 	frame_t *fr = (frame_t *)malloc(sizeof(frame_t));
 
+    //add fcf
+	SET_FRAME_DATA(fr, 0x0002, 2);
+    
+    //add sequence num
+	SET_FRAME_DATA(fr, seq_num, 1);
+    
 	//room for CRC
 	SET_FRAME_DATA(fr, 0x0000, 2);
-
-	//add sequence num
-	SET_FRAME_DATA(fr, seq_num, 1);
-
-	//add fcf
-
-	SET_FRAME_DATA(fr, 0x0002, 2);
 
 	rc_send_frame(fr->dataLength, NO);
 
 	free(fr);
 }
-
+//--------------------------------------------------------------------------------
+//function:     Mac_setTxCB
+//
+//Discription:  This function is sets the call back to MAC knows what function to 
+//              executed after completion
+//
+//Argument 1:   Incoming function callback
+//--------------------------------------------------------------------------------
 void MAC_setTxCB(trx_cb_t tb){
-	trx_cb = tb;
+	trx_cb = tb;//TODO work on the discription and make sure this is correct
 }
-
+//--------------------------------------------------------------------------------
+//function:     Mac_txStatus
+//
+//Discription:  This function executes callback function
+//
+//Argument 1:   status of tx
+//--------------------------------------------------------------------------------
 void MAC_txStatus(phy_trac_t trac){
 	(trx_cb)(trac);
 }

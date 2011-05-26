@@ -17,7 +17,7 @@ void MAC_mlme_orphanReq(void *cb){
 
 	mac_pib_t *mpib = get_macPIB();
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 
 // Setup the command frame
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
@@ -33,16 +33,14 @@ void MAC_mlme_orphanReq(void *cb){
 // Set the PANid to 0xffff
 	mpdu->destination.PANid = 0xffff;
 
-	//start the setup of the frame
-
-	// 1. cfc
-		SET_FRAME_DATA(fr, 0x0000, 2);
-
-	//2. device's command ID
-		SET_FRAME_DATA(fr, ORPHAN_NOTIFY, 1); //TODO: this should be the capability field I should have a procedure on how to get this.
+	//1. Create Mac frame data
+	MAC_createFrame(mpdu, fr);
+    
+    //2. device's command ID
+	SET_FRAME_DATA(fr, ORPHAN_NOTIFY, 1); //TODO: this should be the capability field I should have a procedure on how to get this.
 
 	MAC_setTxCB(&MAC_orphan_cb);
-	MAC_createFrame(mpdu, fr);
+
 
 	free(mpdu);
 	free_frame(fr);
