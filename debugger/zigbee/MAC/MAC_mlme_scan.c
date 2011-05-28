@@ -9,6 +9,10 @@
 #include <frame.h>
 
 #include "MAC/mac_prototypes.h"
+#include "MAC/MAC_mlme.h"
+#include "MAC/MAC_command.h"
+
+#include "alarms_task.h"
 
 void MAC_mlme_scanConfim(void);
 
@@ -29,9 +33,8 @@ volatile mac_status_t status;
 typedef void (*mac_scanHandler_t)(mac_scanResult_t *result);
 mac_scanHandler_t scanHandler;
 
-void MAC_mlme_scanReq(mac_scan_t *scan, void *cb){
-	scanHandler = (mac_scanHandler_t *)cb;
-
+void MAC_mlme_scanReq(mac_scan_t *scan){
+	
 //	TODO:	I need to make the memory allocation dynamic not static in the future
 
 // Get the current MAC_PIB and PHY PIB
@@ -140,7 +143,7 @@ void MAC_nextBeacon_cb(uint32_t *channels)
 
 			*channels &= ~(mask << x);
 			MAC_setCurrentChannel(x);
-			MAC_beaconReq(&MAC_beaconStatus_cb);
+			MAC_beaconReqCommand();
 			add_to_time_qsm(&MAC_nextBeacon_cb, channels, wait);
 			return;
 		}//end if
@@ -172,6 +175,15 @@ void MAC_beaconStatus_cb(phy_trac_t trac)
 	}
 
 }
+void MAC_mlme_scanSetCb(voidPtr cb)
+{
+	scanHandler = (mac_scanHandler_t *)cb;
+}
+
+void MAC_mlme_scanSetDefaultCb(void)
+{
+	//TODO: I need to setup a default callback
+}
 void MAC_mlme_scanConfirm(void)
 {
 	mac_scanResult_t *result = (mac_scanResult_t *)malloc(sizeof(mac_scanResult_t));
@@ -179,8 +191,10 @@ void MAC_mlme_scanConfirm(void)
 	result->desc 	= get_PAN_Table(0);
 	result->status 	= status;
 	result->type	= type;
-
-	(scanHandler)(result);
+    if(scanHandler)
+	    (scanHandler)(result);
+	else
+	    alarm("No Scan Handler was implemented");
 }
 
 

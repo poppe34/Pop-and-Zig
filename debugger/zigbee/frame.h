@@ -54,8 +54,8 @@
 #define SET_FRAME_DATA(frame, info, size) SET_FRAME_DATA_##size(frame,info)
 
 
-#define GET_FRAME_DATA(frame, type) *((type *)(frame->ptr));\
-                                        frame->dataLength += sizeof(type);
+//#define GET_FRAME_DATA(frame, type) *((type *)(frame->ptr));\
+  //                                      frame->dataLength += sizeof(type);
 
 #define GET_FRAME_DATA_1(frame, size) *frame->ptr++; \
 										frame->dataLength++
@@ -99,13 +99,15 @@ typedef struct ADDRESS{
 
 typedef struct FRAME
 {
+	struct FRAME        *next;
+	uint8_t             handler;
 	uint32_t 			timestamp;
 	uint8_t				dataLength;
 	uint8_t			 	*ptr;
 	uint8_t				LQI;
 	uint8_t				frame[128]; //[aMaxPHYPacketSize+1]; TODO:Add this in the future
 	direction_t			direction;
-	bool				ackd;
+	Bool				ackd;
 }frame_t;
 
 typedef struct FRAME_DATA{
@@ -129,10 +131,10 @@ typedef struct FRAME_DATA{
 /**************************************************
  * 	PROTOTYPES
  **************************************************/
-void frame_init(void);
-frame_t *get_frame(void);
-void frame_free(frame_t *fr);
-void frame_sendWithFree(frame_t *fr);
-void frame_clearAll(void);
+void    frame_init(void);
+void    frame_free(frame_t *fr);
+void    frame_sendWithFree(frame_t *fr);
+void    frame_clearAll(void);
+frame_t *frame_new(void);
 
 #endif /* FRAME_H_ */

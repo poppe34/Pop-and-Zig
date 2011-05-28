@@ -4,63 +4,59 @@
  *  Created on: Oct 25, 2010
  *      Author: mpoppe
  */
-#include <frame.h>
-#include <MAC/MAC_prototypes.h>
+#include "frame.h"
 
-typedef void (*mac_orphanHandler_t)(mac_status_t status);
-mac_orphanHandler_t orphanHandler;
+#include "MAC/mac.h"
+#include "MAC/MAC_mlme.h"
+#include "MAC/MAC_command.h"
 
+#include "MISC/security.h"
 
-void MAC_mlme_orphanReq(void *cb){
+#include "alarms_task.h"
 
-	orphanHandler = (mac_orphanHandler_t *)cb;
+static addr_t *orphanedAddr;
+static security_t *orphanedSec;
 
-	mac_pib_t *mpib = get_macPIB();
-	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-	frame_t *fr = frame_new();
-
-// Setup the command frame
-	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
-	mpdu->fcf.MAC_fcf_DstAddr_Mode = SHORT_ADDRESS;
-	mpdu->fcf.MAC_fcf_SrcAddr_Mode = LONG_ADDRESS;
-	mpdu->fcf.MAC_fcf_PANid_Compression = yes;
-	mpdu->fcf.MAC_fcf_Frame_Pending = no;
-	mpdu->fcf.MAC_fcf_Ack_Request = no;
-	mpdu->fcf.MAC_fcf_Sec_enabled = no;
-	mpdu->fcf.MAC_fcf_Frame_Ver = 0x00;
-
-	mpdu->source = mpib->macLongAddress;
-// Set the PANid to 0xffff
-	mpdu->destination.PANid = 0xffff;
-
-	//1. Create Mac frame data
-	MAC_createFrame(mpdu, fr);
-    
-    //2. device's command ID
-	SET_FRAME_DATA(fr, ORPHAN_NOTIFY, 1); //TODO: this should be the capability field I should have a procedure on how to get this.
-
-	MAC_setTxCB(&MAC_orphan_cb);
-
-
-	free(mpdu);
-	free_frame(fr);
-}
-void MAC_orphan_cb(phy_trac_t trac){
-	switch(trac){
-		case(MAC_SUCCESS):
-
-			break;
-
-		case(MAC_NO_ACK):
-			break;
-
-		case(MAC_TRANSACTION_EXPIRED):
-			break;
-
-//	TODO: 	I need to create a timer once it times out that I send back a failure due to no data
-	}
+/*------------------------------------------------------------------------------------------
+ * Function:    MAC_mlme_orphanInd
+ *
+ * Description: This function reports to the Next Higher Layer (NHL) of a coord that a device 
+ *              has been orphaned
+ *
+ * arg: addr of the orphaned device
+ *
+ * arg: security of the orphaned device
+ *
+ * brief: 
+ *------------------------------------------------------------------------------------------*/
+void MAC_mlme_orphanInd(long_addr_t srcAddr, security_t sec)
+{
+	srcAddr = srcAddr;
+	sec = sec;
+	
+	alarm("Recieved an orphan Indication");
 }
 
-void MAC_mlme_orphanConfirm(mac_status_t status){
-	(orphanHandler)(status);
+void MAC_mlme_orphanResp(long_addr_t orphanLongAddr, short_addr_t OrphanShortAddr, Bool assocMember, security_t sec)
+{
+    if(assocMember)
+        {
+			orphanedAddr = (addr_t *)malloc(sizeof(addr_t));
+			orphanedSec = (security_t *)malloc(sizeof(security_t));
+			
+			orphanedAddr->mode = MAC_SHORT_ADDRESS;
+			orphanedAddr->shortAddr = OrphanShortAddr;
+			
+			*orphanedSec = sec;
+			
+	        MAC_commandCoordRealign(orphanedAddr, orphanedSec);
+			
+		}	
+}	
+
+void MAC_mlme_orphanTxCb(mac_status_t status)
+{
+	MAC_mlme_commStatusInd(orphanedAddr, NULL, status, orphanedSec);
+	free(orphanedAddr);
+	free(orphanedSec);
 }

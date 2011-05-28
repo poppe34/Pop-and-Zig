@@ -36,10 +36,13 @@
 /*================================= TYEPDEFS         =========================*/
 
 /*================================= GLOBAL VARIABLES =========================*/
+static Bool associated = NO;
+
 uint8_t MAC_seq_num;
 static mac_pib_t macPIB;
 mpdu_t mpdu;
 mcps_data_t mcps;
+
 
 /*================================= LOCAL VARIABLES  =========================*/
 /*================================= PROTOTYPES       =========================*/
@@ -62,7 +65,7 @@ mac_status_t mac_init(void) {
 
 
 	mac_status_t status = MAC_SUCCESS;
-
+    associated = NO;
     uint64_t macCoordExtendedAddress = 0x0000000000000000;
     uint16_t macCoordShortAddress = 0xffff;
     uint16_t macCoordPANid = 0xffff;
@@ -181,4 +184,12 @@ void MAC_setCoordShortAddr(uint16_t addr){
 void MAC_setCoordLongAddr(uint64_t addr){
 	macPIB.macCoordExtendedAddress.extAddr = addr;
 
+}
+Bool MAC_isAssoc(void)
+{
+	return associated;
+}
+void MAC_setAssoc(Bool value)
+{
+	associated = value;
 }

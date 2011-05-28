@@ -2,6 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
+-include ../makefile.init
 SHELL := cmd.exe
 RM := rm -rf
 
@@ -22,7 +23,6 @@ OBJS_AS_ARGS :=
 C_DEPS := 
 C_DEPS_AS_ARGS := 
 EXECUTABLES := 
-LIB_AS_ARGS :=
 OUTPUT_FILE_PATH :=
 OUTPUT_FILE_PATH_AS_ARGS :=
 HEX_FLASH_FILE_PATH :=
@@ -33,10 +33,9 @@ LSS_FILE_PATH :=
 LSS_FILE_PATH_AS_ARGS :=
 MAP_FILE_PATH :=
 MAP_FILE_PATH_AS_ARGS :=
-AVR_APP_PATH :=C:/Program Files (x86)/Atmel/AVR Studio 5.0/extensions/Application/Avr ToolChain/bin/
+AVR_APP_PATH :=C:/Program Files/Atmel/AVR Studio 5.0/extensions/Application/Avr ToolChain/bin/
 QUOTE := "
 ADDITIONAL_DEPENDENCIES:=
-OUTPUT_FILE_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
@@ -114,6 +113,8 @@ C_SRCS +=  \
 ../zigbee/MAC/MAC_command.c \
 ../zigbee/MAC/MAC_data_service.c \
 ../zigbee/MAC/MAC_mlme_associate.c \
+../zigbee/MAC/MAC_mlme_beacon_notify.c \
+../zigbee/MAC/MAC_mlme_commStatus.c \
 ../zigbee/MAC/MAC_mlme_disassociate.c \
 ../zigbee/MAC/MAC_mlme_gts.c \
 ../zigbee/MAC/MAC_mlme_orphan.c \
@@ -182,6 +183,8 @@ zigbee/MAC/MAC_beacon.o \
 zigbee/MAC/MAC_command.o \
 zigbee/MAC/MAC_data_service.o \
 zigbee/MAC/MAC_mlme_associate.o \
+zigbee/MAC/MAC_mlme_beacon_notify.o \
+zigbee/MAC/MAC_mlme_commStatus.o \
 zigbee/MAC/MAC_mlme_disassociate.o \
 zigbee/MAC/MAC_mlme_gts.o \
 zigbee/MAC/MAC_mlme_orphan.o \
@@ -243,6 +246,8 @@ zigbee/MAC/MAC_beacon.o \
 zigbee/MAC/MAC_command.o \
 zigbee/MAC/MAC_data_service.o \
 zigbee/MAC/MAC_mlme_associate.o \
+zigbee/MAC/MAC_mlme_beacon_notify.o \
+zigbee/MAC/MAC_mlme_commStatus.o \
 zigbee/MAC/MAC_mlme_disassociate.o \
 zigbee/MAC/MAC_mlme_gts.o \
 zigbee/MAC/MAC_mlme_orphan.o \
@@ -303,6 +308,8 @@ zigbee/MAC/MAC_beacon.d \
 zigbee/MAC/MAC_command.d \
 zigbee/MAC/MAC_data_service.d \
 zigbee/MAC/MAC_mlme_associate.d \
+zigbee/MAC/MAC_mlme_beacon_notify.d \
+zigbee/MAC/MAC_mlme_commStatus.d \
 zigbee/MAC/MAC_mlme_disassociate.d \
 zigbee/MAC/MAC_mlme_gts.d \
 zigbee/MAC/MAC_mlme_orphan.d \
@@ -363,6 +370,8 @@ zigbee/MAC/MAC_beacon.d \
 zigbee/MAC/MAC_command.d \
 zigbee/MAC/MAC_data_service.d \
 zigbee/MAC/MAC_mlme_associate.d \
+zigbee/MAC/MAC_mlme_beacon_notify.d \
+zigbee/MAC/MAC_mlme_commStatus.d \
 zigbee/MAC/MAC_mlme_disassociate.d \
 zigbee/MAC/MAC_mlme_gts.d \
 zigbee/MAC/MAC_mlme_orphan.d \
@@ -414,11 +423,7 @@ MAP_FILE_PATH =debugger.map
 
 MAP_FILE_PATH_AS_ARGS =debugger.map
 
-LIB_AS_ARGS +=libdebugger.a
-
 ADDITIONAL_DEPENDENCIES:= $(HEX_FLASH_FILE_PATH) size
-
-OUTPUT_FILE_DEP:= ./Outputfile.d
 
 # AVR/GNU C Compiler
 
@@ -536,119 +541,123 @@ OUTPUT_FILE_DEP:= ./Outputfile.d
 
 
 
-src/asf/common/services/clock/xmega/%.o: ../src/asf/common/services/clock/xmega/%.c
+
+
+
+
+src/asf/common/services/clock/xmega/%.o: ../src/asf/common/services/clock/xmega/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/common/services/fifo/%.o: ../src/asf/common/services/fifo/%.c
+src/asf/common/services/fifo/%.o: ../src/asf/common/services/fifo/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/common/services/sleepmgr/xmega/%.o: ../src/asf/common/services/sleepmgr/xmega/%.c
+src/asf/common/services/sleepmgr/xmega/%.o: ../src/asf/common/services/sleepmgr/xmega/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/common/services/spi/xmega_spi/%.o: ../src/asf/common/services/spi/xmega_spi/%.c
+src/asf/common/services/spi/xmega_spi/%.o: ../src/asf/common/services/spi/xmega_spi/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/xmega/boards/xplain/%.o: ../src/asf/xmega/boards/xplain/%.c
+src/asf/xmega/boards/xplain/%.o: ../src/asf/xmega/boards/xplain/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/xmega/drivers/ioport/%.o: ../src/asf/xmega/drivers/ioport/%.c
+src/asf/xmega/drivers/ioport/%.o: ../src/asf/xmega/drivers/ioport/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/xmega/drivers/rtc/%.o: ../src/asf/xmega/drivers/rtc/%.c
+src/asf/xmega/drivers/rtc/%.o: ../src/asf/xmega/drivers/rtc/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/xmega/drivers/spi/%.o: ../src/asf/xmega/drivers/spi/%.c
+src/asf/xmega/drivers/spi/%.o: ../src/asf/xmega/drivers/spi/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/asf/xmega/drivers/tc/%.o: ../src/asf/xmega/drivers/tc/%.c
+src/asf/xmega/drivers/tc/%.o: ../src/asf/xmega/drivers/tc/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/%.o: ../src/%.c
+src/%.o: ../src/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-src/tasks/%.o: ../src/tasks/%.c
+src/tasks/%.o: ../src/tasks/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/APS/%.o: ../zigbee/APS/%.c
+zigbee/APS/%.o: ../zigbee/APS/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/%.o: ../zigbee/%.c
+zigbee/%.o: ../zigbee/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/MAC/%.o: ../zigbee/MAC/%.c
+zigbee/MAC/%.o: ../zigbee/MAC/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/misc/%.o: ../zigbee/misc/%.c
+zigbee/misc/%.o: ../zigbee/misc/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/NWK/%.o: ../zigbee/NWK/%.c
+zigbee/NWK/%.o: ../zigbee/NWK/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/phy/%.o: ../zigbee/phy/%.c
+zigbee/phy/%.o: ../zigbee/phy/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
-zigbee/RF230/%.o: ../zigbee/RF230/%.c
+zigbee/RF230/%.o: ../zigbee/RF230/%.c ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
 
 
 # AVR/GNU Assembler
 
-src/asf/xmega/drivers/cpu/%.o: ../src/asf/xmega/drivers/cpu/%.s
+src/asf/xmega/drivers/cpu/%.o: ../src/asf/xmega/drivers/cpu/%.s ../debugger.avrgccproj
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler
 	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mrelax -I "../src" -I "../src/asf/common/applications/user_application/atxmega128a1_xplain" -I "../src/asf/common/boards" -I "../src/asf/common/services/gpio" -I "../src/asf/common/utils" -I "../src/asf/xmega/boards" -I "../src/asf/xmega/boards/xplain" -I "../src/asf/xmega/drivers/ioport" -I "../src/asf/xmega/utils" -I "../src/asf/xmega/utils/preprocessor" -I "../src/config" -I "../src/asf/xmega/drivers/cpu" -I "../src/asf/xmega/drivers/spi" -I "../src/asf/common/services/spi" -I "../src/asf/common/services/spi/xmega_spi" -I "../src/asf/common/services/clock" -I "../src/asf/xmega/drivers/pmic" -I "../src/asf/common/services/fifo" -I "../src/asf/xmega/drivers/sleep" -I "../src/asf/xmega/drivers/rtc" -I "../src/asf/xmega/drivers/tc" -I "../src/asf/common/services/sleepmgr"   -mmcu=atxmega128a1   -o"$@" "$<"
@@ -663,13 +672,15 @@ ifneq ($(strip $(C_DEPS)),)
 endif
 endif
 
+-include ../makefile.defs
+
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
 all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 
 # AVR/GNU C Linker
-$(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP)
+$(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU C Linker
 	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -Wl,--gc-sections -mrelax -Wl,--relax  -mmcu=atxmega128a1   -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS)
@@ -691,5 +702,9 @@ size: $(OUTPUT_FILE_PATH)
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS_AS_ARGS)$(C_DEPS_AS_ARGS) $(EXECUTABLES) $(LIB_AS_ARGS) $(HEX_FLASH_FILE_PATH_AS_ARGS) $(HEX_EEPROM_FILE_PATH_AS_ARGS) $(LSS_FILE_PATH_AS_ARGS) $(MAP_FILE_PATH_AS_ARGS)
+	-$(RM) $(OBJS_AS_ARGS)$(C_DEPS_AS_ARGS) $(QUOTE)$(EXECUTABLES)$(QUOTE) $(OUTPUT_FILE_PATH_AS_ARGS) $(HEX_FLASH_FILE_PATH_AS_ARGS) $(HEX_EEPROM_FILE_PATH_AS_ARGS) $(LSS_FILE_PATH_AS_ARGS) $(MAP_FILE_PATH_AS_ARGS)
 
+.PHONY: all clean dependents
+.SECONDARY:
+
+-include ../makefile.targets

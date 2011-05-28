@@ -50,7 +50,7 @@
 #define NWK_CAP_INFO_SEC_CAP_SHIFT			(6)
 #define NWK_CAP_INFO_ALLOC_ADDR_SHIFT		(7)
 /*================================= TYEPDEFS         =========================*/
-typedef enum DEST_ADDR_MODE {
+typedef enum NWK_DEST_ADDR_MODE {
 	NWK_Group_ADDR,
 	NWK_network_ADDR,
 }NWK_DstAddrMode;

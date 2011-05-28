@@ -6,15 +6,15 @@
  */
 
 #include <frame.h>
+
 #include <mac/mac_prototypes.h>
+#include "MAC/MAC_mlme.h"
+#include "MAC/MAC_command.h"
 
-typedef void (*mac_pollHandler_t)(mac_status_t status);
-mac_pollHandler_t pollHandler;
+void MAC_mlme_pollReq(addr_t *dstAddr){ //TODO: I need to add security level and key info
 
-void MAC_mlme_pollReq(mac_pollHandler_t *cb, addr_t *dstAddr){ //TODO: I need to add security level and key info
-	pollHandler = (mac_pollHandler_t *)cb;
 
-    MAC_dataRequestCommand(&MAC_mlme_pollReq_cb, dstAddr);
+    MAC_dataRequestCommand(dstAddr);
     
     
 }
@@ -24,19 +24,19 @@ void MAC_mlme_pollReq_cb(mac_status_t status){
 
 	switch(status){
 	case(TRAC_SUCCESS):
-		MAC_mlme_pollConfirm(MAC_SUCCESS);
+		MAC_mlme_pollConf(MAC_SUCCESS);
 	break;
 
 	case(TRAC_NO_ACK):
-		MAC_mlme_pollConfirm(MAC_NO_ACK);
+		MAC_mlme_pollConf(MAC_NO_ACK);
 	break;
 
 	case(TRAC_CHANNEL_ACCESS_FAILURE):
-		MAC_mlme_pollConfirm(MAC_ACCESS_FAILURE);
+		MAC_mlme_pollConf(MAC_ACCESS_FAILURE);
 	break;
 
 	case(TRAC_INVALID):
-		MAC_mlme_pollConfirm(MAC_INVALID_ADDRESS);
+		MAC_mlme_pollConf(MAC_INVALID_ADDRESS);
 	break;
 
 	case(TRAC_SUCCESS_DATA_PENDING):
@@ -45,6 +45,6 @@ void MAC_mlme_pollReq_cb(mac_status_t status){
 
 }
 
-void MAC_mlme_pollConfirm(mac_status_t status){
-	(pollHandler)(status);
+void MAC_mlme_pollConf(mac_status_t status){
+    status = status;
 }

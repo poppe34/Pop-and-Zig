@@ -135,7 +135,7 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 	case(MAC_none):
 			break;
 	case(MAC_SHORT_ADDRESS):
-		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2)
+		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2);
 		break;
 	case(MAC_LONG_ADDRESS):
 		SET_FRAME_DATA(fr, mpdu->source.extAddr, 8);
@@ -148,6 +148,52 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 // a function in the frame section to send then free
 }
 
+
+void MAC_incomingFrame(frame_t *fr)
+{
+	//mac_command_type_t command;
+	mac_frame_type_t type;
+
+	mac_pib_t *mpib = get_macPIB();
+	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
+
+	if(MAC_breakdownFrame(mpdu, fr))
+	{
+		free(mpdu);
+		return;
+
+	}
+
+	type = mpdu->fcf.MAC_fcf_Frame_Type;
+
+	/*if(MACreceiveBeaconOnly == yes)
+	{
+		if(type != MAC_BEACON)
+		{
+			free(mpdu);
+			return;
+		}
+	}*/
+
+	if(type == MAC_BEACON)
+	{
+		MAC_beaconHandler(mpdu, fr);
+	}
+
+	if(type == MAC_DATA){
+
+	}
+	if(type == MAC_ACK){
+
+//	TODO:	I need to create a ack handler...
+		add_ack(mpdu->seq_num);
+	}
+
+	if(type == MAC_COMMAND)
+	{
+
+	}//end if
+}
 //--------------------------------------------------------------------------------
 //function:     Mac_breakdownFrame
 //
@@ -157,9 +203,8 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 //
 //Argument 2:   Frame
 //--------------------------------------------------------------------------------
-
 mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
-	mac_fcr_t fcf_temp;
+	mac_fcf_t fcf_temp;
 	mac_pib_t *mpib = get_macPIB();
 	mac_filter_t filtered = NOT_FILTERED;
 
@@ -381,8 +426,8 @@ void MAC_issueACK(uint8_t seq_num){
 //
 //Argument 1:   Incoming function callback
 //--------------------------------------------------------------------------------
-void MAC_setTxCB(trx_cb_t tb){
-	trx_cb = tb;//TODO work on the discription and make sure this is correct
+void MAC_setTxCB(voidPtr tb){
+	trx_cb = (trx_cb_t *)tb;//TODO work on the discription and make sure this is correct
 }
 //--------------------------------------------------------------------------------
 //function:     Mac_txStatus

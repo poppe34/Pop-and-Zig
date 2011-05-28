@@ -21,6 +21,7 @@
 #include "spi_task.h"
 #include "NWK/NWK_prototypes.h"
 #include "MAC/mac_prototypes.h"
+#include "MAC/MAC_mlme.h"
 
 void debug_test(void);
 
@@ -44,9 +45,6 @@ int main(void)
 	
 	sei();
 	spi_task_init();
-
-	MAC_beaconReq(&debug_test);
-	
 
 	scheduler();
 	

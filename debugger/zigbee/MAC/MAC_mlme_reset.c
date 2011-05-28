@@ -6,8 +6,10 @@
  */
 
 #include <frame.h>
-#include <mac/mac_prototypes.h>
 
-mac_status_t mlme_reset_request(void){
+#include "MAC/mac.h"
+#include "mac_prototypes.h"
+
+mac_status_t MAC_mlme_resetReq(void){
 	return(mac_init());
 }

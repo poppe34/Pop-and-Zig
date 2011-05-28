@@ -387,7 +387,7 @@ uint8_t get_rc_CLKM(void)
 void rc_rx_frame(void) {
 
 // setup the location for the frame
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 	fr->direction = INCOMING;
 
 #ifdef debug
@@ -406,7 +406,7 @@ void rc_rx_frame(void) {
 
 // Move to the MAC layer
 	PD_DATA_Indication(fr);
-	free_frame(fr);
+	frame_sendWithFree(fr);
 }
 bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 //	TODO: I am not sure if I need to preform a CSMA-

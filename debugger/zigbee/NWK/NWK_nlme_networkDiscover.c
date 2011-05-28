@@ -8,7 +8,7 @@
 #include <frame.h>
 #include <NWK/NWK_prototypes.h>
 #include <MAC/mac_prototypes.h>
-
+#include "MAC/MAC_mlme.h"
 static nwk_netDisc_t *netDisc;
 
 typedef (*nwk_discHandler_t)(nwk_discript_t *NWKdisc);
@@ -27,7 +27,7 @@ void NWK_nlme_networkDiscoveryReq(uint32_t channel, uint8_t duration, void *cb){
 	scan->ScanChannels = channel;
 	scan->type = ACTIVE_SCAN;
 	scan->ScanDuration = duration;
-	MAC_mlme_scanReq(scan, &NWK_nlme_networkDiscoverConfirm_cb);
+	MAC_mlme_scanReq(scan);
 
 	free(scan);
 
@@ -68,7 +68,7 @@ void NWK_clearNetworkDiscription(void){
 
 void NWK_nlme_networkDiscoverConfirm_cb(mac_scanResult_t *result){
 	netDisc->status = result->status;
-	(discovHandler)(netDisc);
+	//(discovHandler)(netDisc);
 }
 
 uint8_t NWK_nlme_getNetworkCount(void){

@@ -9,6 +9,7 @@
 #include "MAC/mac.h"
 #include "MAC/mac_prototypes.h"
 #include "NWK/NWK_prototypes.h"
+#include "MAC/MAC_command.h"
 
 typedef void(*mac_beaconHandler_t)(mac_status_t status);
 mac_beaconHandler_t handle;
@@ -16,37 +17,9 @@ mac_beaconHandler_t handle;
 void MAC_beaconReq(void *cb)
 {
 	handle = (mac_beaconHandler_t *)cb;
-
-	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-	frame_t *fr = get_frame();
-
-//Setup for the FCF
-	mpdu->fcf.MAC_fcf_Frame_Type = MAC_BEACON;
-	mpdu->fcf.MAC_fcf_DstAddr_Mode = MAC_SHORT_ADDRESS;
-	mpdu->fcf.MAC_fcf_SrcAddr_Mode = MAC_NO_ADDRESS;
-	mpdu->fcf.MAC_fcf_PANid_Compression = NO;
-	mpdu->fcf.MAC_fcf_Frame_Pending = NO;
-	mpdu->fcf.MAC_fcf_Ack_Request = NO;
-	mpdu->fcf.MAC_fcf_Sec_enabled = NO;
-
-//Setup for destination
-	mpdu->destination.mode = MAC_SHORT_ADDRESS;
-	mpdu->destination.PANid = 0xffff;
-	mpdu->destination.shortAddr = 0xffff;
-
-//add cfc
-	*(fr->ptr)++ = 0x00;
-	*(fr->ptr)++ = 0x00;
-	fr->dataLength = 2;
-
-	*(fr->ptr)++ = 0x07; //TODO: create a defined function for 0x07
-	fr->dataLength++;
-
-	MAC_setTxCB(&MAC_beaconReq_cb);
-	MAC_createFrame(mpdu, fr);
-
-	free(mpdu);
-	free_frame(fr);
+    
+	
+    
 }
 
 void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
@@ -54,6 +27,9 @@ void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
 /* 	TODO:	For now I am going to send the Beacon data to the PAN descriptor table I am not sure what I am going to do with that data yet
  * 			I know that the beacon request can send more data in the payload in the future the beacon indication in the mlme will send that on up
  */
+    
+    /*TODO: I need to setup a data request if I get a beacon with this address as the dest. addr */
+    
 	uint8_t len;
 	phy_pib_t *ppib = get_phyPIB();
 	uint16_t tempsuperframe, tempgtsSpec;
@@ -72,7 +48,7 @@ void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
 	desc->KeyIdMode = 0x00;// TODO: Proper data needs to be inserted.
 	desc->KeySource = 0x00;// TODO: Proper data needs to be inserted.
 	desc->KeyIndex = 0x00;// TODO: Proper data needs to be inserted.
-	add_to_PAN_Table(desc);
+	//add_to_PAN_Table(desc);
 
 	tempgtsSpec = (uint16_t)*fr->ptr++;
 	tempgtsSpec |= ((uint16_t)(*fr->ptr >> 8));
@@ -161,8 +137,9 @@ void MAC_beacon(void)
 
 	MAC_createFrame(mpdu, fr);
 
+    frame_sendWithFree(fr);
 	free(mpdu);
-	free_frame(fr);
+
 
 }
 

@@ -6,12 +6,13 @@
  */
 
 #include "frame.h"
-
-#include "rc.h"
-
 #include "list.h"
 
-#include "alarm_task.h"
+#include "alarms_task.h"
+
+#include "PHY/rc.h"
+
+#include "MAC/MAC_mlme.h"
 
 //Track all the allocated frames
 LIST(frames);
@@ -41,11 +42,11 @@ void frame_init(void)
  *
  *   return:        starting address for a newly allocated memory
  --------------------------------------------------------------------------------*/
-frame_t *frame_newFrame(void)
+frame_t *frame_new(void)
 {
     frame_t *fr;
     
-    if(list_count(frames)<kFRAME_POOL_SIZE)
+    if(list_length(frames)<kFRAME_POOL_SIZE)
     {
         fr = (frame_t *)malloc(sizeof(frame_t));
         fr->ptr = fr->frame;
@@ -85,18 +86,17 @@ void frame_sendWithFree(frame_t *fr)
 //****************************
 //  Add CRC 
 //****************************
-    
-    *((uint16_t *)fr->ptr) = 0x0000;
-    fr->ptr += 2;
-    fr->dataLength += 2;
-    
-    rc_send_data(fr->dataLength, fr->frame);
-    frame_free(frame_t *fr);
+    SET_FRAME_DATA(fr, 0x0000, 2);
+
+    MAC_mlme_commStatus_setHandlerNum(fr->handler);
+	
+    rc_send_frame(fr->dataLength, fr->frame);
+    frame_free(fr);
 }
 /*--------------------------------------------------------------------------------
  *   function:     Mac_clearAll
  *
- *   Discription:  This function deallocates all the data frames
+ *   Description:  This function deallocates all the data frames
  *
  *   Argument 1:   none
  *

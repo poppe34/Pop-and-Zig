@@ -22,7 +22,7 @@
 uint8_t acks[20];
 uint8_t num_of_acks = 0x00;
 
-bool check_Ack(uint8_t dsn){
+Bool check_Ack(uint8_t dsn){
 	if(num_of_acks > 0){
 		for(uint8_t x = 0; x<num_of_acks; x++){
 			if(acks[x] == dsn){

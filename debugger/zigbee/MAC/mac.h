@@ -86,17 +86,6 @@ typedef enum DISASSOC_REASON{
 	DEV_WISHES_TO_LEAVE = 0x02,
 }mac_disassoc_reason_t;
 
-typedef enum COMMAND_TYPE{
-	ASSOC_REQUEST = 0x01,
-	ASSOC_RESPONCE = 0x02,
-	DISASSOC_NOTIFY = 0x03,
-	DATA_REQUEST = 0x04,
-	PAN_CONFLICT_NOTIFY = 0x05,
-	ORPHAN_NOTIFY = 0x06,
-	BEACON_REQUEST = 0x07,
-	COORD_REALIGN = 0x08,
-	GTS_REQUEST = 0x09,
-}mac_command_type_t;
 
 typedef enum MAC_STATUS {
 	MAC_SUCCESS = 0x00,
@@ -428,6 +417,8 @@ typedef struct MAC_SCAN_CONFIRM{
 }mac_scanResult_t;
 /*================================= GLOBAL VARIABLES =========================*/
 typedef void (*trx_cb_t)(phy_trac_t);
+
+//extern static Bool associated;
 /*================================= LOCAL VARIABLES  =========================*/
 /*================================= PROTOTYPES       =========================*/
 #endif

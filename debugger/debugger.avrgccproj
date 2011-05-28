@@ -505,6 +505,9 @@
     <Compile Include="zigbee\MAC\MAC_command.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="zigbee\MAC\MAC_command.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="zigbee\MAC\MAC_conf.h">
       <SubType>compile</SubType>
     </Compile>
@@ -515,6 +518,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\MAC\MAC_mlme_associate.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_mlme_beacon_notify.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_mlme_commStatus.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\MAC\MAC_mlme_disassociate.c">
@@ -560,6 +569,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\misc\qsm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\misc\security.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\misc\time.h">
@@ -620,6 +632,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\phy\phy_trx.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\phy\rc.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\phy\rc_rf230.h">

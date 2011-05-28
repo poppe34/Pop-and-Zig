@@ -10,7 +10,7 @@
 
 
 nwk_status_t NWK_status_cmd(nwk_status_code_t code, uint16_t addr){
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 	npdu_t *npdu =(npdu_t *)malloc(sizeof(npdu_t));
 	mac_pib_t *mpib = get_macPIB();
 	mac_fcf_t *fcf = (mac_fcf_t *)malloc(sizeof(mac_fcf_t));
@@ -40,8 +40,10 @@ nwk_status_t NWK_status_cmd(nwk_status_code_t code, uint16_t addr){
 	fcf->MAC_fcf_Frame_Ver = MAC_COMPATIBLE_WITH_802_15_4_2003;
 	fcf->MAC_fcf_SrcAddr_Mode = SHORT_ADDRESS;
 
-// Room for CRC
-	SET_FRAME_DATA(fr, 0x0000,2);
+	NWK_createFrame(npdu, fr);
+	NWKtoMAC_bridge(fcf, npdu, fr);
+	
+	SET_FRAME_DATA(fr, NWK_NETWORK_STATUS, 1);
 
 // Add Destination Address to the payload
 	SET_FRAME_DATA(fr, addr, 2);
@@ -49,17 +51,13 @@ nwk_status_t NWK_status_cmd(nwk_status_code_t code, uint16_t addr){
 // Add the status code to the payload
 	SET_FRAME_DATA(fr, code, 1);
 
-	SET_FRAME_DATA(fr, NWK_NETWORK_STATUS, 1);
-
-	NWK_createFrame(npdu, fr);
-	NWKtoMAC_bridge(fcf, npdu, fr);
-	free_frame(fr);
+    frame_sendWithFree(fr);
 	free(npdu);
 	free(fcf);
 	return status;
 }//
 nwk_status_t NWK_routeRequest(uint8_t addr[]){
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 	npdu_t *npdu =(npdu_t *)malloc(sizeof(npdu_t));
 	mac_pib_t *mpib = get_macPIB();
 	mac_fcf_t *fcf = (mac_fcf_t *)malloc(sizeof(mac_fcf_t));
@@ -97,7 +95,7 @@ nwk_status_t NWK_routeRequest(uint8_t addr[]){
 		NWK_createFrame(npdu, fr);
 		NWKtoMAC_bridge(fcf, npdu, fr);
 
-		free_frame(fr);
+		frame_sendWithFree(fr);
 		free(npdu);
 		free(fcf);
 

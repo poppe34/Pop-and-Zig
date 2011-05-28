@@ -132,6 +132,8 @@ typedef unsigned long long int  U64;  //!< 64-bit unsigned integer.
 typedef float                   F32;  //!< 32-bit floating-point number.
 typedef double                  F64;  //!< 64-bit floating-point number.
 typedef uint16_t                iram_size_t;
+typedef void *                  voidPtr;
+
 //! @}
 
 

@@ -11,6 +11,7 @@
 #include "phy/phy.h"
 #include "nwk/NWK.h"
 #include "mac/mac.h"
+#include "frame.h"
 
 mac_status_t mac_init(void);
 uint16_t get_short_ADDR(void);
@@ -20,33 +21,19 @@ void set_PAN_ID(uint8_t *pan_id);
 void set_short_ADDR(uint16_t addr);
 void set_IEEE_ADDR(uint64_t addr);
 uint8_t get_seqNum(void);
+Bool MAC_isAssoc(void);
+void MAC_setAssoc(Bool value);
 
 //MAC_beacon.c
 void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr);
 void MAC_beaconReq_cb(mac_status_t status);
 void MAC_beacon(void);
 void MAC_beaconConfirm(mac_status_t status);
-void MAC_beaconReq(void *cb);
 
-//MAC_command.c
-void beacon_request(void);
-uint8_t data_request(void);
 
 //MAC_data_service.c
 void MAC_dataIndication(frame_t *fr);
 void change_receive_mode(uint8_t temp);
-mac_status_t MAC_dataRequest(mpdu_t *mpdu, frame_t *fr);
-
-//MAC.mlme_associate.c
-void MAC_mlme_assocReq(mlme_assoc_t *assoc, void *cb);
-mac_status_t MAC_mlme_assocInd(mlme_assoc_t assoc);
-mac_status_t mlme_assoc_response(mlme_assoc_t assoc);
-mac_status_t mlme_assoc_confirm(mlme_assoc_t assoc);
-void mlme_assoc_dataCollect(frame_t *fr);
-void MAC_assocReq_cb(phy_trac_t trac);
-void MAC_assocData_cb(mac_status_t status);
-void MAC_assocConfirm(mac_status_t status);
-void MAC_mlme_assocData(frame_t *fr);
 
 
 //MAC_trx.c
@@ -54,43 +41,17 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr);
 mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr);
 mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu);
 void MAC_issueACK(uint8_t seq_num);
-void MAC_setTxCB(trx_cb_t tb);
+void MAC_setTxCB(voidPtr tb);
 void MAC_txStatus(phy_trac_t trac);
 
 
 //MAC_ack.c
-bool check_Ack(uint8_t dsn);
+Bool check_Ack(uint8_t dsn);
 void add_ack(uint8_t dsn);
 void remove_handler(uint8_t dsn);
 void shift_ack(uint8_t pos);
 mac_status_t MAC_waitACK(uint8_t num);
 
-//MAC_mlme_scan.c
-void MAC_activeScan(mac_scan_t *scan);
-void MAC_mlme_scanReq(mac_scan_t *scan, void *cb);
-void new_PAN_Table(void);
-uint8_t MAC_getPanTableCount(void);
-void add_to_PAN_Table(mac_pan_descriptor_t *desc);
-void MAC_beaconStatus_cb(phy_trac_t trac);
-void MAC_nextBeacon_cb(uint32_t *channels);
-void MAC_mlme_scanConfirm(void);
-
-//MAC_mlme_disassociate.c
-void mac_mlme_disassoc_request(mac_disassoc_reason_t reason, void *cb);
-void MAC_disassoc_cb(phy_trac_t trac);
-void MAC_disassocConfirm(mac_status_t status);
-
-
-//MAC_mlme_orphan.c
-void MAC_orphan_cb(phy_trac_t trac);
-void MAC_orphanCmd(void);
-void MAC_mlme_pollConfirm(mac_status_t status);
-
-//MAC_mlme_reset.c
-mac_status_t mlme_reset_request(void);
-
-//MAC_mlme_start.c
-mac_status_t mlme_start_request(void);
 
 //MAC.c
 mac_status_t mac_init(void);
@@ -106,6 +67,5 @@ void MAC_setCoordLongAddr(uint64_t addr);
 
 //temp
 void assoced(nwk_status_t status);
-void MAC_temp(mac_scanResult_t temp);
 void join_cb(mac_status_t status);
 #endif /* MAC_PROTOTYPES_H_ */

@@ -7,6 +7,7 @@
 #include <frame.h>
 #include <NWK/NWK_prototypes.h>
 #include "MAC/mac_prototypes.h"
+#include "MAC/MAC_mlme.h"
 
 nwk_join_t *join;
 typedef void (*nwk_joinHandler_t)(nwk_status_t status);
@@ -28,7 +29,7 @@ void NWK_nlme_joinReq(nwk_join_t *jn, void *cb){
 		assoc->LogicalChannel = neighbor->logicalChannel;
 		assoc->Coord = neighbor->shortAddr;
 
-		MAC_mlme_assocReq(assoc, &NWK_nlme_joinMacAssoc_cb);
+		//MAC_mlme_assocReq(assoc);
 
 		free(assoc);
 	break;
@@ -42,7 +43,7 @@ void NWK_nlme_joinReq(nwk_join_t *jn, void *cb){
 		//TODO: add the logic to do a MAC scan of the channels given in jn
 		joinExtPANid = jn->extedPANid;
 		NWK_beaconFilterControl(joinExtPANid);
-		MAC_mlme_scanReq(scan, &NWK_nlme_rejoinScan_cb);
+		MAC_mlme_scanReq(scan);
 	break;
 	}//end switch
 //TODO:	add the logic if the network is already joined to issue an indication saying INVALID_REQUEST
@@ -55,7 +56,7 @@ void NWK_nlme_rejoinScan_cb(mac_scanResult_t *result){
 	nwk_neigh_t *parent = NWK_getBestAddrForNetwork(joinExtPANid);
 	nwk_nib_t *nnib = NWK_getNIB();
 	npdu_t *npdu = (npdu_t *)malloc(sizeof(npdu_t));
-	frame_t *fr = get_frame();
+	frame_t *fr = frame_new();
 
 	npdu->nwk_frame_control.NWK_dest_IEEE = no;
 	npdu->nwk_frame_control.NWK_discover_rt = SUPPRESS_DISCOVER;

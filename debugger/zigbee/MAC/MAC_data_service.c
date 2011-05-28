@@ -22,8 +22,12 @@
  *****************************************************************************/
 
 /*================================= INCLUDES         =========================*/
+#include "compiler.h"
 #include "frame.h"
+
 #include "MAC/mac_prototypes.h"
+#include "MAC/mac.h"
+#include "MAC/MAC_command.h"
 
 uint8_t temp = 0;
 
@@ -34,14 +38,26 @@ uint8_t MACreceiveBeaconOnly = 0x00;
 /*================================= LOCAL VARIABLES  =========================*/
 /*================================= PROTOTYPES       =========================*/
 /*================================= SOURCE CODE      =========================*/
-mac_status_t MAC_dataRequest(mpdu_t *mpdu, frame_t *fr){
+mac_status_t MAC_dataRequest(addr_t *destAddr, addr_mode_t srcMode, frame_t *fr)
+{
 
 	mac_pib_t *mpib = get_macPIB();
-
+    mpdu_t *mpdu = ((mpdu_t *)malloc(sizeof(mpdu_t)));
+	
 	mac_status_t status = MAC_SUCCESS;
 
 	mpdu->seq_num = get_MAC_seqNum();
 
+    
+    //Setup for the FCF
+	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
+	mpdu->fcf.MAC_fcf_DstAddr_Mode = mpdu->destination.mode;
+	mpdu->fcf.MAC_fcf_SrcAddr_Mode = srcMode;
+	mpdu->fcf.MAC_fcf_PANid_Compression = NO;
+	mpdu->fcf.MAC_fcf_Frame_Pending = NO;
+	mpdu->fcf.MAC_fcf_Ack_Request = YES;
+	mpdu->fcf.MAC_fcf_Sec_enabled = NO;
+    
 	if(mpdu->source.mode == MAC_SHORT_ADDRESS){
 		mpdu->source = mpib->macShortAddress;
 	}
@@ -53,6 +69,7 @@ mac_status_t MAC_dataRequest(mpdu_t *mpdu, frame_t *fr){
 
 	MAC_createFrame(mpdu, fr);
 
+    
     frame_sendWithFree(fr);
     free(mpdu);
     
@@ -61,71 +78,7 @@ mac_status_t MAC_dataRequest(mpdu_t *mpdu, frame_t *fr){
 }
 void MAC_dataIndication(frame_t *fr){
 
-	mac_command_type_t command;
-	mac_frame_type_t type;
 
-	mac_pib_t *mpib = get_macPIB();
-	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-
-	if(MAC_breakdownFrame(mpdu, fr)){
-		free(mpdu);
-		return;
-
-	}
-
-	type = mpdu->fcf.MAC_fcf_Frame_Type;
-
-	if(MACreceiveBeaconOnly == yes){
-		if(type != MAC_BEACON){
-			free(mpdu);
-			return;
-		}
-	}
-
-	if(type == MAC_BEACON){
-		MAC_beaconHandler(mpdu, fr);
-
-	}
-
-	if(type == MAC_DATA){
-
-	}
-	if(type == MAC_ACK){
-
-//	TODO:	I need to create a ack handler...
-		add_ack(mpdu->seq_num);
-	}
-
-	if(type == MAC_COMMAND){
-/*
- * 		This section will have the proper location for each mac commands that it receives
- */
-
-
-		command = *(fr->ptr)++;
-
-		switch(command) {
-
-		case(ASSOC_REQUEST):
-
-		break;
-		case(ASSOC_RESPONCE):
-			temp++;
-			MAC_mlme_assocData(fr);
-		break;
-
-		case(BEACON_REQUEST):
-
-					MAC_beacon();
-		break;
-
-
-//	TODO:	I need to add the other types of command frames that i could receive....
-		}//end switch command
-
-	}//end if
-
-	free(mpdu);
 }//end MAC_DATA_Indication
 
 void change_receive_mode(uint8_t status){
