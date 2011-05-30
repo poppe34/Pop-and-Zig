@@ -13,8 +13,7 @@
     <Name>$(MSBuildProjectName)</Name>
     <RootNamespace>$(MSBuildProjectName)</RootNamespace>
     <avrtool>com.atmel.avrdbg.tool.jtagicemk3</avrtool>
-    <avrtoolinterface>
-    </avrtoolinterface>
+    <avrtoolinterface>JTAG</avrtoolinterface>
     <com_atmel_avrdbg_tool_jtagicemkii>
       <ToolType>com.atmel.avrdbg.tool.jtagicemkii</ToolType>
       <ToolName>JTAGICE mkII</ToolName>
@@ -55,7 +54,7 @@
       <ToolNumber>J30200002356</ToolNumber>
       <Channel>
         <host>127.0.0.1</host>
-        <port>49164</port>
+        <port>49170</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>

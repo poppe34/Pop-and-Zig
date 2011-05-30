@@ -63,7 +63,8 @@ mcps_data_t mcps;
  */
 mac_status_t mac_init(void) {
 
-
+    MAC_seq_num = (uint8_t)rand();
+	
 	mac_status_t status = MAC_SUCCESS;
     associated = NO;
     uint64_t macCoordExtendedAddress = 0x0000000000000000;
@@ -71,7 +72,7 @@ mac_status_t mac_init(void) {
     uint16_t macCoordPANid = 0xffff;
 
     uint16_t macPANid = 0xffff;
-    uint64_t macLongAddr = 0x000225ffff17fefd;
+    uint64_t macLongAddr = 0x3333333333333333;
     uint16_t macShortAddr = 0xffff;
 
     MAC_setCoordShortAddr(macCoordShortAddress);

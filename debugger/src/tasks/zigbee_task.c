@@ -28,7 +28,7 @@ void zigbee_SubtaskHandler(packet_t *pkt)
 		    switch(pkt->dir)
 			{
 				case from_device:
-				zigbee_newPacket(pkt->buf, pkt->len);
+				//zigbee_newPacket(pkt->buf, pkt->len);
 				break;
 				case from_usb:
 				//zigbee_packetFirst();
@@ -94,9 +94,7 @@ void zigbee_newPacket(uint8_t *buf, uint8_t zlen)
 	
 	while(zlen)
 	{
-		*pkt->ptr = *buf;
-		buf--;
-		pkt->ptr++;
+		*pkt->ptr++ = *buf++;
 		zlen--;
 	}
 #ifdef DEBUG_CLIENT

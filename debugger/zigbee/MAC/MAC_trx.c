@@ -43,7 +43,7 @@ trx_cb_t trx_cb;
 /*--------------------------------------------------------------------------------
 *   function:     Mac_createFrame
 *
-*   Discription:  This function populates the frame with MAC data
+*   Description:  This function populates the frame with MAC data
 *
 *   Argument 1:   MAC data
 *
@@ -51,20 +51,7 @@ trx_cb_t trx_cb;
 --------------------------------------------------------------------------------*/
 
 mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
-	mac_fcf_t fcf_temp;
 	mac_status_t status = MAC_SUCCESS;
-
-/*	fcf_temp |= ((mpdu->fcf.MAC_fcf_Frame_Type << MAC_FCF_FRAME_TYPE_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_Sec_enabled << MAC_FCF_SEC_ENABLE_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_Frame_Pending << MAC_FCF_FRAME_PENDING_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_Ack_Request << MAC_FCF_ACK_REQUEST_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_PANid_Compression << MAC_FCF_PAN_ID_COMPRESS_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_DstAddr_Mode << MAC_FCF_DEST_ADDR_MODE_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_Frame_Ver << MAC_FCF_FRAME_VERSION_SHIFT));
-	fcf_temp |= ((mpdu->fcf.MAC_fcf_SrcAddr_Mode << MAC_FCF_SRC_ADDR_MODE_SHIFT));
-//	Crap the first time i did the fcf i did the shift the wrong direction and I put an equal instead of an or
-//	then on top of that at the end i anded the value gone like the frame type
-*/
 
 //		TODO: 	I am not 100% which should go first I guess it doesn't matter yet.
 //				9.09.10:  I am adding on to the MAC to make it more complete,, I
@@ -95,7 +82,7 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 		mpdu->seq_num = get_MAC_seqNum();
     
 	SET_FRAME_DATA(fr, mpdu->seq_num, 1);
-    
+
 //*******************************************
 //
 //  Destination Address & PAN ID
@@ -125,8 +112,6 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 //
 //*******************************
 
-    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
-        SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
     
 	switch(mpdu->fcf.MAC_fcf_SrcAddr_Mode){
 
@@ -135,14 +120,20 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 	case(MAC_none):
 			break;
 	case(MAC_SHORT_ADDRESS):
+	    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
+            SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
+    
 		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2);
 		break;
 	case(MAC_LONG_ADDRESS):
+	    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
+            SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
+    
 		SET_FRAME_DATA(fr, mpdu->source.extAddr, 8);
 	break;
 
 	}
-//	TODO:	I need to go throught this and have better status detection. If possible
+//	TODO:	I need to go thought this and have better status detection. If possible
 
 // CHANGE IN FUNCTIONALITY: I got rid of the send to radio command at the end.  I will now add
 // a function in the frame section to send then free

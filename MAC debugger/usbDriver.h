@@ -67,6 +67,7 @@ typedef enum ledOperation{
     
     /* Zigbee */
 -(BOOL)zigbeeAvail;
+-(BOOL)zigbeeDeviceInfo;
 -(void)checkZigbee;
 -(void)getFirstZigbee;
 

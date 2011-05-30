@@ -293,12 +293,9 @@ uint8_t MAC_orphanCommand(void)
 //2. Setup Addresses
 	mpdu->destination.PANid = 0xffff;
 	mpdu->destination.shortAddr = 0xffff;
+	mpdu->destination.mode = MAC_SHORT_ADDRESS;
     mpdu->source = mpib->macLongAddress;
 
-//3. Setup Sequence Number
-    mpdu->seq_num = get_seqNum();
-	seq_num = mpdu->seq_num;
-	
 //4. Form MAC Frame
     MAC_createFrame(mpdu, fr);
 

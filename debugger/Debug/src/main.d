@@ -39,7 +39,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../inc/spi_task.h ../zigbee/NWK/NWK_prototypes.h ../zigbee/MAC/mac.h \
  ../zigbee/frame.h ../zigbee/PHY/phy.h ../zigbee/NWK/NWK.h ../inc/list.h \
  ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
- ../zigbee/mac/mac.h ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h
+ ../zigbee/mac/mac.h ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
+ ../zigbee/MAC/MAC_command.h
 
 ../src/asf.h:
 
@@ -178,3 +179,5 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
 ../zigbee/MAC/MAC_mlme.h:
 
 ../zigbee/MISC/security.h:
+
+../zigbee/MAC/MAC_command.h:

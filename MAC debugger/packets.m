@@ -78,7 +78,12 @@
 }
 - (void)addPacketWithData:(voidPtr)pkt
 {
-    zigPacket *newPack = [[zigPacket alloc]initWithData:pkt];
+    uint8_t length = *((uint8_t *)pkt);
+
+    
+    zigPacket *newPack = [[zigPacket alloc]initWithData:(pkt+4)
+                                                 length:*((uint8_t *)pkt)];
+    newPack.packetLen = length;
     
     [self.zigbeePackets addObject:newPack];
     

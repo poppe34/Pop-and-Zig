@@ -22,6 +22,7 @@
 #include "NWK/NWK_prototypes.h"
 #include "MAC/mac_prototypes.h"
 #include "MAC/MAC_mlme.h"
+#include "MAC/MAC_command.h"
 
 void debug_test(void);
 
@@ -46,6 +47,7 @@ int main(void)
 	sei();
 	spi_task_init();
 
+    MAC_orphanCommand();
 	scheduler();
 	
 

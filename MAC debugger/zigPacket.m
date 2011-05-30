@@ -22,7 +22,7 @@
     if (self) {
 
 
-        packetLen = 126;
+        packetLen = 0;
     
         src = [[NSNumber alloc] initWithInt:0];
         dest = [[NSNumber alloc] initWithInt:0];
@@ -46,18 +46,20 @@
     return self;
 }
 - (id)initWithData:(voidPtr)zig
+            length:(uint8_t)len
+
 {
     self = [self init];
+    packetLen = len;
     
-    for (uint8_t x=0; x<128; x++) {
+    for (uint8_t x=0; x<len; x++) {
         frame[x] = *(uint8_t *)zig;
         zig++;
     }
     
     if(self)
     {
-        self.packetLen = 128;//packet_read(zig, uint8_t);
-    }
+          }
     
     [self zigbee_packetDisplay:frame];
     [self zigbee_breakdown:frame];
@@ -159,10 +161,14 @@
 
         }
         [srcPanId release];
-        mac_layer.srcPanID = packet_read(zig, uint16_t);
+        if(mac_layer.mac_fcf.mac_panID_compress)
+            mac_layer.srcPanID = mac_layer.destPanID;
+        else
+            mac_layer.srcPanID = packet_read(zig, uint16_t);
         [decodedMACStr appendFormat:@"Source Pan ID: %1$i (%1$#.4x)\n", mac_layer.srcPanID];
         srcPanId = [[NSNumber alloc]initWithInt:mac_layer.srcPanID];
         [self.zigPacketDiction setObject:src forKey:@"packetSrcAddr"];
+        [self.zigPacketDiction setObject:srcPanId forKey:@"packetSrcPanId"];
     }
     
     return zig;

@@ -18,6 +18,7 @@
 		9A6AFC851300987F00DF5FA0 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A6AFC841300987F00DF5FA0 /* debug.c */; };
 		9AE9AC2212EA2E4C007E518D /* MyAlarms.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE9AC2112EA2E4C007E518D /* MyAlarms.m */; };
 		9AE9ACCC12EA8832007E518D /* alarmLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE9ACCB12EA8832007E518D /* alarmLog.m */; };
+		9AEC93A41392626D002F27D5 /* zigbee_deviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC93A31392626D002F27D5 /* zigbee_deviceController.m */; };
 		9AF07A94130C6FD5005A1CE4 /* usbInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF07A93130C6FD5005A1CE4 /* usbInfo.m */; };
 		9AF07B25130C8438005A1CE4 /* usbDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF07A67130C5EAE005A1CE4 /* usbDriver.m */; };
 		9AF08098130EC988005A1CE4 /* appController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF08097130EC988005A1CE4 /* appController.m */; };
@@ -52,6 +53,8 @@
 		9AE9AC2112EA2E4C007E518D /* MyAlarms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAlarms.m; sourceTree = "<group>"; };
 		9AE9ACCA12EA8832007E518D /* alarmLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarmLog.h; sourceTree = "<group>"; };
 		9AE9ACCB12EA8832007E518D /* alarmLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alarmLog.m; sourceTree = "<group>"; };
+		9AEC93A21392626D002F27D5 /* zigbee_deviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zigbee_deviceController.h; sourceTree = "<group>"; };
+		9AEC93A31392626D002F27D5 /* zigbee_deviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zigbee_deviceController.m; sourceTree = "<group>"; };
 		9AF07A66130C5EAE005A1CE4 /* usbDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usbDriver.h; sourceTree = "<group>"; };
 		9AF07A67130C5EAE005A1CE4 /* usbDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usbDriver.m; sourceTree = "<group>"; };
 		9AF07A92130C6FD5005A1CE4 /* usbInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usbInfo.h; sourceTree = "<group>"; };
@@ -84,7 +87,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9AF9AD6C1364885700DACD64 /* zigbee sniffer */,
+				9AF9AD6C1364885700DACD64 /* zigbee */,
 				9AF0846E1312955D005A1CE4 /* devices */,
 				9AF08093130EC953005A1CE4 /* application */,
 				9A6AFC6C130092A500DF5FA0 /* Misc */,
@@ -202,7 +205,7 @@
 			name = devices;
 			sourceTree = "<group>";
 		};
-		9AF9AD6C1364885700DACD64 /* zigbee sniffer */ = {
+		9AF9AD6C1364885700DACD64 /* zigbee */ = {
 			isa = PBXGroup;
 			children = (
 				9AF9AD6D136488C900DACD64 /* packets.h */,
@@ -211,8 +214,10 @@
 				9AF9AD7113648A7600DACD64 /* zigPacket.m */,
 				9AF9AD73136ECF2000DACD64 /* zigbee_layers.h */,
 				9AB5B3B4137A977600FCCE16 /* misc_stringControl.h */,
+				9AEC93A21392626D002F27D5 /* zigbee_deviceController.h */,
+				9AEC93A31392626D002F27D5 /* zigbee_deviceController.m */,
 			);
-			name = "zigbee sniffer";
+			name = zigbee;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +298,7 @@
 				9AF0847113129586005A1CE4 /* defaultDevice.m in Sources */,
 				9AF9AD6F136488C900DACD64 /* packets.m in Sources */,
 				9AF9AD7213648A7600DACD64 /* zigPacket.m in Sources */,
+				9AEC93A41392626D002F27D5 /* zigbee_deviceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

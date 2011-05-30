@@ -16,7 +16,7 @@
 @optional
 - (void)debuggerFound:(usbInfo *)info;
 - (void)debuggerLost:(usbInfo *)info;
-
+- (void)deviceFound:(usbInfo *)info;
 @end
 
 

@@ -18,7 +18,7 @@
 @implementation appController 
 
 @synthesize driver, central, led1, led2, led3, usbName, usbCheck;
-
+@synthesize zigDevice;
 - (void)awakeFromNib
 {
 	isAlarmChecking = NO;
@@ -28,7 +28,7 @@
 {
 	if ((self = [super init])) 
 	{
-		[usbName setStringValue:@""];
+		[usbName setStringValue:@"000"];
 		
 	}
 	return self;
@@ -144,8 +144,8 @@
             [driver getFirstZigbee];
             [driver readUSB_TEMP:packet];
         
-            [zigPackets addPacketWithData:&packet[4]];
-        
+            [zigPackets addPacketWithData:packet];
+                                          
             len--;
         }
     }    
@@ -173,10 +173,10 @@
     {
         [driver getFirstAlarm];
         [driver readUSB_TEMP:test];
-        test[(test[0]-1)] = 0;
-        [log newAlarmWithString:&test[3] length:test[0]];
         
-        for (uint8_t x = 0; x<64; x++) {
+        [log newAlarmWithString:&test[4] length:test[0]];
+        
+        for (uint8_t x = 0; x<128; x++) {
             test[x] = 0;
         }
         len--;
@@ -189,6 +189,7 @@
 - (void)debuggerFound:(usbInfo *)info
 {
 	self.driver = info.driver;
+    zigDevice.driver = info.driver;
 	[usbName setStringValue:info.name];
 	[self initButtons];
 }

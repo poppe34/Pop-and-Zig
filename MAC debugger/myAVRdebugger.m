@@ -123,5 +123,14 @@ char			inBuf[8096];
     [self transferData:outBuf length:4];
 }
 
+-(BOOL)zigbeeDeviceInfo
+{
+    return YES;
+}
+
+-(void)getShortAddr
+{
+    outBuf[0] = 1;
+}
 
 @end

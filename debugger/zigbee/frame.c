@@ -87,9 +87,7 @@ void frame_sendWithFree(frame_t *fr)
 //  Add CRC 
 //****************************
     SET_FRAME_DATA(fr, 0x0000, 2);
-
-    MAC_mlme_commStatus_setHandlerNum(fr->handler);
-	
+		
     rc_send_frame(fr->dataLength, fr->frame);
     frame_free(fr);
 }

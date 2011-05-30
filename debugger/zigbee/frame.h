@@ -32,18 +32,18 @@
 #define SET_FRAME_DATA_1(frame, info) *frame->ptr++ = info;\
 											frame->dataLength++
 
-#define SET_FRAME_DATA_2(frame, info) *frame->ptr++ = (uint8_t)(info>>8);\
-										*frame->ptr++ = (uint8_t)info;\
-										frame->dataLength +=2
+#define SET_FRAME_DATA_2(frame, info) 	*frame->ptr++ = (uint8_t)info;\
+                                            *frame->ptr++ = (uint8_t)(info>>8);\
+										    frame->dataLength +=2
 
-#define SET_FRAME_DATA_8(frame, info) *frame->ptr++ = (uint8_t)(info>>56);\
-										*frame->ptr++ = (uint8_t)(info>>48);\
-										*frame->ptr++ = (uint8_t)(info>>40);\
-										*frame->ptr++ = (uint8_t)(info>>32);\
-										*frame->ptr++ = (uint8_t)(info>>24);\
+#define SET_FRAME_DATA_8(frame, info) *frame->ptr++ = (uint8_t)info;\
+                                        *frame->ptr++ = (uint8_t)(info>>8);\
 										*frame->ptr++ = (uint8_t)(info>>16);\
-										*frame->ptr++ = (uint8_t)(info>>8);\
-										*frame->ptr++ = (uint8_t)info;\
+										*frame->ptr++ = (uint8_t)(info>>24);\
+										*frame->ptr++ = (uint8_t)(info>>32);\
+										*frame->ptr++ = (uint8_t)(info>>40);\
+										*frame->ptr++ = (uint8_t)(info>>48);\
+										*frame->ptr++ = (uint8_t)(info>>56);\
 										frame->dataLength +=8
 
 #define SET_FRAME_DATA_try(frame, value, type)     *((type *)frame->ptr) = value; \

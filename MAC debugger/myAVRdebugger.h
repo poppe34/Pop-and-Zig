@@ -43,6 +43,7 @@ enum zigbee_subTask
 
 //Zigbee
 -(BOOL)zigbeeAvail;
+-(BOOL)zigbeeDeviceInfo;
 -(void)checkZigbee;
 -(void)getFirstZigbee;
 @end

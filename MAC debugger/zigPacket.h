@@ -34,7 +34,8 @@
 
 - (id)init;
 - (void)dealloc;
-- (id)initWithData:(voidPtr)zig;
+- (id)initWithData:(voidPtr)zig
+            length:(uint8_t)len;
 
 - (void)zigbee_breakdown:(voidPtr)zig;
 - (void)zigbee_packetDisplay:(voidPtr)zig;

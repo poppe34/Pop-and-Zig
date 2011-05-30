@@ -130,9 +130,8 @@ void RF230registerWrite(uint8_t address, uint8_t data)
 
 void RF230frameWrite(uint8_t *frame_wr, uint8_t len)
 {
-	uint8_t *tempstate = (frame_wr+len)-1;
 
-	report_packet(tempstate, len);
+	report_packet(frame_wr, len);
     cli();
 
     /* Start transmission */
@@ -164,7 +163,7 @@ uint8_t RF230frameRead(uint8_t *frame_rx)
 	spi_read_packet(SPI_ZIGBEE, frame_rx, len);
     
 	spi_deselect_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE); // end of transmissions
-	report_packet(frame_rx, len);
+	//report_packet(frame_rx, len);
     sei();
 	
 	LED_Toggle(LED0_GPIO);
