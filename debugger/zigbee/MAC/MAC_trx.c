@@ -95,12 +95,12 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
         case(MAC_none):
 			break;
         case(MAC_SHORT_ADDRESS):
-                SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
             SET_FRAME_DATA(fr, mpdu->destination.shortAddr, 2);
             break;
             
         case(MAC_LONG_ADDRESS):
-                SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
             SET_FRAME_DATA(fr, mpdu->destination.extAddr, 8);
             break;
             
@@ -120,15 +120,16 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 	case(MAC_none):
 			break;
 	case(MAC_SHORT_ADDRESS):
-	    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
+	    if((mpdu->fcf.MAC_fcf_PANid_Compression) == 0){
             SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
-    
+		}		
 		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2);
 		break;
 	case(MAC_LONG_ADDRESS):
-	    if(mpdu->fcf.MAC_fcf_PANid_Compression == 0)
+	    if((mpdu->fcf.MAC_fcf_PANid_Compression) == 0){
             SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
-    
+
+		}		
 		SET_FRAME_DATA(fr, mpdu->source.extAddr, 8);
 	break;
 

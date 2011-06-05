@@ -22,6 +22,7 @@
  *****************************************************************************/
 
 #include "misc/time.h"
+#include "alarms_task.h"
 
 #include "frame.h"
 
@@ -30,6 +31,7 @@
 
 #include "RF230/RF230.h"
 #include "RF230/at86rf230_registermap.h"
+#include "RF230/RF230_IRQ.h"
 
 #include "MAC/mac_prototypes.h"
 
@@ -45,6 +47,11 @@ void radio_RF230_init(void) {
 	uint8_t dummy_IRQ_read;
     trx_state state;
 
+// Setup the interrupt
+	RF230_irq_init();
+
+	set_padIOPwrLevel(0x03);
+	   set_rc_CLKM(CLKM_no_clock);
 // Allow time for the radio to startup
     delay_us(TIME_TO_ENTER_P_ON);
 
@@ -64,18 +71,19 @@ void radio_RF230_init(void) {
 
 	state = RF230_STATE();
 	
-// Make sure we are in TRX_OFF state we will putting the transiever to RX_ON State
+// Make sure we are in TRX_OFF state we will putting the transceiver to RX_ON State
 	if(TRX_OFF == state) {
-        /* reading IRQ clears any IRQ requests */
+
+	    /* reading IRQ clears any IRQ requests */
 		dummy_IRQ_read = RF230registerRead(RG_IRQ_STATUS);
 		
-		/* put transevier in CCA mode 3 */
+		/* put transceiver in CCA mode 3 */
 		RF230registerBitWrite(SR_CCA_MODE, 0x03);
 		/* Set the state to RX_ON */
 		status = set_trx_state(RX_ON, false);
 
 	}
-	
+
 }
 
 void rc_reset(void){
@@ -229,7 +237,7 @@ bool set_trx_state(trx_state_t state, bool force) {
 	// check if new state is a valid to transition
 	if((state != TRX_OFF) && (state != RX_ON) && (state != PLL_ON) && (state != RX_AACK_ON) && (state != TX_ARET_ON)) {
 
-		return false;
+		return NO;
 	}
 	//
 	//	transition to TRX_OFF
@@ -292,12 +300,13 @@ bool set_trx_state(trx_state_t state, bool force) {
 
 		case RX_AACK_ON:
 
-			if (state == TRX_OFF) {
+			if (status == TRX_OFF) {
 
 				RF230registerBitWrite(SR_TRX_CMD, CMD_RX_ON);
 				delay_us(TIME_TRX_OFF_TO_PLL_ACTIVE);
+				status = RF230_STATE();
 			}
-			status = RF230_STATE();
+			
 
 			if ((status == RX_ON) || (status == PLL_ON)) {
 
@@ -316,12 +325,13 @@ bool set_trx_state(trx_state_t state, bool force) {
 
 		case TX_ARET_ON:
 
-			if (state == TRX_OFF) {
+			if (status == TRX_OFF) {
 
 				RF230registerBitWrite(SR_TRX_CMD, CMD_RX_ON);
 				delay_us(TIME_TRX_OFF_TO_PLL_ACTIVE);
+				status = RF230_STATE();
 			}
-			status = RF230_STATE();
+			
 
 			if ((status == RX_ON) || (status == PLL_ON)) {
 
@@ -416,13 +426,14 @@ bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 	while(wait_for_ack == true) {;}
 	set_irq_callBack(&PHY_TxIrqCB);
 
-	while(!(set_trx_state(TX_ARET_ON, 0))) {;}
+	while(!(set_trx_state(PLL_ON, 0))) {;}
 	/* toggle the SLP_TR to initiate the transfer */
-		RF230_SLP_TR_HIGH;
-		RF230_SLP_TR_LOW;
 
 	/*Send frame to RF230*/
 		RF230frameWrite(frame_tx, len);
+		RF230_SLP_TR_HIGH;
+		delay_us(10);
+		RF230_SLP_TR_LOW;
 
 	/*Report back a successful transmit*/
 		status = true;
@@ -579,4 +590,23 @@ bool set_aack_set_pd(uint8_t aack){
 
 	return(aack == get_aack_set_pd());
 
+}
+
+bool set_padIOPwrLevel(uint8_t level)
+{
+	bool status = NO;
+	
+	RF230registerBitWrite(SR_PAD_IO, level);
+
+	if(get_padIOPwrLevel() == level)
+		{
+			status = YES;
+		}
+
+	return status;
+}
+
+uint8_t get_padIOPwrLevel(void)
+{
+	return RF230BitRead(SR_PAD_IO);
 }

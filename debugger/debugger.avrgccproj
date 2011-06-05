@@ -54,12 +54,12 @@
       <ToolNumber>J30200002356</ToolNumber>
       <Channel>
         <host>127.0.0.1</host>
-        <port>49170</port>
+        <port>49180</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>391322</JtagDbgClock>
+          <JtagDbgClock>2006657</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
           <IspClock>150000</IspClock>
           <JtagInChain>false</JtagInChain>
@@ -576,6 +576,12 @@
     <Compile Include="zigbee\misc\time.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="zigbee\misc\xmega_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\misc\xmega_misc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="zigbee\misc\xmega_time.c">
       <SubType>compile</SubType>
     </Compile>
@@ -649,6 +655,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\RF230\RF230_irq.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\RF230\RF230_IRQ.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\RF230\RF230_mega1281.h">

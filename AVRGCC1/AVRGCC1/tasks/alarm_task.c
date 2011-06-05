@@ -82,18 +82,6 @@ void alarm_sendQty(void)
     }	
 }
 
-void alarm_devAlarmQtyRequest(void)
-{
-	packet_t *pkt = TM_newPacket();
-	if(pkt)
-	{
-	    pkt->dir = to_device;
-	    pkt->task = task_alarm;
-	    pkt->subTask = alarm_cnt;
-	    pkt->len = 1;		
-	}
-}
-
 void alarm_sendUSBFirst(void)
 {
 	if((list_length(alarmLog)))
@@ -136,19 +124,7 @@ void alarm_sendUSBFirst(void)
 	}			
 }
 
-void alarm_readDevFirst(void)
-{
-	packet_t *pkt = TM_newPacket();
-	if(pkt)
-	{
-        pkt->dir = to_device;
-	    pkt->task = task_alarm;
-	    pkt->subTask = first_alarm;
-	    pkt->len = 1;
-	
-	    pkt->buf[0] = NULL;
-	}		
-}
+
 void alarm_emptyLog(void)
 {
 	uint8_t alarm_len = list_length(alarmLog);
@@ -177,14 +153,12 @@ void alarm_subTaskHandler(packet_t *pkt)
 		   switch (pkt->dir)
 		   {
 		        case to_device:
-				    spi_addPacket(pkt);
+				   
 				break;
 				case from_device:
-				   // alarm_new(5, "I have %i alarms on the device", pkt->buf[0]);
-					alarm_readDevFirst();
+					
 				break;
 			    case from_usb:
-				    alarm_devAlarmQtyRequest();
 				    alarm_sendQty();
 				break;
 				case to_usb:
@@ -198,11 +172,11 @@ void alarm_subTaskHandler(packet_t *pkt)
 		   switch (pkt->dir)
 		   {
                 case to_device:
-				    spi_addPacket(pkt);
+				    
 				break;
 		        case from_device:
 				    if(pkt->buf[0])
-					    alarm_new(5, &pkt->buf[0]);				
+					    alarm_new(5, pkt->buf);				
 				break;
 			    case from_usb:
 				    alarm_sendUSBFirst();

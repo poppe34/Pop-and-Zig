@@ -78,13 +78,14 @@
 }
 - (void)addPacketWithData:(voidPtr)pkt
 {
-    uint8_t length = *((uint8_t *)pkt);
+    uint8_t length = (*((uint8_t *)pkt)-3);
 
+    NSLog(@"The length of the packet is :%i", length);
     
-    zigPacket *newPack = [[zigPacket alloc]initWithData:(pkt+4)
-                                                 length:*((uint8_t *)pkt)];
-    newPack.packetLen = length;
+    zigPacket *newPack = [[zigPacket alloc]initWithData:(pkt+3)
+                                                 length:length];
     
+    [newPack.zigPacketDiction setObject:([[NSNumber alloc]initWithInt:([zigbeePackets count]+1)]) forKey:@"packetNum"];
     [self.zigbeePackets addObject:newPack];
     
     [zigbeeView reloadData];

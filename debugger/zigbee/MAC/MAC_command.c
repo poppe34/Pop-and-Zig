@@ -30,7 +30,7 @@ uint8_t MAC_assocRequestCommand(addr_t *destAddr)
 	mac_pib_t *mpib = get_macPIB();
 	frame_t *fr = frame_new();
 	mpdu_t	*mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-	uint8_t capibilities, seq_num;
+	uint8_t capibilities = 0x87, seq_num;
 
 	if(!(MAC_isAssoc()))
 	{
@@ -46,9 +46,6 @@ uint8_t MAC_assocRequestCommand(addr_t *destAddr)
 	    mpdu->fcf.MAC_fcf_Ack_Request = yes;
 	    mpdu->fcf.MAC_fcf_Sec_enabled = no;
 	    mpdu->fcf.MAC_fcf_Frame_Ver = 0x00;
-
-        mpdu->seq_num = get_seqNum();
-        seq_num = mpdu->seq_num;
 		
         MAC_createFrame(mpdu, fr);
 	
@@ -158,7 +155,7 @@ void MAC_disassocCommand(addr_t *destAddr)
 	mac_pib_t *mpib = get_macPIB();
 	uint8_t seq_num;
 	mac_status_t status;
-    uint8_t reason;
+    uint8_t reason = 0x98;
 	
 //Setup Command Frame
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
@@ -260,9 +257,7 @@ uint8_t MAC_panIDConflictCommand(void)
 	mpdu->destination = mpib->macCoordExtendedAddress;
 	
 //3. Setup Sequence Number
-    mpdu->seq_num = get_seqNum();
-	seq_num = mpdu->seq_num;
-	
+
 //4. Form Mac Frame
     MAC_createFrame(mpdu, fr);
 
@@ -276,15 +271,14 @@ uint8_t MAC_panIDConflictCommand(void)
 }
 uint8_t MAC_orphanCommand(void)
 {
-	frame_t *fr = frame_new();
     mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-    uint8_t seq_num;
+	frame_t *fr = frame_new();
 	
 	mac_pib_t *mpib = get_macPIB();
 
 //1. Setup FCF
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
-	mpdu->fcf.MAC_fcf_DstAddr_Mode = SHORT_ADDRESS;
+	mpdu->fcf.MAC_fcf_DstAddr_Mode = MAC_SHORT_ADDRESS;
 	mpdu->fcf.MAC_fcf_SrcAddr_Mode = LONG_ADDRESS;
 	mpdu->fcf.MAC_fcf_PANid_Compression = yes;
 	mpdu->fcf.MAC_fcf_Frame_Pending = no;
@@ -292,9 +286,10 @@ uint8_t MAC_orphanCommand(void)
 	mpdu->fcf.MAC_fcf_Sec_enabled = no;
 //2. Setup Addresses
 	mpdu->destination.PANid = 0xffff;
-	mpdu->destination.shortAddr = 0xffff;
+	mpdu->destination.extAddr = 0xffff;
 	mpdu->destination.mode = MAC_SHORT_ADDRESS;
     mpdu->source = mpib->macLongAddress;
+	
 
 //4. Form MAC Frame
     MAC_createFrame(mpdu, fr);
@@ -305,7 +300,7 @@ uint8_t MAC_orphanCommand(void)
 	frame_sendWithFree(fr);
 	free(mpdu);
 	
-	return seq_num;
+	return 1;
 }
 
 

@@ -89,7 +89,7 @@ typedef enum ADDRESS_MODE{
 }addr_mode_t;
 
 typedef struct ADDRESS{
-	addr_mode_t mode;
+	uint8_t mode;
 	union {
 		uint16_t 	shortAddr;
 		uint64_t	extAddr;

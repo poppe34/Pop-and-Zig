@@ -119,7 +119,7 @@
                                                          userInfo:nil
                                                           repeats:YES] retain];
     */
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
 }
 
 -(IBAction)checkZigbee:(id)sender
@@ -174,7 +174,7 @@
         [driver getFirstAlarm];
         [driver readUSB_TEMP:test];
         
-        [log newAlarmWithString:&test[4] length:test[0]];
+        [log newAlarmWithString:&test[3] length:test[0]];
         
         for (uint8_t x = 0; x<128; x++) {
             test[x] = 0;

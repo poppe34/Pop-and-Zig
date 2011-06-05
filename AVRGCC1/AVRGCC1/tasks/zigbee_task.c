@@ -39,7 +39,7 @@ void zigbee_subTaskHandler(packet_t *pkt)
 				zigbee_packetFirst();
 				break;
 				case to_usb:
-				TM_toUSB(pkt);
+				//TM_toUSB(pkt);
 				break;
 			}
 		break;
@@ -79,6 +79,7 @@ void zigbee_packetFirst(void)
 		}
 		else alarm("Request for first Zigbee Packet with non avail");
 		
+		free(pkt);
 	}
 }
 #endif
@@ -90,7 +91,7 @@ void zigbee_newPacket(uint8_t *buf, uint8_t zlen)
 	packet_t *pkt = TM_newPacket();
 	
 	pkt->len = zlen;
-	pkt->ptr = (pkt->buf)+1;
+	pkt->ptr = (pkt->buf);
 	
 	while(zlen)
 	{
@@ -100,7 +101,7 @@ void zigbee_newPacket(uint8_t *buf, uint8_t zlen)
 #ifdef DEBUG_CLIENT
 	pkt->dir = to_usb;
 #endif
-	pkt->dir = from_usb;
+	pkt->dir = to_usb;
 	pkt->task = task_zigbee;
 	pkt->subTask = zigbeePacketFirst;
 	

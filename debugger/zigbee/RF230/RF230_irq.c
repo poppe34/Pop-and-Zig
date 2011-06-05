@@ -12,21 +12,32 @@
 #include <avr/interrupt.h>
 #include <RF230/RF230.h>
 #include "phy/rc_rf230.h"
+#include "alarms_task.h"
+#include "led.h"
+#include "board.h"
+#include "tc.h"
+
+#include "misc/xmega_misc.h"
+
+#include "RF230/RF230_IRQ.h"
 
 #include "MAC/mac_prototypes.h"
 
 typedef void (*rf230_irq_cb_t)(uint8_t irq_status);
-void irq_handler(void);
-void set_irq_callBack(void *cb);
-void set_default_irq_callBack(void);
-void receive_irq_CB(uint8_t irq_status);
-void default_irq_CB(uint8_t irq_status);
 
-	rf230_irq_cb_t rf230_irq_cb = &default_irq_CB;
+rf230_irq_cb_t rf230_irq_cb = &default_irq_CB;
 
 bool Rx_incoming = 0x00;
 uint8_t counter = 0x00;
 bool new_rx = 0x00;
+
+void RF230_irq_init(void)
+{
+	uint8_t status = RF230registerRead(RG_IRQ_STATUS);
+	xmega_interrupt_setCB(&irq_handler);
+	xmega_interrupt_init();
+	
+}
 
 void set_irq_callBack(void *cb) {
 
@@ -48,7 +59,7 @@ void default_irq_CB(uint8_t irq_status){
 	}//end if
 
 	if(((irq_status>> TRX_END) & 0x01)){
-
+		LED_On(LED2_GPIO);
 	}//end if
 
 }//end default_irq_cb
@@ -104,5 +115,6 @@ void PHY_TxIrqCB(uint8_t irq_status){
 
 void irq_handler(void){
 		uint8_t irq_status = RF230registerRead(RG_IRQ_STATUS);
+		LED_Toggle(LED0_GPIO);
 		(rf230_irq_cb)(irq_status);
 }

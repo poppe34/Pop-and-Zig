@@ -327,7 +327,7 @@ typedef struct
 #define PACK
 #define START_PACK
 #define END_PACK
-#define INLINE static inline __attribute__ ((always_inline))
+#define INLINE inline //static inline __attribute__ ((always_inline))
 
 
 //! \name Compile time error handling

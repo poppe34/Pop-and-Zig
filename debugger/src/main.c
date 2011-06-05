@@ -24,6 +24,8 @@
 #include "MAC/MAC_mlme.h"
 #include "MAC/MAC_command.h"
 
+#include "RF230/RF230.h"
+
 void debug_test(void);
 
 int main(void)
@@ -33,7 +35,7 @@ int main(void)
 	// Insert application code here, after the board has been initialized.
 	
 	sysclk_init();
-	
+	spi_task_init();
 	pmic_init();
 	alarm_task_init();
 	scheduler_init();
@@ -45,9 +47,29 @@ int main(void)
 	//PORTC.PIN3CTRL |= (PORT_ISC1_bm | PORT_ISC2_bm);
 	
 	sei();
-	spi_task_init();
 
-    MAC_orphanCommand();
+	addr_t destShortTemp, destLongTemp;
+
+	destShortTemp.PANid = 0x3344;
+	destShortTemp.shortAddr = 0x5588;
+	destShortTemp.mode = MAC_SHORT_ADDRESS;
+	
+	destLongTemp.PANid = 0x1122;
+	destLongTemp.extAddr = 0x9999999999999999;
+	destLongTemp.mode = MAC_LONG_ADDRESS;
+	
+	security_t sec;
+	
+//	MAC_beaconReqCommand();//LOOKS GOOD
+//	MAC_assocRequestCommand(&destShortTemp);//LOOKS GOOD
+//	MAC_assocResponceCommand(mlme_assoc_t *assoc);
+//	MAC_disassocCommand(&destShortTemp);//LOOKS GOOD
+//	MAC_dataRequestCommand(&destShortTemp);//LOOKS GOOD
+	MAC_panIDConflictCommand();
+//	MAC_orphanCommand();
+//	MAC_beaconReqCommand();
+//	MAC_commandCoordRealign(&destShortTemp, &sec);
+
 	scheduler();
 	
 

@@ -44,11 +44,13 @@ void rf230_init(void)
 
 	spi_enable(SPI_ZIGBEE);
 
-    turn_ON_CRC();
+	radio_RF230_init();
+    
+	turn_ON_CRC();
 
 	alarm_new(9, "CRC Started \0");
 	
-    radio_RF230_init();
+    
 }
 
 uint8_t RF230registerRead(uint8_t addr)
@@ -139,6 +141,8 @@ void RF230frameWrite(uint8_t *frame_wr, uint8_t len)
     
 	spi_write_once(SPI_ZIGBEE, RF230_SPI_FRAME_WRITE);
 	
+	spi_write_once(SPI_ZIGBEE, len);
+	
     spi_write_packet(SPI_ZIGBEE, frame_wr, len);
 	
     spi_deselect_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE); // end of transmissions
@@ -165,9 +169,28 @@ uint8_t RF230frameRead(uint8_t *frame_rx)
 	spi_deselect_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE); // end of transmissions
 	//report_packet(frame_rx, len);
     sei();
-	
-	LED_Toggle(LED0_GPIO);
     return length;
 }// end RF230frameRead
 
+uint8_t RF230FrameBufferRead(uint8_t *frame_rx)
+{
+	    uint8_t dummy = 0x00;
+	uint8_t len, index = 0, length;
+
+    cli();
+    /* Start transmission */
+    spi_select_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE);
+    
+	spi_write_once(SPI_ZIGBEE, RF230_SPI_SRAM_READ);
+    /* Wait for transmission complete */
+    len = spi_read_once(SPI_ZIGBEE);
+    length = len;
+    
+	spi_read_packet(SPI_ZIGBEE, frame_rx, len);
+    
+	spi_deselect_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE); // end of transmissions
+	//report_packet(frame_rx, len);
+    sei();
+    return length;
+}
 

@@ -295,7 +295,7 @@ typedef struct MLME_DISASSOC{
 	uint8_t		keyIndex;
 }mlme_disassoc_t;
 
-typedef struct mpdu_t{// This should be the data type for msdu(I have the same problem on other layers)
+typedef struct MPDU{// This should be the data type for msdu(I have the same problem on other layers)
 	mac_fcf_t 	fcf;
 	uint8_t 	seq_num;
 	addr_t		destination;

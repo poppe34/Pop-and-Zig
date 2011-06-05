@@ -28,7 +28,7 @@ LIST(alarmLog);
 /************************************************************************/
 void alarm_task_init(void)
 {
-	list_init(alarmLog);
+	
 	alarm("This is just a device Test Alarm");
 }
 
@@ -44,96 +44,46 @@ void alarm_task_init(void)
 /************************************************************************/
 void alarm_new(uint8_t lvl, char *str, ...)
 {
-
+	
 	va_list arg;
 	va_start(arg, str);
+	
+	packet_t *pkt = TM_newPacket();
+	
+	pkt->dir = to_usb;
+	pkt->task = task_alarm;
+	pkt->subTask = alarm_first;
 	
 	if(lvl <= VERBOSE_LEVEL)
 	{
 	  if(*str)
 		{
-			alarm_t *alrm = alarm_newAlrm();
-            if(alrm)
+			
+            if(pkt)
 			{
-	            alrm->length = 0;
-	            char *ptr = alrm->name;
+	            pkt->len = 0;
+	            char *ptr = pkt->buf;
 				
-		        vsprintf(alrm->name, str, arg);							
+		        vsprintf((char *)pkt->buf, str, arg);							
 		   		    
 			    while(*ptr)
 			    {
-		            alrm->length++;
+		            pkt->len++;
 		            ptr++;
 				}
 			
-			    alrm->name[(alrm->length)] = 0;
-			    alrm->length++;
-			    //if(alrm->length > 61)
-				    //alarm("Alarm Length is to Large");
+			    pkt->buf[(pkt->len)] = 0;
+			    pkt->len++;
 			}					
 		}					
 	    
 	}
+	TM_removeTask(pkt);
+	spi_sendToDev(pkt);
+	
 	va_end(arg);
 }
 
-
-/************************************************************************/
-/* Function:    alarm_free
-
-/* Description: This frees the alarm from memory
-
-/* Arguments:   Alarm string
-/************************************************************************/
-
-void alarm_free(alarm_t *alrm)
-{
-	list_remove(alarmLog, alrm);
-	free(alrm);
-}
-
-void alarm_sendFirst(void)
-{
-	while(list_length(alarmLog))
-	{
-	    alarm_t *alrm = list_head(alarmLog);
-	
-	    if(alrm == NULL)
-	    {
-		    alarm("PC requested alarms when none were available");		
-	    }
-	    else
-	    {
-			if(alrm->length)
-			{
-		        packet_t *pkt = TM_newPacket();
-				if(pkt)
-				{
-					pkt->dir = to_usb;
-					pkt->task = task_alarm;
-					pkt->subTask = alarm_first;
-					pkt->len = alrm->length;
-
-					for(uint8_t x=0; x<alrm->length; x++)
-					pkt->buf[x] = alrm->name[x];
-
-					alarm_free(alrm);
-				}				
-			}				
-        }
-	}			
-}
-
-void alarm_recQty(void)
-{
-	packet_t *pkt = TM_newPacket();
-	pkt->dir = to_usb;
-	pkt->task = task_alarm;
-	pkt->subTask = alarm_qty;
-	pkt->len = 1;
-	pkt->buf[0] = list_length(alarmLog);
-	
-}
 
 void alarm_subTaskHandler(packet_t *pkt)
 {
@@ -146,12 +96,12 @@ void alarm_subTaskHandler(packet_t *pkt)
 				
 				break;
 			    case from_device:
-			    alarm_recQty();
+			    
 				break;
 				case from_usb:
 				break;
 				case to_usb:
-				spi_sendToDev(pkt);
+				
 				break;
 			}				
 			
@@ -164,12 +114,12 @@ void alarm_subTaskHandler(packet_t *pkt)
 				
 				break;
 			    case from_device:
-			        alarm_sendFirst();
+			       
 				break;
 				case from_usb:
 				break;
 				case to_usb:
-				    spi_sendToDev(pkt);
+				    
 				break;
 			}			
 		break;
@@ -183,29 +133,5 @@ void alarm_subTaskHandler(packet_t *pkt)
 
 }
 
-void alarm_sendQty(void)
-{
-	packet_t *pkt = TM_newPacket();
-	
-	pkt->dir = to_usb;
-	pkt->task = task_alarm;
-	pkt->subTask = alarm_qty;
-	
-	pkt->len = 1;
-	pkt->buf[0] = (list_length(alarmLog));	
-}
 
-alarm_t *alarm_newAlrm(void)
-{
-	alarm_t *alrm;
-	
-	if(list_length(alarmLog)<20)
-	    {
-			alrm = (alarm_t *)malloc(sizeof(alarm_t));
-			
-			list_add(alarmLog, alrm);
-			return alrm;
-		}
-		
-	return alrm;
-}
+

@@ -48,5 +48,6 @@ void TM_addTask(packet_t *pkt);
 packet_t *TM_newPacket(void);
 void TM_freePacket(packet_t *pkt);
 void TM_taskHandler(packet_t *pkt);
+void TM_removeTask(packet_t *pkt);
 
 #endif /* TASK_MASTER_H_ */

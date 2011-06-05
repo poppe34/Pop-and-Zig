@@ -104,18 +104,19 @@
 #define USB_SPI_CLK_MASK	SYSCLK_PORT_C
 //! @}
 
-//! \name SPI & MISC Connections of the ZIGBEE ATMEL Transeiver
+//! \name SPI & MISC Connections of the ZIGBEE ATMEL Transceiver
 //@{
 #define SPI_ZIGBEE				&SPID
-#define ZIGBEE_IRQ				IOPORT_CREATE_PIN(PORTD, 3) //IRQ as output init high
+#define ZIGBEE_IRQ				IOPORT_CREATE_PIN(PORTD, 2) //IRQ as input
 #define ZIGBEE_MASTER_SS		IOPORT_CREATE_PIN(PORTD, 4) //SS as output init high
 #define ZIGBEE_MASTER_SCK		IOPORT_CREATE_PIN(PORTD, 7) //SCK as output init high
 #define ZIGBEE_MASTER_MOSI		IOPORT_CREATE_PIN(PORTD, 5) //MOSI as output init high
 #define ZIGBEE_MASTER_MISO		IOPORT_CREATE_PIN(PORTD, 6) //MISO as input
-#define ZIGBEE_SLP_TR			IOPORT_CREATE_PIN(PORTD, 1) //SLP_TR as output init high
+#define ZIGBEE_SLP_TR			IOPORT_CREATE_PIN(PORTD, 3) //SLP_TR as output init high
 #define ZIGBEE_RST				IOPORT_CREATE_PIN(PORTD, 0) //RST as output init low
 #define ZIGBEE_SPI_CLK_MASK		SYSCLK_PORT_D
-
+#define ZIGBEE_PORT				PORTD
+#define ZIGBEE_IRQ_TC			&TCD0
 //! @}
 
 //! \name DAC connection and control of the Speaker

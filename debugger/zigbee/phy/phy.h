@@ -160,7 +160,7 @@ typedef struct {
 
 /*================================= CONSTANTS		 =========================*/
 
-#define const aMaxPHYPacketSize	(127)
+#define aMaxPHYPacketSize		(127)
 #define aTurnaroundTime         (12)
 
 /*================================= GLOBAL VARIABLES =========================*/
@@ -188,4 +188,6 @@ uint16_t get_PANid(void);
 void phy_init(void);
 phy_pib_t *get_phyPIB(void);
 void PD_DATA_Indication(frame_t *fr);
+bool set_padIOPwrLevel(uint8_t level);
+uint8_t get_padIOPwrLevel(void);
 #endif

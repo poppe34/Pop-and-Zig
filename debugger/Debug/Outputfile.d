@@ -60,6 +60,10 @@ zigbee\MAC\MAC_data_service.c
 
 zigbee\MAC\MAC_mlme_associate.c
 
+zigbee\MAC\MAC_mlme_beacon_notify.c
+
+zigbee\MAC\MAC_mlme_commStatus.c
+
 zigbee\MAC\MAC_mlme_disassociate.c
 
 zigbee\MAC\MAC_mlme_gts.c
@@ -81,6 +85,8 @@ zigbee\MAC\MAC_NWK_bridge.c
 zigbee\MAC\MAC_trx.c
 
 zigbee\misc\qsm.c
+
+zigbee\misc\xmega_interrupt.c
 
 zigbee\misc\xmega_time.c
 

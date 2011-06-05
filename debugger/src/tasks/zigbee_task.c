@@ -75,7 +75,7 @@ void zigbee_packetFirst(void)
 	if(list_length(zPackets))
 	{
 		packet_t *pkt = list_pop(zPackets);
-		
+		list_remove(zPackets, pkt);
 		if(pkt)
 		{
 			spi_sendToDev(pkt);

@@ -72,7 +72,7 @@ mac_status_t mac_init(void) {
     uint16_t macCoordPANid = 0xffff;
 
     uint16_t macPANid = 0xffff;
-    uint64_t macLongAddr = 0x3333333333333333;
+    uint64_t macLongAddr = aExtendedAddress;
     uint16_t macShortAddr = 0xffff;
 
     MAC_setCoordShortAddr(macCoordShortAddress);

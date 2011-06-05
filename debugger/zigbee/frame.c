@@ -50,6 +50,7 @@ frame_t *frame_new(void)
     {
         fr = (frame_t *)malloc(sizeof(frame_t));
         fr->ptr = fr->frame;
+		fr->dataLength = 0;
     }
     else
         alarm("Exceded the max number of frames");
@@ -59,7 +60,7 @@ frame_t *frame_new(void)
 /*--------------------------------------------------------------------------------
  *   function:     Mac_createFrame
  *
- *   Discription:  This function populates the frame with MAC data
+ *   Description:  This function populates the frame with MAC data
  *
  *   Argument 1:   MAC data
  *
@@ -82,13 +83,14 @@ void frame_free(frame_t *fr)
  *   Argument 2:   Frame
  --------------------------------------------------------------------------------*/
 void frame_sendWithFree(frame_t *fr)
-{
+{	
 //****************************
 //  Add CRC 
 //****************************
     SET_FRAME_DATA(fr, 0x0000, 2);
 		
-    rc_send_frame(fr->dataLength, fr->frame);
+    rc_send_frame((fr->dataLength), fr->frame);
+	
     frame_free(fr);
 }
 /*--------------------------------------------------------------------------------

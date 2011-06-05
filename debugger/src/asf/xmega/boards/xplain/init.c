@@ -91,10 +91,10 @@ void board_init(void)
     ioport_configure_pin(ZIGBEE_MASTER_SS, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 	ioport_configure_pin(ZIGBEE_MASTER_SCK, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 	ioport_configure_pin(ZIGBEE_MASTER_MOSI, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
-	ioport_configure_pin(ZIGBEE_RST, IOPORT_DIR_OUTPUT | IOPORT_INIT_LOW);
+	ioport_configure_pin(ZIGBEE_RST, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 	ioport_configure_pin(ZIGBEE_SLP_TR, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
 	ioport_configure_pin(ZIGBEE_MASTER_MISO, IOPORT_DIR_INPUT);
-	ioport_configure_pin(ZIGBEE_IRQ, IOPORT_DIR_INPUT);
+	ioport_configure_pin(ZIGBEE_IRQ, IOPORT_DIR_INPUT | PORT_OPC_PULLDOWN_gc | PORT_ISC0_bm);
 #endif	    
 
 #ifdef CONF_BOARD_ENABLE_AC_PINS

@@ -88,6 +88,13 @@
 }
 - (voidPtr)zigbee_macBreakdown:(voidPtr)zig
 {
+    uint8_t *holder = zig;
+    uint8_t debugging[20];
+    
+    for (uint8_t x = 0; x<20; x++) {
+        debugging[x] = *(uint8_t *)zig++;
+    }
+    zig = holder;
     mac_layer.mac_fcf = packet_read(zig, mac_fcf_t);
 
     [self zigbee_macFCF_breakdown];
@@ -96,7 +103,7 @@
     [decodedMACStr appendFormat:@"Sequence Number: %i\n", mac_layer.mac_seq_num];
     if(self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x02 || self.mac_layer.mac_fcf.mac_dest_addr_mode == 0x03)
     {
-       // mac_layer.destPanID = packet_read(zig, uint16_t);
+        mac_layer.destPanID = packet_read(zig, uint16_t);
         
         if(mac_layer.mac_fcf.mac_dest_addr_mode == 0x02)
         {
@@ -114,6 +121,7 @@
         else 
         {
             mac_layer.dest_lAddr = packet_read(zig, uint64_t);
+
             [dest release];
             
             NSLog(@"Destination ADDR: %#.16qx\n", mac_layer.dest_lAddr);
@@ -122,8 +130,6 @@
             [self.zigPacketDiction setObject:dest forKey:@"packetDestAddr"];
             [decodedMACStr appendFormat:@"Destination Address: %1$qu (%1$#.16qx)\n", self.mac_layer.dest_lAddr];
         }
-
-        mac_layer.destPanID = packet_read(zig, uint16_t);
         [destPanId release];
         destPanId = [[NSNumber alloc]initWithInt:mac_layer.destPanID];
         [decodedMACStr appendFormat:@"Destination Pan ID: %1$i (%1$#.4x)\n", mac_layer.destPanID];
@@ -134,7 +140,14 @@
     }
     if(self.mac_layer.mac_fcf.mac_src_addr_mode == 0x02 || self.mac_layer.mac_fcf.mac_src_addr_mode == 0x03)
     {
-        mac_layer.srcPanID = packet_read(zig, uint16_t);
+        if(mac_layer.mac_fcf.mac_panID_compress)
+        {
+            mac_layer.srcPanID = mac_layer.destPanID;
+        }
+        else
+        {
+            mac_layer.srcPanID = packet_read(zig, uint16_t);
+        }
         
         if(mac_layer.mac_fcf.mac_src_addr_mode == 0x02)
         {
@@ -161,16 +174,12 @@
 
         }
         [srcPanId release];
-        if(mac_layer.mac_fcf.mac_panID_compress)
-            mac_layer.srcPanID = mac_layer.destPanID;
-        else
-            mac_layer.srcPanID = packet_read(zig, uint16_t);
+
         [decodedMACStr appendFormat:@"Source Pan ID: %1$i (%1$#.4x)\n", mac_layer.srcPanID];
         srcPanId = [[NSNumber alloc]initWithInt:mac_layer.srcPanID];
         [self.zigPacketDiction setObject:src forKey:@"packetSrcAddr"];
         [self.zigPacketDiction setObject:srcPanId forKey:@"packetSrcPanId"];
     }
-    
     return zig;
 }
 - (void)zigbee_nwkFCF_breakdown

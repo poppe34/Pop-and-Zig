@@ -35,7 +35,8 @@ void TM_task(void)
 	}	
 	
 	led_count++;
-	if((led_count & 0x0800)) LED_Toggle(LED7_GPIO);
+	if((led_count & 0x4000)) LED_On(LED7_GPIO);
+	else LED_Off(LED7_GPIO);
 }
 
 void TM_addTask(packet_t *pkt)
@@ -83,7 +84,8 @@ void TM_taskHandler(packet_t *pkt)
 		break;
 			
 		case task_alarm:
-			alarm_subTaskHandler(pkt);
+			//alarm_subTaskHandler(pkt);
+			alarm("I have an alarm task I should not have (TM_MASTER.C)");
 		break;
 		
 		case task_zigbee:
