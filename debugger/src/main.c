@@ -39,6 +39,7 @@ int main(void)
 	pmic_init();
 	alarm_task_init();
 	scheduler_init();
+	alarm("Device Restarted");
     zigbee_init();
 
     PORTC.INT0MASK |= PIN3_bm;
@@ -47,7 +48,9 @@ int main(void)
 	//PORTC.PIN3CTRL |= (PORT_ISC1_bm | PORT_ISC2_bm);
 	
 	sei();
+	
 
+	
 	addr_t destShortTemp, destLongTemp;
 
 	destShortTemp.PANid = 0x3344;
@@ -60,13 +63,13 @@ int main(void)
 	
 	security_t sec;
 	
-//	MAC_beaconReqCommand();//LOOKS GOOD
+	MAC_beaconReqCommand();//LOOKS GOOD
 //	MAC_assocRequestCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_assocResponceCommand(mlme_assoc_t *assoc);
 //	MAC_disassocCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_dataRequestCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_panIDConflictCommand();//LOOKS GOOD
-	MAC_orphanCommand();//LOOKS GOOD
+//	MAC_orphanCommand();//LOOKS GOOD
 //	MAC_beaconReqCommand();
 //	MAC_commandCoordRealign(&destShortTemp, &sec);
 

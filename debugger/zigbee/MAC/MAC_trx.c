@@ -27,6 +27,9 @@
 #include "frame.h"
 #include <mac/mac_prototypes.h>
 #include "phy/rc_rf230.h"
+
+#include "alarms_task.h"
+
 uint8_t temp;
 
 /*================================= MACROS           =========================*/
@@ -413,23 +416,31 @@ void MAC_issueACK(uint8_t seq_num){
 //--------------------------------------------------------------------------------
 //function:     Mac_setTxCB
 //
-//Discription:  This function is sets the call back to MAC knows what function to 
+//Description:  This function is sets the call back to MAC knows what function to 
 //              executed after completion
 //
 //Argument 1:   Incoming function callback
 //--------------------------------------------------------------------------------
 void MAC_setTxCB(voidPtr tb){
-	trx_cb = (trx_cb_t *)tb;//TODO work on the discription and make sure this is correct
+	trx_cb = (trx_cb_t *)tb;//TODO work on the description and make sure this is correct
 }
 //--------------------------------------------------------------------------------
 //function:     Mac_txStatus
 //
-//Discription:  This function executes callback function
+//Description:  This function executes callback function
 //
 //Argument 1:   status of tx
 //--------------------------------------------------------------------------------
 void MAC_txStatus(phy_trac_t trac){
-	(trx_cb)(trac);
+	if(trx_cb)
+	{
+		(trx_cb)(trac);
+	}
+	else
+	{
+		alarm("Mac Status called with no callback set (MAC_trx.c)");
+	}
+	
 }
 
 /*EOF*/

@@ -25,12 +25,12 @@ uint8_t temp;
  *           3. a device may send this command to the coordinator macResponseWaitTime symbols after the
  *               acknowledgment to an association request command.
  *------------------------------------------------------------------------------------------*/
-uint8_t MAC_assocRequestCommand(addr_t *destAddr)
+uint8_t MAC_assocRequestCommand(addr_t *destAddr, uint8_t capibilities, security_t *sec)
 {
 	mac_pib_t *mpib = get_macPIB();
 	frame_t *fr = frame_new();
 	mpdu_t	*mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-	uint8_t capibilities = 0x87, seq_num;
+	uint8_t seq_num;
 
 	if(!(MAC_isAssoc()))
 	{

@@ -62,7 +62,9 @@ void radio_RF230_init(void) {
 	delay_us(TIME_RESET);
 
 	RF230_RESET_END;
-
+	
+	RF230registerBitWrite(SR_IRQ_MASK, (0xff));
+	
 	delay_us(TIME_SLEEP_TO_TRX_OFF);
 
 	RF230registerBitWrite(SR_TRX_CMD, CMD_FORCE_TRX_OFF);
@@ -249,7 +251,7 @@ bool set_trx_state(trx_state_t state, bool force) {
 
 			; //make sure we are not in sleep
 
-			// check if transeiver is in a state that will transfer to TRX_OFF
+			// check if transceiver is in a state that will transfer to TRX_OFF
 			if( (status == RX_ON) || (status == PLL_ON) || (status == RX_AACK_ON) || (status == TX_ARET_ON)) {
 
 				RF230registerBitWrite(SR_TRX_CMD, CMD_TRX_OFF);
@@ -429,7 +431,7 @@ bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 	while(wait_for_ack == true) {;}
 	set_irq_callBack(&PHY_TxIrqCB);
 
-	while(!(set_trx_state(PLL_ON, 0))) {;}
+	while(!(set_trx_state(TX_ARET_ON, 0))) {;}
 	/* toggle the SLP_TR to initiate the transfer */
 
 	/*Send frame to RF230*/

@@ -31,7 +31,7 @@ typedef enum COMMAND_TYPE{
 
 /*================================= PROTOTYPES         =========================*/
 
-uint8_t MAC_assocRequestCommand(addr_t *destAddr);
+uint8_t MAC_assocRequestCommand(addr_t *destAddr, uint8_t capibilities, security_t *sec);
 uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc);
 void    MAC_disassocCommand(addr_t *destAddr);
 uint8_t MAC_dataRequestCommand(addr_t *dstAddr);

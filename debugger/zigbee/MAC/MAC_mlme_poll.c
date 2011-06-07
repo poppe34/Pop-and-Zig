@@ -11,9 +11,13 @@
 #include "MAC/MAC_mlme.h"
 #include "MAC/MAC_command.h"
 
+#include "alarms_task.h"
+
+
+
 void MAC_mlme_pollReq(addr_t *dstAddr){ //TODO: I need to add security level and key info
 
-
+	MAC_setTxCB(&MAC_mlme_pollReq_cb);
     MAC_dataRequestCommand(dstAddr);
     
     
@@ -47,4 +51,5 @@ void MAC_mlme_pollReq_cb(mac_status_t status){
 
 void MAC_mlme_pollConf(mac_status_t status){
     status = status;
+	alarm_new(9, "Received a Poll confirmation with status:%x", status);
 }
