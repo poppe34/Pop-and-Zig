@@ -56,12 +56,14 @@ void set_default_irq_callBack(void){
 void default_irq_CB(uint8_t irq_status){
 	if(((irq_status >> RX_START) & 0x01)) {
 		set_irq_callBack(&receive_irq_CB);
+		
 	}//end if
 
 	if(((irq_status>> TRX_END) & 0x01)){
-		LED_On(LED2_GPIO);
+	
 	}//end if
-
+	LED_On(LED2_GPIO);
+	//alarm("I got to the default callback IRQ");
 }//end default_irq_cb
 
 void receive_irq_CB(uint8_t irq_status){

@@ -66,7 +66,7 @@ void radio_RF230_init(void) {
 	delay_us(TIME_SLEEP_TO_TRX_OFF);
 
 	RF230registerBitWrite(SR_TRX_CMD, CMD_FORCE_TRX_OFF);
-
+	
 	delay_us(TIME_P_ON_TO_TRX_OFF);
 
 	state = RF230_STATE();
@@ -83,7 +83,8 @@ void radio_RF230_init(void) {
 		status = set_trx_state(RX_ON, false);
 
 	}
-
+		state = RF230_STATE();
+		alarm_new(5, "The state of the RF230 during INIT is now %x", state);
 }
 
 void rc_reset(void){
@@ -400,12 +401,14 @@ void rc_rx_frame(void) {
 	frame_t *fr = frame_new();
 	fr->direction = INCOMING;
 
+			uint8_t state = RF230_STATE();
+		alarm_new(5, "The state of the RF230 before Rx is now %i", state);
 #ifdef debug
 //	TODO: Setup a debugging section
 //		post_log(get_Time,"Frame Received")
 #endif
 
-	fr->dataLength = RF230frameRead(NO);
+	fr->dataLength = RF230frameRead(fr->frame);
 //	TODO:	I need to setup the RTC right now it defaults to a 16 bit number
 	fr->ptr++;
 	fr->LQI = *fr->ptr;
@@ -432,7 +435,6 @@ bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 	/*Send frame to RF230*/
 		RF230frameWrite(frame_tx, len);
 		RF230_SLP_TR_HIGH;
-		delay_us(10);
 		RF230_SLP_TR_LOW;
 
 	/*Report back a successful transmit*/

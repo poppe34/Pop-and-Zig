@@ -38,8 +38,10 @@
 - (IBAction)ledToggle3:(id)sender;
 - (IBAction)connectToUSB:(id)sender;
 - (IBAction)readUSB:(id)sender;
-- (IBAction)checkZigbee:(id)sender;
+- (IBAction) checkZigbeeButton:(id)sender;
+- (void)checkZigbee;
 - (void)runningCheckAlarms;
+- (void)checkUSBAllTypes;
 
 
 @end

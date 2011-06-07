@@ -79,6 +79,7 @@ SUBDIRS :=  \
 ../zigbee/APS \
 ../zigbee/MAC \
 ../zigbee/misc \
+../zigbee/RF231 \
 ../zigbee/RF230 \
 ../zigbee/phy \
 ../zigbee/NWK

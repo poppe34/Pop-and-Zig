@@ -111,7 +111,7 @@
 
 - (IBAction)readUSB:(id)sender
 {
-	//[NSThread detachNewThreadSelector:@selector(runningCheckAlarms) toTarget:self withObject:nil];
+	//[NSThread detachNewThreadSelector:@selector(checkUSBAllTypes) toTarget:self withObject:nil];
         
    /* NSTimer *twoSecondTimer = [[NSTimer scheduledtimerWithTimeInterval:2.0
                                                            target:self
@@ -119,10 +119,21 @@
                                                          userInfo:nil
                                                           repeats:YES] retain];
     */
-    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
+    [self checkUSBAllTypes];
 }
 
--(IBAction)checkZigbee:(id)sender
+- (void)checkUSBAllTypes
+{
+    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(runningCheckAlarms) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(checkZigbee) userInfo:nil repeats:YES];
+}
+
+- (IBAction) checkZigbeeButton:(id)sender
+{
+    [self checkZigbee];
+}
+- (void)checkZigbee
 {
     uint8_t packet[128];
     uint8_t len;

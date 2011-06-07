@@ -716,6 +716,7 @@
     <Folder Include="zigbee\APS" />
     <Folder Include="zigbee\MAC" />
     <Folder Include="zigbee\misc" />
+    <Folder Include="zigbee\RF231" />
     <Folder Include="zigbee\RF230" />
     <Folder Include="zigbee\phy" />
     <Folder Include="zigbee\NWK" />

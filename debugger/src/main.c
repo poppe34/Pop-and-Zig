@@ -65,8 +65,8 @@ int main(void)
 //	MAC_assocResponceCommand(mlme_assoc_t *assoc);
 //	MAC_disassocCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_dataRequestCommand(&destShortTemp);//LOOKS GOOD
-	MAC_panIDConflictCommand();
-//	MAC_orphanCommand();
+//	MAC_panIDConflictCommand();//LOOKS GOOD
+	MAC_orphanCommand();//LOOKS GOOD
 //	MAC_beaconReqCommand();
 //	MAC_commandCoordRealign(&destShortTemp, &sec);
 

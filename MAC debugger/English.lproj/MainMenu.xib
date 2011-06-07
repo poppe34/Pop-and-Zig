@@ -1794,7 +1794,7 @@
 																<string key="NSFrameSize">{888, 245}</string>
 																<reference key="NSSuperview" ref="1009716605"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="711453404"/>
+																<reference key="NSNextKeyView" ref="24225893"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTableHeaderView" key="NSHeaderView" id="247507345">
 																	<reference key="NSNextResponder" ref="24225893"/>
@@ -2310,7 +2310,7 @@
 												<string key="NSFrame">{{16, 333}, {890, 263}}</string>
 												<reference key="NSSuperview" ref="33583130"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="24225893"/>
+												<reference key="NSNextKeyView" ref="1009716605"/>
 												<int key="NSsFlags">562</int>
 												<reference key="NSVScroller" ref="711453404"/>
 												<reference key="NSHScroller" ref="627668178"/>
@@ -2347,7 +2347,6 @@
 												<string key="NSFrame">{{753, 17}, {156, 17}}</string>
 												<reference key="NSSuperview" ref="33583130"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="52139655">
 													<int key="NSCellFlags">68288064</int>
@@ -3803,14 +3802,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">checkZigbee:</string>
-						<reference key="source" ref="295708740"/>
-						<reference key="destination" ref="208576762"/>
-					</object>
-					<int key="connectionID">837</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">ledToggle1:</string>
 						<reference key="source" ref="295708740"/>
 						<reference key="destination" ref="96277082"/>
@@ -4056,6 +4047,14 @@
 						<reference key="destination" ref="725281706"/>
 					</object>
 					<int key="connectionID">952</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkZigbeeButton:</string>
+						<reference key="source" ref="295708740"/>
+						<reference key="destination" ref="208576762"/>
+					</object>
+					<int key="connectionID">955</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -6707,7 +6706,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">953</int>
+			<int key="maxID">955</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6872,7 +6871,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkZigbee:</string>
+							<string>checkZigbeeButton:</string>
 							<string>connectToUSB:</string>
 							<string>ledToggle1:</string>
 							<string>ledToggle2:</string>
@@ -6893,7 +6892,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkZigbee:</string>
+							<string>checkZigbeeButton:</string>
 							<string>connectToUSB:</string>
 							<string>ledToggle1:</string>
 							<string>ledToggle2:</string>
@@ -6903,7 +6902,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">checkZigbee:</string>
+								<string key="name">checkZigbeeButton:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
