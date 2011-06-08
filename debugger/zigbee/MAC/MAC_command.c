@@ -210,7 +210,15 @@ uint8_t MAC_dataRequestCommand(addr_t *dstAddr)
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
 	mpdu->fcf.MAC_fcf_DstAddr_Mode = dstAddr->mode;
 	mpdu->fcf.MAC_fcf_SrcAddr_Mode = LONG_ADDRESS;
-	mpdu->fcf.MAC_fcf_PANid_Compression = no;
+	if(dstAddr->mode == 0)
+	{
+			mpdu->fcf.MAC_fcf_PANid_Compression = no;
+	}
+
+	else
+	{
+			mpdu->fcf.MAC_fcf_PANid_Compression = YES;
+	}
 	mpdu->fcf.MAC_fcf_Frame_Pending = no;
 	mpdu->fcf.MAC_fcf_Ack_Request = yes;
 	mpdu->fcf.MAC_fcf_Sec_enabled = no;

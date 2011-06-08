@@ -28,15 +28,15 @@ void led_task(packet_t *pkt)
 	{
 	case led_off:
 		LED_Off(led_pinNum(pkt->buf[0]));
-		alarm_new(5, "Device turned off LED %i", pkt->buf[0]);
+		alarm_new(20, "Device turned off LED %i", pkt->buf[0]);
 		break;
 	case led_on:
 		LED_On(led_pinNum(pkt->buf[0]));
-		alarm_new(5, "Device turned on LED %i", pkt->buf[0]);
+		alarm_new(20, "Device turned on LED %i", pkt->buf[0]);
 		break;
 	case led_toggle:
 		LED_Toggle(led_pinNum(pkt->buf[0]));
-		alarm_new(5, "Device toggled LED %i", pkt->buf[0]);
+		alarm_new(20, "Device toggled LED %i", pkt->buf[0]);
 		break;
 	case led_status:
 		break;

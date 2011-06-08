@@ -13,6 +13,7 @@
 #include <avr/interrupt.h>
 
 #include "misc/time.h"
+#include "misc/qsm.h"
 #ifdef	XMEGA
 uint8_t temp;
 
@@ -22,6 +23,7 @@ uint16_t get_Ticks(void);
 void time_init(void){
 
 	//osc_cal();
+	qsm_init();
 	sysclk_enable_module(SYSCLK_PORT_GEN, SYSCLK_EVSYS);
 	start_short_time();
 	start_long_time();

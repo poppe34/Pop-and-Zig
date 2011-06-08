@@ -63,7 +63,7 @@ void radio_RF230_init(void) {
 
 	RF230_RESET_END;
 	
-	RF230registerBitWrite(SR_IRQ_MASK, (0xff));
+	RF230registerBitWrite(SR_IRQ_MASK, (0xCf));
 	
 	delay_us(TIME_SLEEP_TO_TRX_OFF);
 
@@ -421,7 +421,7 @@ void rc_rx_frame(void) {
 
 // Move to the MAC layer
 	PD_DATA_Indication(fr);
-	frame_sendWithFree(fr);
+	free(fr);
 }
 bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 //	TODO: I am not sure if I need to preform a CSMA-

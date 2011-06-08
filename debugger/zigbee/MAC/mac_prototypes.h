@@ -34,7 +34,7 @@ void MAC_beaconConfirm(mac_status_t status);
 //MAC_data_service.c
 void MAC_dataIndication(frame_t *fr);
 void change_receive_mode(uint8_t temp);
-
+void MAC_incomingFrame(frame_t *fr);
 
 //MAC_trx.c
 mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr);

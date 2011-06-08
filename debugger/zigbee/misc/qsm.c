@@ -10,6 +10,9 @@
 #include <misc/qsm.h>
 #include <conf_zigbee.h>
 #include "MAC/mac.h"
+
+#include "tc.h"
+#include "conf_timer.h"
 /*
  * Currently the qsm stack is done using an arrary... I did this because i wanted to declare all the static memory
  * locations at the begining... When I create a custome memory malloc and partitions then I will change this to
@@ -25,7 +28,8 @@ uint8_t qsm_end_point[qsmTYPE];
 uint8_t qsm_init(void){
 	qsm_status_t status = QSM_SUCCESS;
 
-
+	tc_set_cca_interrupt_callback(ZIGBEE_MS_TIMER, &qsm_time_interrupt_handler);
+	tc_set_cca_interrupt_callback(ZIGBEE_MS_OVERFLOW, &qsm_longTime_interrupt_handler);
 	return status;
 }
 
@@ -228,18 +232,28 @@ void qsm_time_setup(qsm_t *qsm){
 	TCD1.CCA = long_time;
 
 	if(((uint16_t)(current_time>>16))>= long_time){
-		START_TIMER1_COMPA();
+		tc_set_cca_interrupt_level(ZIGBEE_MS_TIMER, PMIC_LVL_LOW);
 
 	}//end if
 	else{
-		START_TIMER3_COMPA();
+		tc_set_cca_interrupt_level(ZIGBEE_MS_OVERFLOW, PMIC_LVL_LOW);
 
 	}//end else
 }//end qsm_time_setup
 
+void qsm_longTime_interrupt_handler(void)
+{
+	tc_set_cca_interrupt_level(ZIGBEE_MS_OVERFLOW, 0x00);
+	
+	qsm_t *temp_qsm = &qsm_stack[QSM_TIME][qsmFIRST];
+	TCD0.CCA = ((uint16_t)temp_qsm->time);
+	
+	tc_set_cca_interrupt_level(ZIGBEE_MS_TIMER, PMIC_LVL_LOW);
+}
+
 void qsm_time_interrupt_handler(void){
 
-	STOP_TIMER1_COMPA();
+	tc_set_cca_interrupt_level(ZIGBEE_MS_TIMER, 0x00);
 	qsm_t temp_qsm = qsm_stack[QSM_TIME][qsmFIRST];
 
 	remove_qsm(QSM_TIME, qsmFIRST);

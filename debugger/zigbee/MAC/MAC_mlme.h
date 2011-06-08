@@ -18,7 +18,7 @@
 //MLME associate 
 void MAC_mlme_assocReq(addr_t *destAddr, uint32_t page, uint8_t channel, uint8_t capabilites, security_t *sec);
 void MAC_mlme_assocInd(frame_t *fr);
-void MAC_assocConf(mac_status_t status, short_addr_t *addr, security_t *sec);
+void MAC_mlme_assocConf(mac_status_t status, short_addr_t *addr, security_t *sec);
 void MAC_mlme_assocReq_cb(phy_trac_t trac);
 void MAC_mlme_assocHandler(frame_t *fr);
 

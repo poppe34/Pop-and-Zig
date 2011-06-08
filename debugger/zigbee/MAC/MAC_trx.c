@@ -30,6 +30,7 @@
 
 #include "alarms_task.h"
 
+#include "MAC/MAC_command.h"
 uint8_t temp;
 
 /*================================= MACROS           =========================*/
@@ -151,8 +152,8 @@ void MAC_incomingFrame(frame_t *fr)
 
 	mac_pib_t *mpib = get_macPIB();
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-
-	if(MAC_breakdownFrame(mpdu, fr))
+	uint8_t level = MAC_breakdownFrame(mpdu, fr);
+	if(level)
 	{
 		free(mpdu);
 		return;
@@ -186,13 +187,13 @@ void MAC_incomingFrame(frame_t *fr)
 
 	if(type == MAC_COMMAND)
 	{
-
+		MAC_commandHandler(fr);
 	}//end if
 }
 //--------------------------------------------------------------------------------
 //function:     Mac_breakdownFrame
 //
-//Discription:  This function decodes the MAC data from an incoming frame
+//Description:  This function decodes the MAC data from an incoming frame
 //
 //Argument 1:   MAC data reference
 //
@@ -202,7 +203,7 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	mac_fcf_t fcf_temp;
 	mac_pib_t *mpib = get_macPIB();
 	mac_filter_t filtered = NOT_FILTERED;
-
+	
 	/****************************
 	 * Incoming fcf
 	 *****************************/
@@ -217,7 +218,8 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	mpdu->fcf.MAC_fcf_Frame_Ver = ((fcf_temp >> MAC_FCF_FRAME_VERSION_SHIFT)& 0x03);
 	mpdu->fcf.MAC_fcf_SrcAddr_Mode = ((fcf_temp >> MAC_FCF_SRC_ADDR_MODE_SHIFT)& 0x03);
      */
-    
+    fr->ptr = fr->frame;
+	
     mpdu->fcf = *((mac_fcf_t *)(fr->ptr));
     fr->ptr += sizeof(mac_fcf_t);
     
@@ -315,7 +317,7 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 //--------------------------------------------------------------------------------
 //function:     Mac_secondLevelFilter
 //
-//Discription:  This function filters out any and all un neccessary frames
+//Description:  This function filters out any and all unnecessary frames
 //
 //Argument 1:   MAC data
 //--------------------------------------------------------------------------------
@@ -370,7 +372,7 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 		}//end if
 	}//end if
 
-//6. 	If only the souce fields are included in a data or command the frame shall be accepted
+//6. 	If only the source fields are included in a data or command the frame shall be accepted
 //		only if the device is the PAN coord and the source PANid matches macPANid
 	if(mpdu->fcf.MAC_fcf_Frame_Type == MAC_DATA || mpdu->fcf.MAC_fcf_Frame_Type == MAC_COMMAND){
 		if(mpdu->fcf.MAC_fcf_DstAddr_Mode <  SHORT_ADDRESS || mpdu->fcf.MAC_fcf_DstAddr_Mode > LONG_ADDRESS){

@@ -53,8 +53,8 @@ int main(void)
 	
 	addr_t destShortTemp, destLongTemp;
 
-	destShortTemp.PANid = 0x3344;
-	destShortTemp.shortAddr = 0x5588;
+	destShortTemp.PANid = 0xBABE;
+	destShortTemp.shortAddr = 0x0000;
 	destShortTemp.mode = MAC_SHORT_ADDRESS;
 	
 	destLongTemp.PANid = 0x1122;
@@ -62,8 +62,13 @@ int main(void)
 	destLongTemp.mode = MAC_LONG_ADDRESS;
 	
 	security_t sec;
+
+//	MAC_beaconReqCommand();//LOOKS GOOD
 	
-	MAC_beaconReqCommand();//LOOKS GOOD
+//	_delay_ms(1000);
+	MAC_mlme_assocReq(&destShortTemp, 0x00000000, 11, 0x8e, &sec);
+
+	
 //	MAC_assocRequestCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_assocResponceCommand(mlme_assoc_t *assoc);
 //	MAC_disassocCommand(&destShortTemp);//LOOKS GOOD

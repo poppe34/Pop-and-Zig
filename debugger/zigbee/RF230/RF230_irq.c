@@ -54,25 +54,28 @@ void set_default_irq_callBack(void){
 }
 
 void default_irq_CB(uint8_t irq_status){
-	if(((irq_status >> RX_START) & 0x01)) {
+	if(((irq_status >> RX_START) & 0x01)) 
+	{
 		set_irq_callBack(&receive_irq_CB);
-		
+		alarm_new(9, "Started to receive a new Packet");
 	}//end if
-
-	if(((irq_status>> TRX_END) & 0x01)){
-	
-	}//end if
-	LED_On(LED2_GPIO);
-	//alarm("I got to the default callback IRQ");
+	if(((irq_status>> TRX_END) & 0x01))
+		{
+		alarm_new(9, "Received a new Packet");
+		rc_rx_frame();
+		}	
 }//end default_irq_cb
 
 void receive_irq_CB(uint8_t irq_status){
 
 	if(((irq_status>> TRX_END) & 0x01)){
-
+		
+		alarm_new(9, "Received a new Packet");
 		rc_rx_frame();
-		set_default_irq_callBack();
+		
+		//set_default_irq_callBack();
 	}//end if
+	
 }//end receive_irq_CB
 
 void PHY_TxIrqCB(uint8_t irq_status){
@@ -91,7 +94,6 @@ void PHY_TxIrqCB(uint8_t irq_status){
 
 		case(TRAC_SUCCESS_DATA_PENDING):
 			status = MAC_SUCCESS;
-		//	rc_rx_frame();
 			set_default_irq_callBack();
 		break;
 
@@ -110,15 +112,15 @@ void PHY_TxIrqCB(uint8_t irq_status){
 		break;
 
 		}//end switch
-		set_trx_state(RX_ON, 0);
+		set_trx_state(RX_AACK_ON, 0);
 		MAC_txStatus(trac);
 					
 	}//end if
 }//end PH_TxIrqCB
 
 
-void irq_handler(void){
+void irq_handler(void)
+{
 		uint8_t irq_status = RF230registerRead(RG_IRQ_STATUS);
-		LED_Toggle(LED0_GPIO);
 		(rf230_irq_cb)(irq_status);
 }

@@ -64,6 +64,7 @@ typedef struct QSM_HANDLES{
  * Prototypes
  ************************************************************************************************************************************/
 //qsm.c
+uint8_t qsm_init(void);
 uint8_t qsm_roomAvail(qsm_type_t type);
 uint32_t get_Time(void);
 uint8_t qsm_deinit(void);
@@ -76,5 +77,6 @@ void qsm_shift_right(uint8_t front, qsm_type_t type);
 void qsm_dispatch(void);
 void qsm_time_setup(qsm_t *qsm);
 void qsm_time_interrupt_handler(void);
+void qsm_longTime_interrupt_handler(void);
 
 #endif /* QSM_H_ */

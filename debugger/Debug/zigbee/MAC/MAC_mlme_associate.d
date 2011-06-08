@@ -29,8 +29,21 @@ zigbee/MAC/MAC_mlme_associate.d zigbee/MAC/MAC_mlme_associate.o: \
  ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h ../zigbee/MAC/mac.h \
  ../zigbee/PHY/phy.h ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h \
  ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h ../zigbee/MAC/MAC_command.h \
- ../zigbee/MISC/qsm.h ../inc/alarms_task.h ../inc/spi_task.h \
- ../inc/task_master.h
+ ../zigbee/MAC/MAC.h ../zigbee/MISC/qsm.h ../zigbee/MISC/time.h \
+ ../src/asf/xmega/drivers/tc/tc.h ../src/asf/xmega/utils/status_codes.h \
+ ../src/asf/xmega/drivers/pmic/pmic.h ../src/asf/xmega/drivers/cpu/ccp.h \
+ ../src/asf/common/services/sleepmgr/sleepmgr.h \
+ ../src/asf/xmega/drivers/sleep/sleep.h \
+ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/sleep.h \
+ ../src/asf/common/services/sleepmgr/xmega/sleepmgr.h \
+ ../src/config/conf_sleepmgr.h ../src/asf/common/services/clock/sysclk.h \
+ ../config/conf_clock.h ../src/asf/common/services/clock/xmega/sysclk.h \
+ ../src/asf/common/boards/board.h ../src/asf/xmega/boards/xplain/xplain.h \
+ ../src/asf/common/services/clock/osc.h \
+ ../src/asf/common/services/clock/xmega/osc.h \
+ ../src/asf/common/services/clock/pll.h \
+ ../src/asf/common/services/clock/xmega/pll.h ../config/conf_timer.h \
+ ../inc/alarms_task.h ../inc/spi_task.h ../inc/task_master.h
 
 ../config/conf_zigbee.h:
 
@@ -108,7 +121,49 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/MAC/MAC_command.h:
 
+../zigbee/MAC/MAC.h:
+
 ../zigbee/MISC/qsm.h:
+
+../zigbee/MISC/time.h:
+
+../src/asf/xmega/drivers/tc/tc.h:
+
+../src/asf/xmega/utils/status_codes.h:
+
+../src/asf/xmega/drivers/pmic/pmic.h:
+
+../src/asf/xmega/drivers/cpu/ccp.h:
+
+../src/asf/common/services/sleepmgr/sleepmgr.h:
+
+../src/asf/xmega/drivers/sleep/sleep.h:
+
+c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/sleep.h:
+
+../src/asf/common/services/sleepmgr/xmega/sleepmgr.h:
+
+../src/config/conf_sleepmgr.h:
+
+../src/asf/common/services/clock/sysclk.h:
+
+../config/conf_clock.h:
+
+../src/asf/common/services/clock/xmega/sysclk.h:
+
+../src/asf/common/boards/board.h:
+
+../src/asf/xmega/boards/xplain/xplain.h:
+
+../src/asf/common/services/clock/osc.h:
+
+../src/asf/common/services/clock/xmega/osc.h:
+
+../src/asf/common/services/clock/pll.h:
+
+../src/asf/common/services/clock/xmega/pll.h:
+
+../config/conf_timer.h:
 
 ../inc/alarms_task.h:
 

@@ -167,8 +167,9 @@ uint8_t RF230frameRead(uint8_t *frame_rx)
 	spi_read_packet(SPI_ZIGBEE, frame_rx, len);
     
 	spi_deselect_device(SPI_ZIGBEE, &SPI_DEVICE_ZIGBEE); // end of transmissions
-	report_packet(frame_rx, len);
+
     sei();
+	report_packet(frame_rx, len);
     return length;
 }// end RF230frameRead
 

@@ -33,7 +33,8 @@ zigbee/MAC/MAC_trx.d zigbee/MAC/MAC_trx.o: ../zigbee/MAC/MAC_trx.c \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
  ../zigbee/RF230/at86rf230_registermap.h ../inc/alarms_task.h \
- ../inc/spi_task.h ../inc/task_master.h
+ ../inc/spi_task.h ../inc/task_master.h ../zigbee/MAC/MAC_command.h \
+ ../zigbee/MISC/security.h
 
 ../zigbee/frame.h:
 
@@ -124,3 +125,7 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../inc/spi_task.h:
 
 ../inc/task_master.h:
+
+../zigbee/MAC/MAC_command.h:
+
+../zigbee/MISC/security.h:

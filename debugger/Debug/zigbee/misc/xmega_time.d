@@ -39,7 +39,7 @@ zigbee/misc/xmega_time.d zigbee/misc/xmega_time.o: \
  ../src/asf/common/services/clock/osc.h \
  ../src/asf/common/services/clock/xmega/osc.h \
  ../src/asf/common/services/clock/pll.h \
- ../src/asf/common/services/clock/xmega/pll.h
+ ../src/asf/common/services/clock/xmega/pll.h ../zigbee/misc/qsm.h
 
 ../zigbee/frame.h:
 
@@ -138,3 +138,5 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../src/asf/common/services/clock/pll.h:
 
 ../src/asf/common/services/clock/xmega/pll.h:
+
+../zigbee/misc/qsm.h:
