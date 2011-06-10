@@ -28,8 +28,9 @@ zigbee/MAC/MAC_mlme_start.d zigbee/MAC/MAC_mlme_start.o: \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../config/conf_zigbee.h ../zigbee/MAC/mac_prototypes.h \
  ../zigbee/phy/phy.h ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h \
- ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h ../zigbee/PHY/rc_rf230.h \
- ../src/asf/common/boards/board.h ../src/asf/xmega/boards/xplain/xplain.h \
+ ../zigbee/misc/security.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
+ ../zigbee/PHY/rc_rf230.h ../src/asf/common/boards/board.h \
+ ../src/asf/xmega/boards/xplain/xplain.h \
  ../src/asf/common/services/gpio/gpio.h \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
@@ -100,6 +101,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/nwk/NWK.h:
 

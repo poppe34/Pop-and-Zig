@@ -26,8 +26,8 @@ zigbee/MAC/MAC_mlme_commStatus.d zigbee/MAC/MAC_mlme_commStatus.o: \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/PHY/phy.h \
- ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
- ../zigbee/misc/security.h ../inc/alarms_task.h ../inc/spi_task.h \
+ ../zigbee/misc/security.h ../zigbee/MAC/MAC_mlme.h \
+ ../zigbee/MISC/security.h ../inc/alarms_task.h ../inc/spi_task.h \
  ../inc/task_master.h
 
 ../src/asf/xmega/utils/compiler.h:
@@ -90,11 +90,11 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/PHY/phy.h:
 
+../zigbee/misc/security.h:
+
 ../zigbee/MAC/MAC_mlme.h:
 
 ../zigbee/MISC/security.h:
-
-../zigbee/misc/security.h:
 
 ../inc/alarms_task.h:
 

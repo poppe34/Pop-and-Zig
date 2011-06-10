@@ -26,7 +26,8 @@ zigbee/NWK/NWK.d zigbee/NWK/NWK.o: ../zigbee/NWK/NWK.c ../zigbee/frame.h \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/nwk/NWK.h ../zigbee/NWK/NWK_prototypes.h ../zigbee/MAC/mac.h \
- ../zigbee/PHY/phy.h ../zigbee/NWK/NWK.h ../inc/list.h
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h ../zigbee/NWK/NWK.h \
+ ../inc/list.h
 
 ../zigbee/frame.h:
 
@@ -91,6 +92,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/NWK/NWK.h:
 

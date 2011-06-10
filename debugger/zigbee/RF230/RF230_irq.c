@@ -57,11 +57,11 @@ void default_irq_CB(uint8_t irq_status){
 	if(((irq_status >> RX_START) & 0x01)) 
 	{
 		set_irq_callBack(&receive_irq_CB);
-		alarm_new(9, "Started to receive a new Packet");
+		//alarm_new(9, "Started to receive a new Packet");
 	}//end if
 	if(((irq_status>> TRX_END) & 0x01))
 		{
-		alarm_new(9, "Received a new Packet");
+		alarm_new(9, "Received a new Packet: default CB");
 		rc_rx_frame();
 		}	
 }//end default_irq_cb
@@ -70,7 +70,7 @@ void receive_irq_CB(uint8_t irq_status){
 
 	if(((irq_status>> TRX_END) & 0x01)){
 		
-		alarm_new(9, "Received a new Packet");
+		alarm_new(9, "Received a new Packet: receive CB");
 		rc_rx_frame();
 		
 		//set_default_irq_callBack();

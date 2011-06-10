@@ -38,7 +38,7 @@ void spi_task_init(void)
 
 	spi_enable(SPI_USB);
 	
-	/* THIS IS JUST FOR TESTING DEBUGGING */
+	/* THIS IS JUST FOR TESTING-DEBUGGING */
 
 
 //	return YES;
@@ -66,7 +66,7 @@ uint8_t char_stringLength(char *inx)
 
 void spi_sendToDev(packet_t *pkt)
 {
-	cli();
+	//cli();
 	uint8_t len;
 	uint8_t flag = 0xAA;
 	if(pkt)

@@ -82,7 +82,11 @@ zigbee\MAC\MAC_mlme_start.c
 
 zigbee\MAC\MAC_NWK_bridge.c
 
+zigbee\MAC\MAC_RxQueue.c
+
 zigbee\MAC\MAC_trx.c
+
+zigbee\misc\1-wire.c
 
 zigbee\misc\qsm.c
 

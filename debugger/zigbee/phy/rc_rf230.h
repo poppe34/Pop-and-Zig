@@ -77,6 +77,7 @@ void set_IEEE_ADDR(uint64_t addr);
 uint64_t get_IEEE_ADDR(void);
 void turn_ON_CRC(void);
 void I_AM_COORD(uint8_t coord);
+Bool is_Coord(void);
 uint16_t get_CSMA_seed(void);
 bool set_CSMA(uint16_t csma);
 uint8_t get_MIN_BE(void);

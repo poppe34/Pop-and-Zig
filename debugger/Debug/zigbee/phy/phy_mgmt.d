@@ -30,7 +30,8 @@ zigbee/phy/phy_mgmt.d zigbee/phy/phy_mgmt.o: ../zigbee/phy/phy_mgmt.c \
  ../src/asf/common/services/gpio/gpio.h \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
- ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/phy/phy.h
+ ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/misc/security.h \
+ ../zigbee/phy/phy.h
 
 ../zigbee/frame.h:
 
@@ -107,5 +108,7 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/PHY/phy.h:
 
 ../zigbee/MAC/mac.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/phy/phy.h:

@@ -20,13 +20,13 @@
       <ToolNumber>00B000002621</ToolNumber>
       <Channel>
         <host>127.0.0.1</host>
-        <port>49158</port>
+        <port>52014</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
-        <InterfaceType>JTAG</InterfaceType>
+        <InterfaceName>JTAG</InterfaceName>
         <InterfaceProperties>
-          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagDbgClock>2006657</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
           <IspClock>150000</IspClock>
           <JtagInChain>false</JtagInChain>
@@ -54,7 +54,7 @@
       <ToolNumber>J30200002356</ToolNumber>
       <Channel>
         <host>127.0.0.1</host>
-        <port>49180</port>
+        <port>52014</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
@@ -555,7 +555,19 @@
     <Compile Include="zigbee\MAC\mac_prototypes.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="zigbee\MAC\MAC_RxQueue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_RxQueue.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="zigbee\MAC\MAC_trx.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\misc\1-wire.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\misc\1-wire.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\misc\debug.h">

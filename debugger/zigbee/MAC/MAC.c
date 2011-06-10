@@ -25,18 +25,21 @@
 
 #include "frame.h"
 
+#include "alarms_task.h"
+
 #include "PHY/rc_rf230.h"
 
 #include "mac/mac.h"
 #include "mac/MAC_conf.h"
 #include "mac/mac_prototypes.h"
+#include "MAC/MAC_mlme.h"
 
 #include "conf_zigbee.h"
 /*================================= MACROS           =========================*/
 /*================================= TYEPDEFS         =========================*/
 
 /*================================= GLOBAL VARIABLES =========================*/
-static Bool associated = NO;
+static Bool associated = NO, panCoord = NO;
 
 uint8_t MAC_seq_num;
 static mac_pib_t macPIB;
@@ -118,7 +121,17 @@ mac_status_t mac_init(void) {
 
 //	TODO:	the following arguments need to be moved to a better location.
 	turn_ON_CRC();
-	I_AM_COORD(NO);
+	if(ioport_pin_is_high(ZIGBEE_COORD_GPIO))
+	{
+		MAC_mlme_startReq();
+		MAC_setLongAddr(0x0000222388894343);
+		panCoord = YES;
+		macPIB.macAssociatedPANCoord = YES;
+	}
+	else
+	{
+		I_AM_COORD(NO);
+	}
 	set_MIN_BE(macPIB.macMinBE);
 
 //	RF230registerBitWrite(SR_AACK_SET_PD, 0x01);
@@ -126,7 +139,11 @@ mac_status_t mac_init(void) {
 
 
 //    status = RF230BitRead(SR_TRAC_STATUS);
-
+	
+	set_trx_state(RX_AACK_ON, NO);
+	mac_status_t state = RF230_STATE();
+	alarm_new(9, "TRX status during MAC init is: %x", state);
+	
 	return status;
 }
 
@@ -193,4 +210,15 @@ Bool MAC_isAssoc(void)
 void MAC_setAssoc(Bool value)
 {
 	associated = value;
+	macPIB.macAssociatedPANCoord = value;
+}
+
+Bool MAC_isPanCoord(void)
+{
+	return(panCoord);
+}
+
+void MAC_setPanCoord(Bool coord)
+{
+	panCoord = coord;
 }

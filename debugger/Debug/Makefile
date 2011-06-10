@@ -126,7 +126,9 @@ C_SRCS +=  \
 ../zigbee/MAC/MAC_mlme_set.c \
 ../zigbee/MAC/MAC_mlme_start.c \
 ../zigbee/MAC/MAC_NWK_bridge.c \
+../zigbee/MAC/MAC_RxQueue.c \
 ../zigbee/MAC/MAC_trx.c \
+../zigbee/misc/1-wire.c \
 ../zigbee/misc/qsm.c \
 ../zigbee/misc/xmega_interrupt.c \
 ../zigbee/misc/xmega_time.c \
@@ -197,7 +199,9 @@ zigbee/MAC/MAC_mlme_scan.o \
 zigbee/MAC/MAC_mlme_set.o \
 zigbee/MAC/MAC_mlme_start.o \
 zigbee/MAC/MAC_NWK_bridge.o \
+zigbee/MAC/MAC_RxQueue.o \
 zigbee/MAC/MAC_trx.o \
+zigbee/misc/1-wire.o \
 zigbee/misc/qsm.o \
 zigbee/misc/xmega_interrupt.o \
 zigbee/misc/xmega_time.o \
@@ -261,7 +265,9 @@ zigbee/MAC/MAC_mlme_scan.o \
 zigbee/MAC/MAC_mlme_set.o \
 zigbee/MAC/MAC_mlme_start.o \
 zigbee/MAC/MAC_NWK_bridge.o \
+zigbee/MAC/MAC_RxQueue.o \
 zigbee/MAC/MAC_trx.o \
+zigbee/misc/1-wire.o \
 zigbee/misc/qsm.o \
 zigbee/misc/xmega_interrupt.o \
 zigbee/misc/xmega_time.o \
@@ -324,7 +330,9 @@ zigbee/MAC/MAC_mlme_scan.d \
 zigbee/MAC/MAC_mlme_set.d \
 zigbee/MAC/MAC_mlme_start.d \
 zigbee/MAC/MAC_NWK_bridge.d \
+zigbee/MAC/MAC_RxQueue.d \
 zigbee/MAC/MAC_trx.d \
+zigbee/misc/1-wire.d \
 zigbee/misc/qsm.d \
 zigbee/misc/xmega_interrupt.d \
 zigbee/misc/xmega_time.d \
@@ -387,7 +395,9 @@ zigbee/MAC/MAC_mlme_scan.d \
 zigbee/MAC/MAC_mlme_set.d \
 zigbee/MAC/MAC_mlme_start.d \
 zigbee/MAC/MAC_NWK_bridge.d \
+zigbee/MAC/MAC_RxQueue.d \
 zigbee/MAC/MAC_trx.d \
+zigbee/misc/1-wire.d \
 zigbee/misc/qsm.d \
 zigbee/misc/xmega_interrupt.d \
 zigbee/misc/xmega_time.d \
@@ -437,6 +447,10 @@ ADDITIONAL_DEPENDENCIES:= $(HEX_FLASH_FILE_PATH) size
 OUTPUT_FILE_DEP:= ./Outputfile.d
 
 # AVR/GNU C Compiler
+
+
+
+
 
 
 

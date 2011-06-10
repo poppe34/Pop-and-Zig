@@ -25,8 +25,9 @@ zigbee/phy/phy_trx.d zigbee/phy/phy_trx.o: ../zigbee/phy/phy_trx.c \
  ../src/asf/common/utils/interrupt.h ../src/asf/xmega/utils/parts.h \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
- ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/phy/rc_rf230.h \
- ../src/asf/common/boards/board.h ../src/asf/xmega/boards/xplain/xplain.h \
+ ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/misc/security.h \
+ ../zigbee/phy/rc_rf230.h ../src/asf/common/boards/board.h \
+ ../src/asf/xmega/boards/xplain/xplain.h \
  ../src/asf/common/services/gpio/gpio.h \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
@@ -92,6 +93,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/PHY/phy.h:
 
 ../zigbee/MAC/mac.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/phy/rc_rf230.h:
 

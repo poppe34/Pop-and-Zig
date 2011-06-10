@@ -155,6 +155,7 @@ void MAC_incomingFrame(frame_t *fr)
 	uint8_t level = MAC_breakdownFrame(mpdu, fr);
 	if(level)
 	{
+		alarm_new(5, "Packet got filtered at level %i", level);
 		free(mpdu);
 		return;
 
@@ -187,7 +188,7 @@ void MAC_incomingFrame(frame_t *fr)
 
 	if(type == MAC_COMMAND)
 	{
-		MAC_commandHandler(fr);
+		MAC_commandHandler(fr, mpdu);
 	}//end if
 }
 //--------------------------------------------------------------------------------
@@ -248,10 +249,7 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 		mpdu->destination.PANid = GET_FRAME_DATA(fr, 2);
 
 		mpdu->destination.shortAddr = GET_FRAME_DATA(fr, 2);
-
-		if(mpdu->fcf.MAC_fcf_PANid_Compression){
-			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
-		}
+			
 	break;
 	case(MAC_LONG_ADDRESS):
 		mpdu->destination.mode = MAC_LONG_ADDRESS;
@@ -260,10 +258,6 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 
 		mpdu->destination.extAddr = GET_FRAME_DATA(fr, 8);
 
-
-		if(mpdu->fcf.MAC_fcf_PANid_Compression){
-			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
-		}
 	break;
 
 	}
@@ -272,10 +266,10 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 		filtered = MAC_secondLevelFilter(mpdu);
 			if(filtered != NOT_FILTERED){
 			//	led_on_byte(filtered);
-				return FILTERED;
+				return filtered;
 			}//end if
 		if(mpdu->fcf.MAC_fcf_Ack_Request && mpib->macAutoRequest){
-				MAC_issueACK(mpdu->seq_num);
+				//MAC_issueACK(mpdu->seq_num);
 			}
 	}//end if
 
@@ -294,6 +288,11 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
 			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
 		}
+		else
+		{
+			mpdu->source.PANid = mpdu->destination.PANid;
+		}
+
 		mpdu->source.shortAddr = GET_FRAME_DATA(fr, 2);
 
 	break;
@@ -301,6 +300,10 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 
 		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
 			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
+		}
+		else
+		{
+			mpdu->source.PANid = mpdu->destination.PANid;
 		}
 
 		mpdu->source.extAddr = GET_FRAME_DATA(fr, 8);
@@ -347,7 +350,7 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 //4. Short add is included in the frame and it shall match 0xffff or macShortAddress.. if extened addr is used macExtendedAddr
 	if(mpdu->fcf.MAC_fcf_DstAddr_Mode == SHORT_ADDRESS){
 		if(mpdu->destination.shortAddr != mpib->macShortAddress.shortAddr){
-			if(mpdu->destination.shortAddr == 0xffff){
+			if(mpdu->destination.shortAddr != 0xffff){
 				return level4;
 			}//end if
 		}//end if
@@ -382,7 +385,7 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 				}//end if
 			}//end if
 			else{
-				return FILTERED;
+				return level6;
 			}//end else
 		}//end if
 	}//end if
@@ -394,7 +397,7 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 //--------------------------------------------------------------------------------
 //function:     Mac_issueAck
 //
-//Discription:  This function issues the ack back for a frame
+//Description:  This function issues the ack back for a frame
 //
 //Argument 1:   sequence number of the incoming frame
 //--------------------------------------------------------------------------------

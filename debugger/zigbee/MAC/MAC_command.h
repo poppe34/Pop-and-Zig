@@ -33,12 +33,12 @@ typedef enum COMMAND_TYPE{
 
 uint8_t MAC_assocRequestCommand(addr_t *destAddr, uint8_t capibilities, security_t *sec);
 uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc);
-void    MAC_disassocCommand(addr_t *destAddr);
+void MAC_disassocCommand(addr_t *destAddr, mac_disassoc_reason_t reason);
 uint8_t MAC_dataRequestCommand(addr_t *dstAddr);
 uint8_t MAC_panIDConflictCommand(void);
 uint8_t MAC_orphanCommand(void);
 void    MAC_beaconReqCommand(void);
 void    MAC_commandCoordRealign(addr_t *destAddr, security_t *sec);
-void    MAC_commandHandler(frame_t *fr);
+void	MAC_commandHandler(frame_t *fr, mpdu_t *mpdu);
 
 #endif /* MAC_COMMAND_H_ */

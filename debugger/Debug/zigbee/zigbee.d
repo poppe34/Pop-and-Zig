@@ -40,9 +40,10 @@ zigbee/zigbee.d zigbee/zigbee.o: ../zigbee/zigbee.c ../zigbee/frame.h \
  ../src/asf/common/services/clock/pll.h \
  ../src/asf/common/services/clock/xmega/pll.h ../config/conf_zigbee.h \
  ../config/conf_timer.h ../zigbee/RF230/RF230.h ../zigbee/phy/phy.h \
- ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h ../zigbee/MAC/mac_prototypes.h \
- ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
- ../zigbee/NWK/NWK_prototypes.h ../zigbee/NWK/NWK.h ../inc/list.h
+ ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h ../zigbee/misc/security.h \
+ ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/NWK/NWK_prototypes.h ../zigbee/NWK/NWK.h \
+ ../inc/list.h
 
 ../zigbee/frame.h:
 
@@ -151,6 +152,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/MAC/mac_prototypes.h:
 

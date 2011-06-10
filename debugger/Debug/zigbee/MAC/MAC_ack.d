@@ -40,8 +40,8 @@ zigbee/MAC/MAC_ack.d zigbee/MAC/MAC_ack.o: ../zigbee/MAC/MAC_ack.c \
  ../src/asf/common/services/clock/pll.h \
  ../src/asf/common/services/clock/xmega/pll.h ../config/conf_zigbee.h \
  ../config/conf_timer.h ../zigbee/mac/mac.h ../zigbee/frame.h \
- ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/mac/mac_prototypes.h \
- ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h
+ ../zigbee/PHY/phy.h ../zigbee/MAC/mac.h ../zigbee/misc/security.h \
+ ../zigbee/mac/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h
 
 ../src/asf/xmega/utils/compiler.h:
 
@@ -146,6 +146,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/PHY/phy.h:
 
 ../zigbee/MAC/mac.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/mac/mac_prototypes.h:
 

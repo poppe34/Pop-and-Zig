@@ -58,9 +58,9 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../inc/zigbee_task.h ../config/conf_debug.h ../inc/alarms_task.h \
  ../inc/list.h ../inc/spi_task.h ../zigbee/NWK/NWK_prototypes.h \
  ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/PHY/phy.h \
- ../zigbee/NWK/NWK.h ../inc/list.h ../zigbee/MAC/mac_prototypes.h \
- ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
- ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
+ ../zigbee/misc/security.h ../zigbee/NWK/NWK.h ../inc/list.h \
+ ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
  ../zigbee/MAC/MAC_command.h ../zigbee/RF230/RF230.h
 
 ../src/asf.h:
@@ -222,6 +222,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/frame.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/NWK/NWK.h:
 

@@ -10,6 +10,7 @@
 #include "MAC/mac_prototypes.h"
 #include "NWK/NWK_prototypes.h"
 #include "MAC/MAC_command.h"
+#include "MAC/MAC_mlme.h"
 
 typedef void(*mac_beaconHandler_t)(mac_status_t status);
 mac_beaconHandler_t handle;
@@ -65,6 +66,8 @@ void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
 	desc->SuperframeSpec.panCoord = ((uint8_t)(tempsuperframe>>MAC_SUPERFRAME_PAN_COORD_SHIFT & 0x01));
 	desc->SuperframeSpec.superframeOrder = ((uint8_t)(tempsuperframe>>MAC_SUPERFRAME_FRAME_ORDER_SHIFT & 0x0f));
 
+	MAC_mlme_beaconInd(mpdu, fr);
+	
 	NWK_beaconInd(desc, mpdu, fr);
 
 

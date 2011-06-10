@@ -11,7 +11,7 @@
 #include <MAC/mac_prototypes.h>
 #include "PHY/rc_rf230.h"
 
-mac_status_t mlme_start_request(void){
+mac_status_t MAC_mlme_startReq(void){
 	mac_pib_t *mpib = get_macPIB();
 	phy_pib_t *ppib = get_phyPIB();
 
@@ -31,4 +31,5 @@ mac_status_t mlme_start_request(void){
 //Set the current Channel
 	MAC_setCurrentChannel(DEFAULT_CHANNEL);
 
+	return MAC_SUCCESS;
 }

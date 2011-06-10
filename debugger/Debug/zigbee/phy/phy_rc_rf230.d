@@ -45,9 +45,10 @@ zigbee/phy/phy_rc_rf230.d zigbee/phy/phy_rc_rf230.o: \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
  ../zigbee/RF230/at86rf230_registermap.h ../zigbee/PHY/phy.h \
- ../zigbee/MAC/mac.h ../zigbee/RF230/RF230_IRQ.h \
- ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
- ../zigbee/mac/mac.h
+ ../zigbee/MAC/mac.h ../zigbee/misc/security.h \
+ ../zigbee/RF230/RF230_IRQ.h ../zigbee/MAC/mac_prototypes.h \
+ ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
+ ../zigbee/MAC/MAC_RxQueue.h
 
 ../zigbee/misc/time.h:
 
@@ -169,6 +170,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/MAC/mac.h:
 
+../zigbee/misc/security.h:
+
 ../zigbee/RF230/RF230_IRQ.h:
 
 ../zigbee/MAC/mac_prototypes.h:
@@ -178,3 +181,5 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/nwk/NWK.h:
 
 ../zigbee/mac/mac.h:
+
+../zigbee/MAC/MAC_RxQueue.h:

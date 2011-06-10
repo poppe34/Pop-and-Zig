@@ -30,6 +30,7 @@ void debug_test(void);
 
 int main(void)
 {
+	_delay_ms(1000);
 	board_init();
     uint16_t count;
 	// Insert application code here, after the board has been initialized.
@@ -64,11 +65,19 @@ int main(void)
 	security_t sec;
 
 //	MAC_beaconReqCommand();//LOOKS GOOD
-	
-//	_delay_ms(1000);
+//	if((MAC_isPanCoord()) == 0)
+	{
+		
+
+	MAC_beaconReqCommand();
+/*	_delay_ms(500);
 	MAC_mlme_assocReq(&destShortTemp, 0x00000000, 11, 0x8e, &sec);
 
-	
+
+	_delay_ms(5000);
+	mac_mlme_disassocReq(DEV_WISHES_TO_LEAVE);
+	*/
+	}	
 //	MAC_assocRequestCommand(&destShortTemp);//LOOKS GOOD
 //	MAC_assocResponceCommand(mlme_assoc_t *assoc);
 //	MAC_disassocCommand(&destShortTemp);//LOOKS GOOD

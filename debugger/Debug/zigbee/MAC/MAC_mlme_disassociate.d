@@ -27,9 +27,10 @@ zigbee/MAC/MAC_mlme_disassociate.d zigbee/MAC/MAC_mlme_disassociate.o: \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/mac/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/MAC/mac.h \
- ../zigbee/PHY/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
- ../zigbee/MAC/MAC_command.h ../zigbee/MISC/security.h \
- ../zigbee/MAC/MAC_mlme.h
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/MAC/MAC_command.h \
+ ../zigbee/MISC/security.h ../zigbee/MAC/MAC_mlme.h ../inc/alarms_task.h \
+ ../inc/spi_task.h ../inc/task_master.h
 
 ../zigbee/frame.h:
 
@@ -95,6 +96,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/PHY/phy.h:
 
+../zigbee/misc/security.h:
+
 ../zigbee/nwk/NWK.h:
 
 ../zigbee/mac/mac.h:
@@ -104,3 +107,9 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MISC/security.h:
 
 ../zigbee/MAC/MAC_mlme.h:
+
+../inc/alarms_task.h:
+
+../inc/spi_task.h:
+
+../inc/task_master.h:

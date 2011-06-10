@@ -32,8 +32,8 @@ zigbee/frame.d zigbee/frame.o: ../zigbee/frame.c ../zigbee/frame.h \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
  ../zigbee/RF230/at86rf230_registermap.h ../zigbee/PHY/phy.h \
- ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/MAC/MAC_mlme.h \
- ../zigbee/MISC/security.h
+ ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/misc/security.h \
+ ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h
 
 ../zigbee/frame.h:
 
@@ -122,6 +122,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/frame.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/MAC/MAC_mlme.h:
 

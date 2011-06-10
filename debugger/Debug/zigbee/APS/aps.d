@@ -26,8 +26,8 @@ zigbee/APS/aps.d zigbee/APS/aps.o: ../zigbee/APS/aps.c \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/phy/phy.h ../zigbee/MAC/mac.h ../zigbee/frame.h \
- ../zigbee/PHY/phy.h ../zigbee/RF230/RF230.h ../zigbee/mac/mac.h \
- ../zigbee/aps/aps.h ../config/conf_zigbee.h
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h ../zigbee/RF230/RF230.h \
+ ../zigbee/mac/mac.h ../zigbee/aps/aps.h ../config/conf_zigbee.h
 
 ../src/asf/xmega/utils/compiler.h:
 
@@ -90,6 +90,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/frame.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/RF230/RF230.h:
 

@@ -88,7 +88,7 @@ void TM_fromUSB(uint8_t *buf)
 
 packet_t *TM_newPacket(void)
 {
-	if(list_length(packets) >= 10)
+	if(list_length(packets) >= 40)
 	{
       alarm("(task_manager.c)TM_newPacket:Overflow of packets");
 	  return NULL;
@@ -131,7 +131,7 @@ void TM_handler(packet_t *pkt)
 	switch(pkt->task)
 	{
 		case task_LED:
-		    led_subTaskHandler(pkt);
+		    //led_subTaskHandler(pkt); I stopped this So I would not have any transmissions to the device
 		break;
 		
 		case task_alarm:

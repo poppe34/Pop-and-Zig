@@ -13,8 +13,6 @@
 /*********************************************************
 /*              Variable Declarations
 /********************************************************/
-LIST(alarmLog);
-
 
 
 /************************************************************************/
@@ -78,9 +76,7 @@ void alarm_new(uint8_t lvl, char *str, ...)
 		}					
 	    
 	}
-	TM_removeTask(pkt);
-	spi_sendToDev(pkt);
-	
+
 	va_end(arg);
 }
 
@@ -119,7 +115,7 @@ void alarm_subTaskHandler(packet_t *pkt)
 				case from_usb:
 				break;
 				case to_usb:
-				    
+				 spi_sendToDev(pkt);
 				break;
 			}			
 		break;

@@ -34,6 +34,7 @@
 #include "RF230/RF230_IRQ.h"
 
 #include "MAC/mac_prototypes.h"
+#include "MAC/MAC_RxQueue.h"
 
 bool wait_for_ack = false;
 
@@ -82,9 +83,10 @@ void radio_RF230_init(void) {
 		/* put transceiver in CCA mode 3 */
 		RF230registerBitWrite(SR_CCA_MODE, 0x03);
 		/* Set the state to RX_ON */
-		status = set_trx_state(RX_ON, false);
+
 
 	}
+		status = set_trx_state(RX_AACK_ON, false);
 		state = RF230_STATE();
 		alarm_new(5, "The state of the RF230 during INIT is now %x", state);
 }
@@ -404,7 +406,7 @@ void rc_rx_frame(void) {
 	fr->direction = INCOMING;
 
 			uint8_t state = RF230_STATE();
-		alarm_new(5, "The state of the RF230 before Rx is now %i", state);
+		alarm_new(5, "The state of the RF230 before Rx is now %x", state);
 #ifdef debug
 //	TODO: Setup a debugging section
 //		post_log(get_Time,"Frame Received")
@@ -420,8 +422,8 @@ void rc_rx_frame(void) {
 
 
 // Move to the MAC layer
-	PD_DATA_Indication(fr);
-	free(fr);
+	MAC_RxQueue_add(fr);
+
 }
 bool rc_send_frame(uint8_t len, uint8_t *frame_tx) {
 //	TODO: I am not sure if I need to preform a CSMA-
@@ -511,6 +513,11 @@ void I_AM_COORD(uint8_t coord) {
 	else{
 		RF230registerBitWrite(SR_I_AM_COORD, 0x00);
 	}
+}
+
+Bool is_Coord(void)
+{
+	return (RF230BitRead(SR_I_AM_COORD));
 }
 
 uint16_t get_CSMA_seed(void) {

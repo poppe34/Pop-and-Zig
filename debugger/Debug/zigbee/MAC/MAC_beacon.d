@@ -26,10 +26,11 @@ zigbee/MAC/MAC_beacon.d zigbee/MAC/MAC_beacon.o: \
  ../src/asf/common/utils/interrupt.h ../src/asf/xmega/utils/parts.h \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
- ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h ../zigbee/MAC/mac_prototypes.h \
- ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
- ../zigbee/NWK/NWK_prototypes.h ../zigbee/NWK/NWK.h ../inc/list.h \
- ../zigbee/MAC/MAC_command.h ../zigbee/MISC/security.h
+ ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h ../zigbee/misc/security.h \
+ ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/NWK/NWK_prototypes.h ../zigbee/NWK/NWK.h \
+ ../inc/list.h ../zigbee/MAC/MAC_command.h ../zigbee/MISC/security.h \
+ ../zigbee/MAC/MAC_mlme.h
 
 ../zigbee/frame.h:
 
@@ -91,6 +92,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/PHY/phy.h:
 
+../zigbee/misc/security.h:
+
 ../zigbee/MAC/mac_prototypes.h:
 
 ../zigbee/phy/phy.h:
@@ -108,3 +111,5 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/MAC_command.h:
 
 ../zigbee/MISC/security.h:
+
+../zigbee/MAC/MAC_mlme.h:

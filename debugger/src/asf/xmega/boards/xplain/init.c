@@ -64,6 +64,8 @@ void board_init(void)
 	ioport_configure_pin(GPIO_PUSH_BUTTON_7, IOPORT_DIR_INPUT | IOPORT_PULL_UP);
 	
 	ioport_configure_pin(USB_IRQ, IOPORT_DIR_INPUT);
+	
+	
 
 #ifdef CONF_BOARD_AT45DBX
 	ioport_configure_pin(AT45DBX_MASTER_SS, IOPORT_DIR_OUTPUT |
@@ -96,6 +98,10 @@ void board_init(void)
 	ioport_configure_pin(ZIGBEE_MASTER_MISO, IOPORT_DIR_INPUT);
 	ioport_configure_pin(ZIGBEE_IRQ, IOPORT_DIR_INPUT | PORT_OPC_PULLUP_gc | PORT_ISC0_bm);
 #endif	    
+
+#ifdef CONF_BOARD_ENABLE_1_WIRE_ADDR
+	ioport_configure_pin(ZIGBEE_COORD_GPIO, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
+#endif
 
 #ifdef CONF_BOARD_ENABLE_AC_PINS
 	ioport_configure_pin(IOPORT_CREATE_PIN(PORTA, 0), IOPORT_DIR_INPUT);

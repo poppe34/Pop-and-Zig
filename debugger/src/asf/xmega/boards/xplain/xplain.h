@@ -117,6 +117,7 @@
 #define ZIGBEE_SPI_CLK_MASK		SYSCLK_PORT_D
 #define ZIGBEE_PORT				PORTD
 #define ZIGBEE_IRQ_TC			&TCD0
+#define	ZIGBEE_COORD_GPIO		IOPORT_CREATE_PIN(PORTA,7)
 //! @}
 
 //! \name DAC connection and control of the Speaker

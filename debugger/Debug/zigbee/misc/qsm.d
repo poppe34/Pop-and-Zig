@@ -26,8 +26,8 @@ zigbee/misc/qsm.d zigbee/misc/qsm.o: ../zigbee/misc/qsm.c \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/misc/qsm.h ../config/conf_zigbee.h ../zigbee/MAC/mac.h \
- ../zigbee/PHY/phy.h ../src/asf/xmega/drivers/tc/tc.h \
- ../src/asf/xmega/utils/status_codes.h \
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h \
+ ../src/asf/xmega/drivers/tc/tc.h ../src/asf/xmega/utils/status_codes.h \
  ../src/asf/xmega/drivers/pmic/pmic.h ../src/asf/xmega/drivers/cpu/ccp.h \
  ../src/asf/common/services/sleepmgr/sleepmgr.h \
  ../src/asf/xmega/drivers/sleep/sleep.h \
@@ -104,6 +104,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../src/asf/xmega/drivers/tc/tc.h:
 

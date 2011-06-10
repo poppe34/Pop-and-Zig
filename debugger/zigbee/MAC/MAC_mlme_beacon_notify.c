@@ -9,8 +9,10 @@
 #include "frame.h"
 
 #include "MAC/mac.h"
+#include "MAC_mlme.h"
 
-void MAC_mlme_beaconInd(uint8_t BSN, mac_pan_descriptor_t *panDesc, uint8_t payloadLen, uint8_t *payload)
+//void MAC_beaconHandler
+void MAC_mlme_beaconInd(mpdu_t *mpdu, frame_t *fr)
 {
 	//THis is far from done.... I will add more later.
 	

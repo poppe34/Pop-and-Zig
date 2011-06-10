@@ -44,4 +44,7 @@
 
 #define CONF_BOARD_ENABLE_ZIGBEE_PORTD
 
+// This enables 1-wire to enable using unique addr from RZ600
+#define CONF_BOARD_ENABLE_1_WIRE_ADDR
+
 #endif /* CONF_BOARD_H_INCLUDED */

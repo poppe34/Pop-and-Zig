@@ -84,8 +84,7 @@ void TM_taskHandler(packet_t *pkt)
 		break;
 			
 		case task_alarm:
-			//alarm_subTaskHandler(pkt);
-			alarm("I have an alarm task I should not have (TM_MASTER.C)");
+			alarm_subTaskHandler(pkt);
 		break;
 		
 		case task_zigbee:

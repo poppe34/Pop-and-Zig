@@ -27,9 +27,10 @@ zigbee/MAC/MAC_mlme_associate.d zigbee/MAC/MAC_mlme_associate.o: \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h ../zigbee/MAC/mac.h \
- ../zigbee/PHY/phy.h ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h \
- ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h ../zigbee/MAC/MAC_command.h \
- ../zigbee/MAC/MAC.h ../zigbee/MISC/qsm.h ../zigbee/MISC/time.h \
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h \
+ ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/MAC/MAC_command.h ../zigbee/MAC/MAC.h \
+ ../zigbee/MISC/qsm.h ../zigbee/MISC/time.h \
  ../src/asf/xmega/drivers/tc/tc.h ../src/asf/xmega/utils/status_codes.h \
  ../src/asf/xmega/drivers/pmic/pmic.h ../src/asf/xmega/drivers/cpu/ccp.h \
  ../src/asf/common/services/sleepmgr/sleepmgr.h \
@@ -110,6 +111,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
+
+../zigbee/misc/security.h:
 
 ../zigbee/MAC/mac_prototypes.h:
 

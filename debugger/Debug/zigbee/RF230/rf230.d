@@ -31,7 +31,7 @@ zigbee/RF230/rf230.d zigbee/RF230/rf230.o: ../zigbee/RF230/rf230.c \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h \
  ../zigbee/RF230/at86rf230_registermap.h ../zigbee/PHY/phy.h \
- ../zigbee/MAC/mac.h ../zigbee/frame.h \
+ ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/misc/security.h \
  ../src/asf/common/services/spi/spi_master.h \
  ../src/asf/common/services/spi/xmega_spi/spi_master.h \
  ../src/asf/xmega/utils/status_codes.h ../src/asf/xmega/drivers/spi/spi.h \
@@ -115,6 +115,8 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/MAC/mac.h:
 
 ../zigbee/frame.h:
+
+../zigbee/misc/security.h:
 
 ../src/asf/common/services/spi/spi_master.h:
 

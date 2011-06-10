@@ -28,6 +28,8 @@
 #include "frame.h"
 
 #include "PHY/phy.h"
+
+#include "misc/security.h"
 /*================================= MACROS           =========================*/
 
 
@@ -263,6 +265,20 @@ typedef struct PACK MAC_FCF{
 }mac_fcf_t;
 END_PACK
 
+START_PACK
+typedef struct PACK MAC_CAPIBILITIES
+{
+	COMBINE(7, (
+	uint8_t		alt_PAN_coord:1,
+	uint8_t		device_type:1,
+	uint8_t		pwr_src:1,
+	uint8_t		Rx_on_idle:1,
+	uint8_t		resrv:2,
+	uint8_t		sec_capib:1,
+	uint8_t		alloc_addr:1))	
+}mac_capibilities_t;
+END_PACK
+
 typedef struct MCPS_DATA{
 	mac_addr_t		MAC_dstAddr;
 	uint8_t			MAC_srcPANid[2];
@@ -304,6 +320,7 @@ typedef struct MPDU{// This should be the data type for msdu(I have the same pro
 	uint16_t 	crc;//TODO: initial development will have the transceiver generate CRC
 	uint8_t		payload[aMaxMacPayloadSize];
 	uint8_t 	*ptr;
+	security_t  sec;
 }mpdu_t;
 
 typedef struct MAC_PIB{
@@ -348,10 +365,7 @@ typedef struct MAC_SCAN{
 	uint32_t 	ScanChannels;
 	uint8_t		ScanDuration;
 	uint8_t		ChannelPage;
-	uint8_t		SecurityLevel;
-	uint8_t		KeyIdMode;
-	uint8_t		KeySource; //TODO: I need to fix to be a union to
-	uint8_t 	KeyIndex;
+	security_t	sec;
 }mac_scan_t;
 
 typedef struct MAC_SUPERFRAME{
@@ -421,5 +435,7 @@ typedef void (*trx_cb_t)(phy_trac_t);
 //extern static Bool associated;
 /*================================= LOCAL VARIABLES  =========================*/
 /*================================= PROTOTYPES       =========================*/
+void MAC_setPanCoord(Bool coord);
+Bool MAC_isPanCoord(void);
 #endif
 /* EOF */

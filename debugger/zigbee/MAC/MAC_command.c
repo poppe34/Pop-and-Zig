@@ -10,6 +10,9 @@
 #include "MAC/MAC_command.h"
 #include "MAC/MAC_mlme.h"
 
+
+#include "alarms_task.h"
+
 uint8_t temp;
 /*------------------------------------------------------------------------------------------
  * Function:    MAC_dataRequestCommand
@@ -147,7 +150,7 @@ uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc)
  *           3. a device may send this command to the coordinator macResponseWaitTime symbols after the
  *               acknowledgment to an association request command.
  *------------------------------------------------------------------------------------------*/
-void MAC_disassocCommand(addr_t *destAddr)
+void MAC_disassocCommand(addr_t *destAddr, mac_disassoc_reason_t reason)
 {
 	frame_t *fr = frame_new();
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
@@ -155,7 +158,7 @@ void MAC_disassocCommand(addr_t *destAddr)
 	mac_pib_t *mpib = get_macPIB();
 	uint8_t seq_num;
 	mac_status_t status;
-    uint8_t reason = 0x98;
+ 
 	
 //Setup Command Frame
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
@@ -391,27 +394,50 @@ void MAC_commandCoordRealign(addr_t *destAddr, security_t *sec)
 	
 }
 
-void MAC_commandHandler(frame_t *fr)
+void MAC_commandHandler(frame_t *fr, mpdu_t *mpdu)
 {
 	/*
  * 		This section will have the proper location for each mac commands that it receives
  */
+	
 		uint8_t command = GET_FRAME_DATA(fr, 1);
 
 		switch(command) 
 		{
 		case(MAC_ASSOC_REQUEST):
-            MAC_mlme_assocInd(fr);
+            MAC_mlme_assocReqHandler(mpdu, fr);
 		break;
 		case(MAC_ASSOC_RESPONCE):
-			MAC_mlme_assocHandler(fr);
+			MAC_mlme_assocRespHandler(mpdu, fr);
 		break;
-
-		case(MAC_BEACON_REQUEST):
-			MAC_mlme_beaconInd(fr);
+				
+		case MAC_DISASSOC_NOTIFY:
+			MAC_mlme_disAssocHandler(mpdu, fr);
 		break;
-
-
+		
+		case MAC_DATA_REQUEST:
+			alarm("Rx a Data command");
+		break;
+		
+		case MAC_PAN_CONFLICT_NOTIFY:
+			alarm("Rx a Pan Conflix command");
+		break; 
+		case MAC_ORPHAN_NOTIFY:
+			alarm ("Rx a Orphan Command");
+		break;
+		case MAC_BEACON_REQUEST:
+			alarm("Rx a Beacon Req");
+			MAC_mlme_beaconInd(mpdu, fr);
+		break;
+		case MAC_COORD_REALIGN:
+		
+		break;
+		case MAC_GTS_REQUEST:
+		
+		break;
+		default:
+		alarm_new(7, "Unknown MAC Command Frame Rx");
+		break;
 //	TODO:	I need to add the other types of command frames that i could receive....
 		}//end switch command
 }
