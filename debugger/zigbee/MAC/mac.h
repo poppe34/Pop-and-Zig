@@ -323,6 +323,13 @@ typedef struct MPDU{// This should be the data type for msdu(I have the same pro
 	security_t  sec;
 }mpdu_t;
 
+
+typedef struct MSDU{
+	uint8_t *ptr;
+	uint8_t length;
+	uint8_t data[128];
+}msdu_t;
+
 typedef struct MAC_PIB{
 	uint32_t	macAckWaitDuration;
 	bool		macAssociatedPANCoord;

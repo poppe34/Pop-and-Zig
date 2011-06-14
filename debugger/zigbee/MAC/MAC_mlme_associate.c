@@ -97,8 +97,8 @@ void MAC_mlme_assocReqHandler(mpdu_t *mpdu, frame_t *fr)
 {
 	if(MAC_isPanCoord())
 	{
-		mac_capibilities_t capib = *((mac_capibilities_t *)(fr->ptr));
-		fr->ptr += sizeof(mac_capibilities_t);
+		mac_capibilities_t capib = *((mac_capibilities_t *)(fr->Rx_fr->ptr));
+		fr->Rx_fr->ptr += sizeof(mac_capibilities_t);
 	
 		alarm_new(9, "MAC Request Command Received with cap: %.2x ", (capib));
 	
@@ -117,8 +117,8 @@ void MAC_mlme_assocRespHandler(mpdu_t *mpdu, frame_t *fr)
 	
 	mac_pib_t *mpib = get_macPIB();
 	
-    short_addr_t addr = GET_FRAME_DATA(fr, 2);
-	uint8_t	command_status = GET_FRAME_DATA(fr, 1);
+    short_addr_t addr = GET_FRAME_DATA(fr->Rx_fr, 2);
+	uint8_t	command_status = GET_FRAME_DATA(fr->Rx_fr, 1);
 	
 	/*   Indicate that we are attached to a network and update the device of our new 
 		short addr. */

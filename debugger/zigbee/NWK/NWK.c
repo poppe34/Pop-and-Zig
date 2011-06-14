@@ -32,7 +32,7 @@
 
 /*================================= VARIABLES        =========================*/
 nwk_nib_t nnib;
-frame_data_t nwkBeacon;
+payload_t nwkBeacon;
 /*================================= SOURCE CODE      =========================*/
 void nwk_init(void){
 
@@ -112,32 +112,32 @@ void NWK_setPANid(uint16_t pan){
 }
 void NWK_buildBeaconPayload(void){
 
-	nwkBeacon.ptr = &nwkBeacon.data[15];
+	nwkBeacon.ptr = &nwkBeacon.pl;
 	nwkBeacon.length = 16;
 
-	*nwkBeacon.ptr-- = 0x00; //currently always 0x00 for zigbee protocols may change in the future
+	*nwkBeacon.ptr++ = 0x00; //currently always 0x00 for zigbee protocols may change in the future
 
 	*nwkBeacon.ptr = (nnib.nwkStackProfile<<4);
-	*nwkBeacon.ptr-- |= nwkcProtocolVersion;
+	*nwkBeacon.ptr++ |= nwkcProtocolVersion;
 
 	*nwkBeacon.ptr = (0x00<<2);//TODO: currently I am telling things I am not at Router Capacity but I will need to update this once I have a variable
 	*nwkBeacon.ptr |= (0x01<<3);//TODO: currently I am telling thins I am at depth 1 but this needs to updated once I have a variable
-	*nwkBeacon.ptr-- |= (0x00<<7);//TODO: currently I am telling things I am not at end device capacity but I will need to update this once I have a variable
+	*nwkBeacon.ptr++ |= (0x00<<7);//TODO: currently I am telling things I am not at end device capacity but I will need to update this once I have a variable
 
 	for(uint8_t x = 8; x>0;x--){
-		*nwkBeacon.ptr-- = (uint8_t)(nnib.nwkExtendedPANid>>(8*x));
+		*nwkBeacon.ptr++ = (uint8_t)(nnib.nwkExtendedPANid>>(8*x));
 	}//end for
 
-	*nwkBeacon.ptr-- = 0x00;
-	*nwkBeacon.ptr-- = 0xff; //TODO: TX offset... I might make a constant for this since it is always 0xffffff for a beaconless network
-	*nwkBeacon.ptr-- = 0xff;
-	*nwkBeacon.ptr-- = 0xff;
+	*nwkBeacon.ptr++ = 0x00;
+	*nwkBeacon.ptr++ = 0xff; //TODO: TX offset... I might make a constant for this since it is always 0xffffff for a beaconless network
+	*nwkBeacon.ptr++ = 0xff;
+	*nwkBeacon.ptr++= 0xff;
 
 
 	*nwkBeacon.ptr = nnib.nwkUpdateId;
 }
-frame_data_t *NWK_getBeaconPayload(void){
-	nwkBeacon.ptr = &nwkBeacon.data[0];
+payload_t *NWK_getBeaconPayload(void){
+	nwkBeacon.ptr = &nwkBeacon.pl[0];
 	return(&nwkBeacon);
 
 }

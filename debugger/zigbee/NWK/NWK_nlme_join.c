@@ -6,8 +6,10 @@
  */
 #include <frame.h>
 #include <NWK/NWK_prototypes.h>
+
 #include "MAC/mac_prototypes.h"
 #include "MAC/MAC_mlme.h"
+#include "MAC/MAC_mcps.h"
 
 nwk_join_t *join;
 typedef void (*nwk_joinHandler_t)(nwk_status_t status);
@@ -56,16 +58,19 @@ void NWK_nlme_rejoinScan_cb(mac_scanResult_t *result){
 	nwk_neigh_t *parent = NWK_getBestAddrForNetwork(joinExtPANid);
 	nwk_nib_t *nnib = NWK_getNIB();
 	npdu_t *npdu = (npdu_t *)malloc(sizeof(npdu_t));
+	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
+	
 	frame_t *fr = frame_new();
-
-	npdu->nwk_frame_control.NWK_dest_IEEE = no;
-	npdu->nwk_frame_control.NWK_discover_rt = SUPPRESS_DISCOVER;
-	npdu->nwk_frame_control.NWK_frame_type = NWK_COMMAND;
-	npdu->nwk_frame_control.NWK_multicast = no;
-	npdu->nwk_frame_control.NWK_protocol_ver = nwkcProtocolVersion;
-	npdu->nwk_frame_control.NWK_security = no;
-	npdu->nwk_frame_control.NWK_source_rt = no;
-	npdu->nwk_frame_control.NWK_source_IEEE = yes;
+	fr->payload = frame_hdr(payload);
+	
+	npdu->fcf.NWK_dest_IEEE = no;
+	npdu->fcf.NWK_discover_rt = SUPPRESS_DISCOVER;
+	npdu->fcf.NWK_frame_type = NWK_COMMAND;
+	npdu->fcf.NWK_multicast = no;
+	npdu->fcf.NWK_protocol_ver = nwkcProtocolVersion;
+	npdu->fcf.NWK_security = no;
+	npdu->fcf.NWK_source_rt = no;
+	npdu->fcf.NWK_source_IEEE = yes;
 
 	if(nnib->nwkNetworkAddress.shortAddr == 0xffff){
 		if(nnib->nwkAddrAlloc == 0x02){
@@ -81,17 +86,14 @@ void NWK_nlme_rejoinScan_cb(mac_scanResult_t *result){
 //	TODO:	fix the delay time below I don't have aresponsewaittime declared
 //	add_to_time_qsm(&NWK_nlme_rejoinUnsuccess_cb, null, aResponseWaitTime);
 
-	MAC_setTxCB(&NWK_nlme_joinTx_cb);
-	mac_fcf_t fcf;
-
-	fcf.MAC_fcf_Frame_Type = MAC_DATA;
-	fcf.MAC_fcf_DstAddr_Mode = SHORT_ADDRESS;
-	fcf.MAC_fcf_SrcAddr_Mode = SHORT_ADDRESS;
-	fcf.MAC_fcf_PANid_Compression = yes;
-	fcf.MAC_fcf_Frame_Pending = no;
-	fcf.MAC_fcf_Ack_Request = yes;
-	fcf.MAC_fcf_Sec_enabled = no;
-	fcf.MAC_fcf_Frame_Ver = 0x00;
+	mpdu->fcf.MAC_fcf_Frame_Type = MAC_DATA;
+	mpdu->fcf.MAC_fcf_DstAddr_Mode = SHORT_ADDRESS;
+	mpdu->fcf.MAC_fcf_SrcAddr_Mode = SHORT_ADDRESS;
+	mpdu->fcf.MAC_fcf_PANid_Compression = yes;
+	mpdu->fcf.MAC_fcf_Frame_Pending = no;
+	mpdu->fcf.MAC_fcf_Ack_Request = yes;
+	mpdu->fcf.MAC_fcf_Sec_enabled = no;
+	mpdu->fcf.MAC_fcf_Frame_Ver = 0x00;
 
 	nwk_capInfo_t capInfo;
 	capInfo.allocAddr = yes;//0x01 means that it will issue and addr
@@ -104,16 +106,21 @@ void NWK_nlme_rejoinScan_cb(mac_scanResult_t *result){
 
 
 //Add room for CRC
-	SET_FRAME_DATA(fr, 0x0000, 2);
+	SET_FRAME_DATA(fr->payload, 0x0000, 2);
 
 //Add Capability info
-	SET_FRAME_DATA(fr, *tempCapInfo, 1);
+	SET_FRAME_DATA(fr->payload, *tempCapInfo, 1);
 
-	SET_FRAME_DATA(fr, NWK_REJOIN_REQUEST, 1);
+	SET_FRAME_DATA(fr->payload, NWK_REJOIN_REQUEST, 1);
 
 	NWK_createFrame(npdu, fr);
 
-	NWKtoMAC_bridge(&fcf, npdu, fr);
+	MAC_mcps_dataReq(mpdu, fr);
+	
+	frame_sendWithFree(fr);
+	
+	free(npdu);
+	free(mpdu);
 }
 
 void NWK_nlme_rejoinUnsuccess_cb(void){

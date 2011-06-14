@@ -24,7 +24,7 @@ void mac_mlme_disassocReq(mac_disassoc_reason_t reason){
 
 void MAC_mlme_disAssocHandler(mpdu_t *mpdu, frame_t *fr)
 {
-	mac_disassoc_reason_t reason = (mac_disassoc_reason_t)GET_FRAME_DATA(fr, 1);	
+	mac_disassoc_reason_t reason = (mac_disassoc_reason_t)GET_FRAME_DATA(fr->Rx_fr, 1);	
 	
 	alarm_new(9, "Device %i requested disassoc reason: %i", mpdu->source.shortAddr, reason);
 }

@@ -1,5 +1,5 @@
 zigbee/MAC/MAC_trx.d zigbee/MAC/MAC_trx.o: ../zigbee/MAC/MAC_trx.c \
- ../zigbee/frame.h ../src/asf/xmega/utils/compiler.h \
+ ../src/asf/xmega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/io.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/sfr_defs.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/inttypes.h \
@@ -25,18 +25,18 @@ zigbee/MAC/MAC_trx.d zigbee/MAC/MAC_trx.o: ../zigbee/MAC/MAC_trx.c \
  ../src/asf/common/utils/interrupt.h ../src/asf/xmega/utils/parts.h \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
- ../zigbee/mac/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/MAC/mac.h \
- ../zigbee/PHY/phy.h ../zigbee/misc/security.h ../zigbee/nwk/NWK.h \
- ../zigbee/mac/mac.h ../zigbee/phy/rc_rf230.h \
- ../src/asf/common/boards/board.h ../src/asf/xmega/boards/xplain/xplain.h \
+ ../zigbee/frame.h ../inc/alarms_task.h ../inc/spi_task.h \
+ ../inc/task_master.h ../zigbee/MAC/MAC_mcps.h ../zigbee/phy\phy.h \
+ ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h ../zigbee/misc/security.h \
+ ../zigbee/MAC/mac.h ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
+ ../zigbee/MAC/MAC_command.h ../zigbee/MAC/mac_prototypes.h \
+ ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h ../zigbee/mac/mac.h \
+ ../zigbee/phy/rc_rf230.h ../src/asf/common/boards/board.h \
+ ../src/asf/xmega/boards/xplain/xplain.h \
  ../src/asf/common/services/gpio/gpio.h \
  ../src/asf/common/services/gpio/xmega_ioport/xmega_gpio.h \
  ../src/asf/xmega/drivers/ioport/ioport.h ../zigbee/RF230/RF230.h \
- ../zigbee/RF230/at86rf230_registermap.h ../inc/alarms_task.h \
- ../inc/spi_task.h ../inc/task_master.h ../zigbee/MAC/MAC_command.h \
- ../zigbee/MISC/security.h
-
-../zigbee/frame.h:
+ ../zigbee/RF230/at86rf230_registermap.h
 
 ../src/asf/xmega/utils/compiler.h:
 
@@ -92,15 +92,35 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h:
 
-../zigbee/mac/mac_prototypes.h:
+../zigbee/frame.h:
 
-../zigbee/phy/phy.h:
+../inc/alarms_task.h:
+
+../inc/spi_task.h:
+
+../inc/task_master.h:
+
+../zigbee/MAC/MAC_mcps.h:
+
+../zigbee/phy\phy.h:
 
 ../zigbee/MAC/mac.h:
 
 ../zigbee/PHY/phy.h:
 
 ../zigbee/misc/security.h:
+
+../zigbee/MAC/mac.h:
+
+../zigbee/MAC/MAC_mlme.h:
+
+../zigbee/MISC/security.h:
+
+../zigbee/MAC/MAC_command.h:
+
+../zigbee/MAC/mac_prototypes.h:
+
+../zigbee/phy/phy.h:
 
 ../zigbee/nwk/NWK.h:
 
@@ -121,13 +141,3 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/RF230/RF230.h:
 
 ../zigbee/RF230/at86rf230_registermap.h:
-
-../inc/alarms_task.h:
-
-../inc/spi_task.h:
-
-../inc/task_master.h:
-
-../zigbee/MAC/MAC_command.h:
-
-../zigbee/MISC/security.h:

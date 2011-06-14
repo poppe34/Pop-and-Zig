@@ -23,27 +23,27 @@ void NWK_beaconInd(mac_pan_descriptor_t *desc, mpdu_t *mpdu, frame_t *fr){
 	nwk_beacon_t beacon;
 
 //1st byte Protocol ID
-	beacon.protocolID = *fr->ptr++;
+	beacon.protocolID = *fr->Rx_fr->ptr++;
 
 //2nd byte Stack profile and protocol verison
-	beacon.stackProf = (*fr->ptr & 0x0f);
-	beacon.protocolVer = ((*fr->ptr >> 4) & 0x0f);
-	fr->ptr++;
+	beacon.stackProf = (*fr->Rx_fr->ptr & 0x0f);
+	beacon.protocolVer = ((*fr->Rx_fr->ptr >> 4) & 0x0f);
+	fr->Rx_fr->ptr++;
 
 //3rd byte router capacity avail, depth, and end device capacity avail
-	beacon.routerCap = ((*fr->ptr >> 2) & 0x01);
-	beacon.devDepth = ((*fr->ptr >> 3) & 0x0f);
-	beacon.endDevCap = ((*fr->ptr >> 7) & 0x01);
-	fr->ptr++;
+	beacon.routerCap = ((*fr->Rx_fr->ptr >> 2) & 0x01);
+	beacon.devDepth = ((*fr->Rx_fr->ptr >> 3) & 0x0f);
+	beacon.endDevCap = ((*fr->Rx_fr->ptr >> 7) & 0x01);
+	fr->Rx_fr->ptr++;
 
 //4th - 11th byte is the extended PANid
-	beacon.extendedPANid = GET_FRAME_DATA(fr, 8);
+	beacon.extendedPANid = GET_FRAME_DATA(fr->Rx_fr, 8);
 
 //12-15th byte is the TxOffset in zigbee this is always 0xffffff well should be
-	beacon.txOffset = GET_FRAME_DATA(fr, 8);
+	beacon.txOffset = GET_FRAME_DATA(fr->Rx_fr, 8);
 
 //16th byte is the NWK update ID
-	beacon.nwkUpdateId = GET_FRAME_DATA(fr, 1);
+	beacon.nwkUpdateId = GET_FRAME_DATA(fr->Rx_fr, 1);
 
 
 //****************************************************************************

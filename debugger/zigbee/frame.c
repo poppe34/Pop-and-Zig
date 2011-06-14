@@ -20,7 +20,7 @@ LIST(frames);
 /*--------------------------------------------------------------------------------
  *   function:     frame_init
  *
- *   Discription:  This function inits the frames list to track how many frames are 
+ *   Description:  This function inits the frames list to track how many frames are 
  *                  currently allocated
  *
  *   Argument 1:   none
@@ -35,8 +35,8 @@ void frame_init(void)
 /*--------------------------------------------------------------------------------
  *   function:     frame_newFrame
  *
- *   Discription:  This function allocates memory for a frame and directs the pointer
- *                  to the begining of the memory buffer
+ *   Description:  This function allocates memory for a frame and directs the pointer
+ *                  to the beginning of the memory buffer
  *
  *   Argument 1:   none
  *
@@ -49,13 +49,46 @@ frame_t *frame_new(void)
     if(list_length(frames)<kFRAME_POOL_SIZE)
     {
         fr = (frame_t *)malloc(sizeof(frame_t));
-        fr->ptr = fr->frame;
-		fr->dataLength = 0;
     }
     else
         alarm("Exceded the max number of frames");
     
 	return fr;
+}
+
+voidPtr frame_hdr(hdr_type_t type)
+{
+	voidPtr hdr;
+	
+	switch(type)
+	{
+		case mac_hdr:
+			hdr = malloc(sizeof(mac_hdr_t));
+			((mac_hdr_t *)hdr)->ptr = ((mac_hdr_t *)hdr)->hdr;
+			((mac_hdr_t *)hdr)->length = 0;
+		break;
+		case nwk_hdr:
+			hdr = malloc(sizeof(nwk_hdr_t));
+			((nwk_hdr_t *)hdr)->ptr = ((nwk_hdr_t *)hdr)->hdr;
+			((nwk_hdr_t *)hdr)->length = 0;
+		break;
+		case aps_hdr:
+			hdr = malloc(sizeof(aps_hdr_t));
+			((aps_hdr_t *)hdr)->ptr = ((aps_hdr_t *)hdr)->hdr;
+			((aps_hdr_t *)hdr)->length = 0;
+		break;
+		case payload:
+			hdr = malloc(sizeof(payload_t));
+			((payload_t *)hdr)->ptr = ((payload_t *)hdr)->pl;
+			((payload_t *)hdr)->length = 0;
+		break;
+		case rx_data:
+			hdr = malloc(sizeof(frameData_t));
+			((frameData_t *)hdr)->ptr = ((frameData_t *)hdr)->frame;
+			((frameData_t *)hdr)->length = 0;
+		break;
+	}
+	return hdr;
 }
 /*--------------------------------------------------------------------------------
  *   function:     Mac_createFrame
@@ -87,10 +120,18 @@ void frame_sendWithFree(frame_t *fr)
 //****************************
 //  Add CRC 
 //****************************
-    SET_FRAME_DATA(fr, 0x0000, 2);
-		
-    rc_send_frame((fr->dataLength), fr->frame);
+	uint8_t txFrame[128];
+	uint8_t *ptr;
+	uint8_t length;
 	
+
+    SET_FRAME_DATA(fr->payload, 0x0000, 2);
+		
+    rc_send_frame(length, txFrame);
+	if(fr->mac){free(fr->mac);}
+	if(fr->nwk){free(fr->nwk);}
+	if(fr->aps){free(fr->aps);}	
+	if(fr->payload){free(fr->payload);}
     frame_free(fr);
 }
 /*--------------------------------------------------------------------------------

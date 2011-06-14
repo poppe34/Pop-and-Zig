@@ -403,21 +403,24 @@ void rc_rx_frame(void) {
 
 // setup the location for the frame
 	frame_t *fr = frame_new();
+	fr->Rx_fr = frame_hdr(rx_data);
+	
 	fr->direction = INCOMING;
 
-			uint8_t state = RF230_STATE();
-		alarm_new(5, "The state of the RF230 before Rx is now %x", state);
+	uint8_t state = RF230_STATE();
+	alarm_new(5, "The state of the RF230 before Rx is now %x", state);
+	
 #ifdef debug
 //	TODO: Setup a debugging section
 //		post_log(get_Time,"Frame Received")
 #endif
 
-	fr->dataLength = RF230frameRead(fr->frame);
+	fr->Rx_fr->length = RF230frameRead(fr->Rx_fr->frame);
 //	TODO:	I need to setup the RTC right now it defaults to a 16 bit number
-	fr->ptr++;
-	fr->LQI = *fr->ptr;
-	fr->ptr +=(fr->dataLength-1);
-
+	fr->Rx_fr->ptr++;
+	fr->LQI = *fr->Rx_fr->ptr;
+	fr->Rx_fr->ptr++;
+	
 	fr->timestamp = get_Time();
 
 

@@ -81,7 +81,7 @@ SUBDIRS :=  \
 ../zigbee/misc \
 ../zigbee/RF231 \
 ../zigbee/RF230 \
-../zigbee/phy \
+../zigbee/PHY \
 ../zigbee/NWK
 
 
@@ -113,7 +113,7 @@ C_SRCS +=  \
 ../zigbee/MAC/MAC_ack.c \
 ../zigbee/MAC/MAC_beacon.c \
 ../zigbee/MAC/MAC_command.c \
-../zigbee/MAC/MAC_data_service.c \
+../zigbee/MAC/MAC_mcps_data.c \
 ../zigbee/MAC/MAC_mlme_associate.c \
 ../zigbee/MAC/MAC_mlme_beacon_notify.c \
 ../zigbee/MAC/MAC_mlme_commStatus.c \
@@ -125,6 +125,7 @@ C_SRCS +=  \
 ../zigbee/MAC/MAC_mlme_scan.c \
 ../zigbee/MAC/MAC_mlme_set.c \
 ../zigbee/MAC/MAC_mlme_start.c \
+../zigbee/MAC/MAC_NWK_binding.c \
 ../zigbee/MAC/MAC_NWK_bridge.c \
 ../zigbee/MAC/MAC_RxQueue.c \
 ../zigbee/MAC/MAC_trx.c \
@@ -137,11 +138,12 @@ C_SRCS +=  \
 ../zigbee/NWK/NWK_command.c \
 ../zigbee/NWK/NWK_data_service.c \
 ../zigbee/NWK/NWK_neighborTable.c \
+../zigbee/NWK/NWK_nlde_data.c \
 ../zigbee/NWK/NWK_nlme_join.c \
 ../zigbee/NWK/NWK_nlme_netForm.c \
 ../zigbee/NWK/NWK_nlme_networkDiscover.c \
 ../zigbee/NWK/NWK_trx.c \
-../zigbee/phy/phy.c \
+../zigbee/PHY/phy.c \
 ../zigbee/phy/phy_mgmt.c \
 ../zigbee/phy/PHY_plme_get.c \
 ../zigbee/phy/phy_rc_rf230.c \
@@ -186,7 +188,7 @@ zigbee/MAC/MAC.o \
 zigbee/MAC/MAC_ack.o \
 zigbee/MAC/MAC_beacon.o \
 zigbee/MAC/MAC_command.o \
-zigbee/MAC/MAC_data_service.o \
+zigbee/MAC/MAC_mcps_data.o \
 zigbee/MAC/MAC_mlme_associate.o \
 zigbee/MAC/MAC_mlme_beacon_notify.o \
 zigbee/MAC/MAC_mlme_commStatus.o \
@@ -198,6 +200,7 @@ zigbee/MAC/MAC_mlme_reset.o \
 zigbee/MAC/MAC_mlme_scan.o \
 zigbee/MAC/MAC_mlme_set.o \
 zigbee/MAC/MAC_mlme_start.o \
+zigbee/MAC/MAC_NWK_binding.o \
 zigbee/MAC/MAC_NWK_bridge.o \
 zigbee/MAC/MAC_RxQueue.o \
 zigbee/MAC/MAC_trx.o \
@@ -210,11 +213,12 @@ zigbee/NWK/NWK_beacon.o \
 zigbee/NWK/NWK_command.o \
 zigbee/NWK/NWK_data_service.o \
 zigbee/NWK/NWK_neighborTable.o \
+zigbee/NWK/NWK_nlde_data.o \
 zigbee/NWK/NWK_nlme_join.o \
 zigbee/NWK/NWK_nlme_netForm.o \
 zigbee/NWK/NWK_nlme_networkDiscover.o \
 zigbee/NWK/NWK_trx.o \
-zigbee/phy/phy.o \
+zigbee/PHY/phy.o \
 zigbee/phy/phy_mgmt.o \
 zigbee/phy/PHY_plme_get.o \
 zigbee/phy/phy_rc_rf230.o \
@@ -252,7 +256,7 @@ zigbee/MAC/MAC.o \
 zigbee/MAC/MAC_ack.o \
 zigbee/MAC/MAC_beacon.o \
 zigbee/MAC/MAC_command.o \
-zigbee/MAC/MAC_data_service.o \
+zigbee/MAC/MAC_mcps_data.o \
 zigbee/MAC/MAC_mlme_associate.o \
 zigbee/MAC/MAC_mlme_beacon_notify.o \
 zigbee/MAC/MAC_mlme_commStatus.o \
@@ -264,6 +268,7 @@ zigbee/MAC/MAC_mlme_reset.o \
 zigbee/MAC/MAC_mlme_scan.o \
 zigbee/MAC/MAC_mlme_set.o \
 zigbee/MAC/MAC_mlme_start.o \
+zigbee/MAC/MAC_NWK_binding.o \
 zigbee/MAC/MAC_NWK_bridge.o \
 zigbee/MAC/MAC_RxQueue.o \
 zigbee/MAC/MAC_trx.o \
@@ -276,11 +281,12 @@ zigbee/NWK/NWK_beacon.o \
 zigbee/NWK/NWK_command.o \
 zigbee/NWK/NWK_data_service.o \
 zigbee/NWK/NWK_neighborTable.o \
+zigbee/NWK/NWK_nlde_data.o \
 zigbee/NWK/NWK_nlme_join.o \
 zigbee/NWK/NWK_nlme_netForm.o \
 zigbee/NWK/NWK_nlme_networkDiscover.o \
 zigbee/NWK/NWK_trx.o \
-zigbee/phy/phy.o \
+zigbee/PHY/phy.o \
 zigbee/phy/phy_mgmt.o \
 zigbee/phy/PHY_plme_get.o \
 zigbee/phy/phy_rc_rf230.o \
@@ -317,7 +323,7 @@ zigbee/MAC/MAC.d \
 zigbee/MAC/MAC_ack.d \
 zigbee/MAC/MAC_beacon.d \
 zigbee/MAC/MAC_command.d \
-zigbee/MAC/MAC_data_service.d \
+zigbee/MAC/MAC_mcps_data.d \
 zigbee/MAC/MAC_mlme_associate.d \
 zigbee/MAC/MAC_mlme_beacon_notify.d \
 zigbee/MAC/MAC_mlme_commStatus.d \
@@ -329,6 +335,7 @@ zigbee/MAC/MAC_mlme_reset.d \
 zigbee/MAC/MAC_mlme_scan.d \
 zigbee/MAC/MAC_mlme_set.d \
 zigbee/MAC/MAC_mlme_start.d \
+zigbee/MAC/MAC_NWK_binding.d \
 zigbee/MAC/MAC_NWK_bridge.d \
 zigbee/MAC/MAC_RxQueue.d \
 zigbee/MAC/MAC_trx.d \
@@ -341,11 +348,12 @@ zigbee/NWK/NWK_beacon.d \
 zigbee/NWK/NWK_command.d \
 zigbee/NWK/NWK_data_service.d \
 zigbee/NWK/NWK_neighborTable.d \
+zigbee/NWK/NWK_nlde_data.d \
 zigbee/NWK/NWK_nlme_join.d \
 zigbee/NWK/NWK_nlme_netForm.d \
 zigbee/NWK/NWK_nlme_networkDiscover.d \
 zigbee/NWK/NWK_trx.d \
-zigbee/phy/phy.d \
+zigbee/PHY/phy.d \
 zigbee/phy/phy_mgmt.d \
 zigbee/phy/PHY_plme_get.d \
 zigbee/phy/phy_rc_rf230.d \
@@ -382,7 +390,7 @@ zigbee/MAC/MAC.d \
 zigbee/MAC/MAC_ack.d \
 zigbee/MAC/MAC_beacon.d \
 zigbee/MAC/MAC_command.d \
-zigbee/MAC/MAC_data_service.d \
+zigbee/MAC/MAC_mcps_data.d \
 zigbee/MAC/MAC_mlme_associate.d \
 zigbee/MAC/MAC_mlme_beacon_notify.d \
 zigbee/MAC/MAC_mlme_commStatus.d \
@@ -394,6 +402,7 @@ zigbee/MAC/MAC_mlme_reset.d \
 zigbee/MAC/MAC_mlme_scan.d \
 zigbee/MAC/MAC_mlme_set.d \
 zigbee/MAC/MAC_mlme_start.d \
+zigbee/MAC/MAC_NWK_binding.d \
 zigbee/MAC/MAC_NWK_bridge.d \
 zigbee/MAC/MAC_RxQueue.d \
 zigbee/MAC/MAC_trx.d \
@@ -406,11 +415,12 @@ zigbee/NWK/NWK_beacon.d \
 zigbee/NWK/NWK_command.d \
 zigbee/NWK/NWK_data_service.d \
 zigbee/NWK/NWK_neighborTable.d \
+zigbee/NWK/NWK_nlde_data.d \
 zigbee/NWK/NWK_nlme_join.d \
 zigbee/NWK/NWK_nlme_netForm.d \
 zigbee/NWK/NWK_nlme_networkDiscover.d \
 zigbee/NWK/NWK_trx.d \
-zigbee/phy/phy.d \
+zigbee/PHY/phy.d \
 zigbee/phy/phy_mgmt.d \
 zigbee/phy/PHY_plme_get.d \
 zigbee/phy/phy_rc_rf230.d \
@@ -447,6 +457,10 @@ ADDITIONAL_DEPENDENCIES:= $(HEX_FLASH_FILE_PATH) size
 OUTPUT_FILE_DEP:= ./Outputfile.d
 
 # AVR/GNU C Compiler
+
+
+
+
 
 
 
@@ -663,6 +677,12 @@ zigbee/misc/%.o: ../zigbee/misc/%.c
 	@echo Finished building: $<
 
 zigbee/NWK/%.o: ../zigbee/NWK/%.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo Finished building: $<
+
+zigbee/PHY/%.o: ../zigbee/PHY/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
 	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -DBOARD=XPLAIN -D_ASSERT_ENABLE_  -I"../src" -I"../src/asf/common/applications/user_application/atxmega128a1_xplain" -I"../src/asf/common/boards" -I"../src/asf/common/services/gpio" -I"../src/asf/common/utils" -I"../src/asf/xmega/boards" -I"../src/asf/xmega/boards/xplain" -I"../src/asf/xmega/drivers/ioport" -I"../src/asf/xmega/utils" -I"../src/asf/xmega/utils/preprocessor" -I"../src/config" -I"../src/asf/xmega/drivers/cpu" -I"../src/asf/xmega/drivers/spi" -I"../src/asf/common/services/spi" -I"../src/asf/common/services/spi/xmega_spi" -I"../src/asf/common/services/clock" -I"../inc" -I"../config" -I"../src/asf/xmega/drivers/pmic" -I"../src/asf/common/services/fifo" -I"../zigbee" -I"../src/asf/xmega/drivers/sleep" -I"../src/asf/xmega/drivers/rtc" -I"../src/asf/xmega/drivers/tc" -I"../src/asf/common/services/sleepmgr"  -O0 -fdata-sections -ffunction-sections -g3 -Wall -c -std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax  -mmcu=atxmega128a1   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"

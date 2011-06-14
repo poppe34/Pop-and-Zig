@@ -14,7 +14,7 @@
 #include "list.h"
 //NWK.c
 void NWK_buildBeaconPayload(void);
-frame_data_t *NWK_getBeaconPayload(void);
+//frame_data_t *NWK_getBeaconPayload(void);
 void NWK_setExtendedPANid(uint64_t addr);
 void NWK_setShortAddr(uint16_t addr);
 void NWK_setPANid(uint16_t pan);
@@ -23,6 +23,7 @@ void nwk_init(void);
 
 //NWK_trx.c
 void NWK_createFrame(npdu_t *npdu, frame_t *fr);
+npdu_t * NWK_trx_frameBreakdown(frame_t *fr);
 nwk_status_t NWK_nlde_data(frame_t *fr);
 uint8_t get_NWK_Sequence_num(void);
 void NWK_setTxCB(trx_cb_t *tb);

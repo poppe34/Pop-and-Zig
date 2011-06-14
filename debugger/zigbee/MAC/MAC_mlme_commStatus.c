@@ -21,6 +21,7 @@ commStatus_cb_t status_cb;
 
 void MAC_mlme_commStatusInd(addr_t *destAddr, addr_t *srcAddr, mac_status_t status, security_t *sec)
 {
+	alarm_new(9, "Rx a comm status Indication");
 	destAddr = destAddr;
 	srcAddr = srcAddr;
 	status = status;

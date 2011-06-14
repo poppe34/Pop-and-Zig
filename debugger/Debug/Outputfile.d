@@ -56,7 +56,7 @@ zigbee\MAC\MAC_beacon.c
 
 zigbee\MAC\MAC_command.c
 
-zigbee\MAC\MAC_data_service.c
+zigbee\MAC\MAC_mcps_data.c
 
 zigbee\MAC\MAC_mlme_associate.c
 
@@ -79,6 +79,8 @@ zigbee\MAC\MAC_mlme_scan.c
 zigbee\MAC\MAC_mlme_set.c
 
 zigbee\MAC\MAC_mlme_start.c
+
+zigbee\MAC\MAC_NWK_binding.c
 
 zigbee\MAC\MAC_NWK_bridge.c
 
@@ -104,6 +106,8 @@ zigbee\NWK\NWK_data_service.c
 
 zigbee\NWK\NWK_neighborTable.c
 
+zigbee\NWK\NWK_nlde_data.c
+
 zigbee\NWK\NWK_nlme_join.c
 
 zigbee\NWK\NWK_nlme_netForm.c
@@ -112,7 +116,7 @@ zigbee\NWK\NWK_nlme_networkDiscover.c
 
 zigbee\NWK\NWK_trx.c
 
-zigbee\phy\phy.c
+zigbee\PHY\phy.c
 
 zigbee\phy\phy_mgmt.c
 

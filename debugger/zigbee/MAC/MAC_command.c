@@ -32,6 +32,8 @@ uint8_t MAC_assocRequestCommand(addr_t *destAddr, uint8_t capibilities, security
 {
 	mac_pib_t *mpib = get_macPIB();
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+
 	mpdu_t	*mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
 	uint8_t seq_num;
 
@@ -52,9 +54,9 @@ uint8_t MAC_assocRequestCommand(addr_t *destAddr, uint8_t capibilities, security
 		
         MAC_createFrame(mpdu, fr);
 	
-        SET_FRAME_DATA(fr, MAC_ASSOC_REQUEST, 1);
+        SET_FRAME_DATA(fr->payload, MAC_ASSOC_REQUEST, 1);
 	
-	    SET_FRAME_DATA(fr, capibilities, 1);
+	    SET_FRAME_DATA(fr->payload, capibilities, 1);
         
 		frame_sendWithFree(fr);
 		free(mpdu);
@@ -80,6 +82,8 @@ uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc)
 {
 //	Start a frame and get the PIB data needed to generate an assoc req.
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+	
 	mpdu_t	*mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
 
 	mac_pib_t *mpib = get_macPIB();
@@ -125,10 +129,10 @@ uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc)
 
 //2. device's capabilities
 	//command type
-	SET_FRAME_DATA(fr, MAC_ASSOC_RESPONCE, 1);
+	SET_FRAME_DATA(fr->payload, MAC_ASSOC_RESPONCE, 1);
    
     //capabilities info the command type 
-	SET_FRAME_DATA(fr, assoc->CapabilityInfo, 1);
+	SET_FRAME_DATA(fr->payload, assoc->CapabilityInfo, 1);
     
 	
 
@@ -153,8 +157,10 @@ uint8_t MAC_assocResponceCommand(mlme_assoc_t *assoc)
 void MAC_disassocCommand(addr_t *destAddr, mac_disassoc_reason_t reason)
 {
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+	
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
-
+	
 	mac_pib_t *mpib = get_macPIB();
 	uint8_t seq_num;
 	mac_status_t status;
@@ -177,10 +183,10 @@ void MAC_disassocCommand(addr_t *destAddr, mac_disassoc_reason_t reason)
     MAC_createFrame(mpdu, fr);
     
     //Command Frame Type
-	SET_FRAME_DATA(fr, MAC_DISASSOC_NOTIFY, 1);
+	SET_FRAME_DATA(fr->payload, MAC_DISASSOC_NOTIFY, 1);
 
     //Reason for the Disassociation
-	SET_FRAME_DATA(fr, reason, 1);
+	SET_FRAME_DATA(fr->payload, reason, 1);
 
 // Free the memory
     frame_sendWithFree(fr);
@@ -204,6 +210,8 @@ void MAC_disassocCommand(addr_t *destAddr, mac_disassoc_reason_t reason)
 uint8_t MAC_dataRequestCommand(addr_t *dstAddr)
 {
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+	
     mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
    
 	phy_pib_t *ppib = get_phyPIB();
@@ -236,7 +244,7 @@ uint8_t MAC_dataRequestCommand(addr_t *dstAddr)
 //Form Mac frame	
     MAC_createFrame(mpdu, fr);
 
-    SET_FRAME_DATA(fr, MAC_DATA_REQUEST, 1);
+    SET_FRAME_DATA(fr->payload, MAC_DATA_REQUEST, 1);
     
 	frame_sendWithFree(fr);
 	free(mpdu);
@@ -248,7 +256,9 @@ uint8_t MAC_dataRequestCommand(addr_t *dstAddr)
 }
 uint8_t MAC_panIDConflictCommand(void)
 {
-		frame_t *fr = frame_new();
+	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+	
     mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
     uint8_t seq_num;
 	
@@ -273,7 +283,7 @@ uint8_t MAC_panIDConflictCommand(void)
     MAC_createFrame(mpdu, fr);
 
 //5. Add command Type
-	SET_FRAME_DATA(fr, MAC_PAN_CONFLICT_NOTIFY, 1);
+	SET_FRAME_DATA(fr->payload, MAC_PAN_CONFLICT_NOTIFY, 1);
 	
 	frame_sendWithFree(fr);
 	free(mpdu);
@@ -284,6 +294,7 @@ uint8_t MAC_orphanCommand(void)
 {
     mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
 	
 	mac_pib_t *mpib = get_macPIB();
 
@@ -306,7 +317,7 @@ uint8_t MAC_orphanCommand(void)
     MAC_createFrame(mpdu, fr);
 
 //5. Add command Type
-	SET_FRAME_DATA(fr, MAC_ORPHAN_NOTIFY, 1);
+	SET_FRAME_DATA(fr->payload, MAC_ORPHAN_NOTIFY, 1);
 	
 	frame_sendWithFree(fr);
 	free(mpdu);
@@ -327,7 +338,9 @@ uint8_t MAC_orphanCommand(void)
 void MAC_beaconReqCommand(void)
 {
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
+	
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
 
 //Setup for the FCF
 	mpdu->fcf.MAC_fcf_Frame_Type = MAC_COMMAND;
@@ -345,7 +358,7 @@ void MAC_beaconReqCommand(void)
 
 	MAC_createFrame(mpdu, fr);
 	
-	SET_FRAME_DATA(fr, MAC_BEACON_REQUEST, 1);
+	SET_FRAME_DATA(fr->payload, MAC_BEACON_REQUEST, 1);
 	
 	frame_sendWithFree(fr);
 	free(mpdu);
@@ -354,7 +367,10 @@ void MAC_beaconReqCommand(void)
 void MAC_commandCoordRealign(addr_t *destAddr, security_t *sec)
 {
 	mpdu_t *mpdu = (mpdu_t *)malloc(sizeof(mpdu_t));
+	
 	frame_t *fr = frame_new();
+	fr->payload = frame_hdr(payload);
+	
 	mac_pib_t *mpib = get_macPIB();
 	
     mpdu->source = mpib->macLongAddress;
@@ -378,15 +394,15 @@ void MAC_commandCoordRealign(addr_t *destAddr, security_t *sec)
 	
 	MAC_createFrame(mpdu, fr);
 	
-	SET_FRAME_DATA(fr, MAC_COORD_REALIGN, 1);
+	SET_FRAME_DATA(fr->payload, MAC_COORD_REALIGN, 1);
 	
-	SET_FRAME_DATA(fr, destAddr->PANid, 2);
+	SET_FRAME_DATA(fr->payload, destAddr->PANid, 2);
 	
-	SET_FRAME_DATA(fr, destAddr->shortAddr, 2);
+	SET_FRAME_DATA(fr->payload, destAddr->shortAddr, 2);
 	
-	SET_FRAME_DATA(fr, (get_currentChannel()), 1);
+	SET_FRAME_DATA(fr->payload, (get_currentChannel()), 1);
 	
-	SET_FRAME_DATA(fr, (get_short_ADDR()), 2);
+	SET_FRAME_DATA(fr->payload, (get_short_ADDR()), 2);
 	
 	frame_sendWithFree(fr);
 	free(mpdu);
@@ -400,7 +416,7 @@ void MAC_commandHandler(frame_t *fr, mpdu_t *mpdu)
  * 		This section will have the proper location for each mac commands that it receives
  */
 	
-		uint8_t command = GET_FRAME_DATA(fr, 1);
+		uint8_t command = GET_FRAME_DATA(fr->Rx_fr, 1);
 
 		switch(command) 
 		{

@@ -218,16 +218,16 @@ typedef struct NWK_NIB{
 START_PACK
 typedef struct PACK NWK_FCF{
 	COMBINE(3, (
-	uint16_t 	NWK_frame_type: 2,
-	uint16_t 	NWK_protocol_ver: 4,
-	uint16_t 	NWK_discover_rt: 2))
+	uint8_t 	NWK_frame_type: 2,
+	uint8_t 	NWK_protocol_ver: 4,
+	uint8_t 	NWK_discover_rt: 2))
 	COMBINE(6, (
-	uint16_t	NWK_multicast: 1,
-	uint16_t	NWK_security: 1,
-	uint16_t	NWK_source_rt: 1,
-	uint16_t	NWK_dest_IEEE: 1,
-	uint16_t	NWK_source_IEEE: 1,
-	uint16_t	NWK_RESERVE: 3))
+	uint8_t	NWK_multicast: 1,
+	uint8_t	NWK_security: 1,
+	uint8_t	NWK_source_rt: 1,
+	uint8_t	NWK_dest_IEEE: 1,
+	uint8_t	NWK_source_IEEE: 1,
+	uint8_t	NWK_RESERVE: 3))
 }nwk_fcf_t;
 END_PACK
 
@@ -296,16 +296,22 @@ typedef struct NEIGHBOR{
 //TODO:	add optional fields
 }nwk_neigh_t;
 
+typedef struct NWK_srcRoute
+{
+	uint8_t relay_cnt;
+	uint8_t relay_index;
+	short_addr_t relayList[10];//TODO: I need to have a max relay list constant	
+}nwk_srcRoute_t;
 
 typedef struct NPDU{
-	nwk_fcf_t 				nwk_frame_control;
+	nwk_fcf_t 				fcf;
 	addr_t	 				destination;
 	addr_t 					source;
 	uint64_t				destExtAddr;
 	uint8_t  				radius;
 	uint8_t  				sequence_num;
 	nwk_multicastControl_t 	multicast_control;
-	uint8_t  				src_route;
+	nwk_srcRoute_t  		src_route;
 }npdu_t;
 
 typedef struct NWK_BEACON{

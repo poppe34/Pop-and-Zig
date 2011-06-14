@@ -510,7 +510,10 @@
     <Compile Include="zigbee\MAC\MAC_conf.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_data_service.c">
+    <Compile Include="zigbee\MAC\MAC_mcps.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_mcps_data.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\MAC\MAC_mlme.h">
@@ -547,6 +550,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\MAC\MAC_mlme_start.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_NWK_binding.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\MAC\MAC_NWK_binding.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\MAC\MAC_NWK_bridge.c">
@@ -615,6 +624,12 @@
     <Compile Include="zigbee\NWK\NWK_neighborTable.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="zigbee\NWK\NWK_nlde.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\NWK\NWK_nlde_data.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="zigbee\NWK\NWK_nlme_join.c">
       <SubType>compile</SubType>
     </Compile>
@@ -630,7 +645,7 @@
     <Compile Include="zigbee\NWK\NWK_trx.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy.c">
+    <Compile Include="zigbee\PHY\phy.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\phy\phy.h">
@@ -730,7 +745,7 @@
     <Folder Include="zigbee\misc" />
     <Folder Include="zigbee\RF231" />
     <Folder Include="zigbee\RF230" />
-    <Folder Include="zigbee\phy" />
+    <Folder Include="zigbee\PHY" />
     <Folder Include="zigbee\NWK" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />

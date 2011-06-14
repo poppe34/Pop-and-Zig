@@ -30,7 +30,7 @@ void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
  */
     
     /*TODO: I need to setup a data request if I get a beacon with this address as the dest. addr */
-    
+    /*
 	uint8_t len;
 	phy_pib_t *ppib = get_phyPIB();
 	uint16_t tempsuperframe, tempgtsSpec;
@@ -73,11 +73,12 @@ void MAC_beaconHandler(mpdu_t *mpdu, frame_t *fr)
 
 //	TODO: 	I want to add a que for the different coordinator PAN_IDs that will allow me to select a different PANid
 //			Or just to see what else is out there.
-
+*/
 }//end incoming_beacon_handler
 
 void MAC_beacon(void)
 {
+	/*
 	uint8_t tempSuperframe;
 
 	phy_pib_t *ppib = get_phyPIB();
@@ -143,7 +144,7 @@ void MAC_beacon(void)
     frame_sendWithFree(fr);
 	free(mpdu);
 
-
+	*/
 }
 
 void MAC_beaconReq_cb(mac_status_t status)

@@ -1,5 +1,5 @@
 zigbee/NWK/NWK_trx.d zigbee/NWK/NWK_trx.o: ../zigbee/NWK/NWK_trx.c \
- ../zigbee/frame.h ../src/asf/xmega/utils/compiler.h \
+ ../src/asf/xmega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/io.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/sfr_defs.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/inttypes.h \
@@ -25,12 +25,12 @@ zigbee/NWK/NWK_trx.d zigbee/NWK/NWK_trx.o: ../zigbee/NWK/NWK_trx.c \
  ../src/asf/common/utils/interrupt.h ../src/asf/xmega/utils/parts.h \
  ../src/asf/common/utils/interrupt/interrupt_avr8.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
- ../zigbee/NWK/NWK_prototypes.h ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h \
- ../zigbee/misc/security.h ../zigbee/NWK/NWK.h ../inc/list.h \
+ ../zigbee/frame.h ../inc/alarms_task.h ../inc/spi_task.h \
+ ../inc/task_master.h ../zigbee/NWK/NWK_prototypes.h ../zigbee/MAC/mac.h \
+ ../zigbee/PHY/phy.h ../zigbee/misc/security.h ../zigbee/NWK/NWK.h \
+ ../inc/list.h ../zigbee/NWK/NWK_nlde.h ../zigbee/NWK/nwk.h \
  ../zigbee/MAC/MAC_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
  ../zigbee/mac/mac.h
-
-../zigbee/frame.h:
 
 ../src/asf/xmega/utils/compiler.h:
 
@@ -86,6 +86,14 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h:
 
+../zigbee/frame.h:
+
+../inc/alarms_task.h:
+
+../inc/spi_task.h:
+
+../inc/task_master.h:
+
 ../zigbee/NWK/NWK_prototypes.h:
 
 ../zigbee/MAC/mac.h:
@@ -97,6 +105,10 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 ../zigbee/NWK/NWK.h:
 
 ../inc/list.h:
+
+../zigbee/NWK/NWK_nlde.h:
+
+../zigbee/NWK/nwk.h:
 
 ../zigbee/MAC/MAC_prototypes.h:
 

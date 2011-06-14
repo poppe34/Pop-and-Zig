@@ -30,11 +30,11 @@
 #define toFrame	*(NO)--
 
 #define SET_FRAME_DATA_1(frame, info) *frame->ptr++ = info;\
-											frame->dataLength++
+											frame->length++
 
 #define SET_FRAME_DATA_2(frame, info) 	*frame->ptr++ = (uint8_t)info;\
                                             *frame->ptr++ = (uint8_t)(info>>8);\
-										    frame->dataLength +=2
+										    frame->length +=2
 
 #define SET_FRAME_DATA_8(frame, info) *frame->ptr++ = (uint8_t)info;\
                                         *frame->ptr++ = (uint8_t)(info>>8);\
@@ -44,7 +44,7 @@
 										*frame->ptr++ = (uint8_t)(info>>40);\
 										*frame->ptr++ = (uint8_t)(info>>48);\
 										*frame->ptr++ = (uint8_t)(info>>56);\
-										frame->dataLength +=8
+										frame->length +=8
 
 #define SET_FRAME_DATA_try(frame, value, type)     *((type *)frame->ptr) = value; \
                                                     frame->ptr += sizeof(type)
@@ -58,13 +58,13 @@
   //                                      frame->dataLength += sizeof(type);
 
 #define GET_FRAME_DATA_1(frame, size) *frame->ptr++; \
-										frame->dataLength++
+										frame->length++
 
 #define GET_FRAME_DATA_2(frame, size)  *((uint16_t *)(frame->ptr));\
-										frame->dataLength +=size;\
+										frame->length +=size;\
 										frame->ptr +=size
 #define GET_FRAME_DATA_8(frame, size)  *((uint64_t *)(frame->ptr));\
-											frame->dataLength +=size;\
+											frame->length +=size;\
 											frame->ptr +=size
 
 #define GET_FRAME_DATA(frame, size) GET_FRAME_DATA_##size(frame, size)
@@ -80,6 +80,13 @@ typedef enum FRAME_DIRECTION{
 	INCOMING 	= 0x02,
 }direction_t;
 
+typedef enum{
+	mac_hdr = 0x01,
+	nwk_hdr = 0x02,
+	aps_hdr = 0x03,
+	payload = 0x04,
+	rx_data = 0x05,
+}hdr_type_t;
 
 typedef enum ADDRESS_MODE{
 	NO_ADDRESS = 0x00,
@@ -97,36 +104,59 @@ typedef struct ADDRESS{
 	uint16_t 	PANid;
 }addr_t;
 
+typedef struct mpdu_hdr
+{
+	uint8_t hdr[20];
+	uint8_t  *ptr;
+	uint8_t length;
+}mac_hdr_t;
+
+typedef struct npdu_hdr
+{
+	uint8_t hdr[20];
+	uint8_t  *ptr;
+	uint8_t length;
+}nwk_hdr_t;
+
+typedef struct apdu_hdr
+{
+	uint8_t hdr[20];
+	uint8_t  *ptr;
+	uint8_t length;
+}aps_hdr_t;
+
+typedef struct 
+{
+	uint8_t pl[100];
+	uint8_t  *ptr;
+	uint8_t length;
+}payload_t;
+
+typedef struct
+{
+	uint8_t  frame[128];
+	uint8_t  *ptr;
+	uint8_t  length;
+}frameData_t;
+
 typedef struct FRAME
 {
 	struct FRAME        *next;
 	uint8_t             handler;
 	uint32_t 			timestamp;
-	uint8_t				dataLength;
-	uint8_t			 	*ptr;
 	uint8_t				LQI;
-	uint8_t				frame[128]; //[aMaxPHYPacketSize+1]; TODO:Add this in the future
+	//[aMaxPHYPacketSize+1]; TODO:Add this in the future
 	direction_t			direction;
 	Bool				ackd;
+	mac_hdr_t			*mac;
+	nwk_hdr_t			*nwk;
+	aps_hdr_t			*aps;
+	payload_t			*payload;
+	frameData_t			*Rx_fr;
 }frame_t;
 
-typedef struct FRAME_DATA{
-	uint8_t 	length;
-	uint8_t		*ptr;
-	uint8_t		data[16];
-}frame_data_t;
 
-/*typedef struct zig_frame_t{
-	apsde_data_t 	apsde;
-	apdu_t 			apdu;
-	npdu_t 			npdu;
-	nlde_data_t 	nlde;
-	mpdu_t			mpdu;
-	mcps_data_t 	mcps;
-	frame_t			frame;
-}zig_frame_t;
 
-*/
 
 /**************************************************
  * 	PROTOTYPES
@@ -136,5 +166,6 @@ void    frame_free(frame_t *fr);
 void    frame_sendWithFree(frame_t *fr);
 void    frame_clearAll(void);
 frame_t *frame_new(void);
+voidPtr frame_hdr(hdr_type_t type);
 
 #endif /* FRAME_H_ */

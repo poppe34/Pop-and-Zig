@@ -28,7 +28,9 @@ zigbee/NWK/NWK_command.d zigbee/NWK/NWK_command.o: \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h \
  ../zigbee/NWK/NWK_prototypes.h ../zigbee/MAC/mac.h ../zigbee/PHY/phy.h \
  ../zigbee/misc/security.h ../zigbee/NWK/NWK.h ../inc/list.h \
+ ../zigbee/nwk/NWK_nlde.h ../zigbee/NWK/nwk.h \
  ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
+ ../zigbee/mac/mac.h ../zigbee/mac/MAC_mcps.h ../zigbee/phy\phy.h \
  ../zigbee/mac/mac.h
 
 ../zigbee/frame.h:
@@ -99,10 +101,20 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../inc/list.h:
 
+../zigbee/nwk/NWK_nlde.h:
+
+../zigbee/NWK/nwk.h:
+
 ../zigbee/MAC/mac_prototypes.h:
 
 ../zigbee/phy/phy.h:
 
 ../zigbee/nwk/NWK.h:
+
+../zigbee/mac/mac.h:
+
+../zigbee/mac/MAC_mcps.h:
+
+../zigbee/phy\phy.h:
 
 ../zigbee/mac/mac.h:

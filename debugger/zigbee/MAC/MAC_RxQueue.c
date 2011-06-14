@@ -49,7 +49,7 @@ void MAC_RxQueue_task(void)
 	{
 		
 		frame_t *fr = (frame_t *)(list_pop(RxQueue));
-		report_packet(fr->frame, fr->dataLength);
+		report_packet(fr->Rx_fr->frame, fr->Rx_fr->length);
 		
 		MAC_incomingFrame(fr);
 		free(fr);
@@ -73,7 +73,7 @@ void MAC_RxQueue_flush(void)
 	while(length)
 	{
 		fr = list_pop(RxQueue);
-		free(fr);	
+		frame_free(fr);	
 		length--;
 	}
 }

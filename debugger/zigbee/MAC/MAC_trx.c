@@ -24,13 +24,18 @@
 
 /*================================= INCLUDES         =========================*/
 
+#include "compiler.h"
 #include "frame.h"
-#include <mac/mac_prototypes.h>
-#include "phy/rc_rf230.h"
 
 #include "alarms_task.h"
 
+#include "MAC/MAC_mcps.h"
+#include "MAC/MAC_mlme.h"
 #include "MAC/MAC_command.h"
+#include "MAC/mac_prototypes.h"
+
+#include "phy/rc_rf230.h"
+#include "PHY/phy.h"
 uint8_t temp;
 
 /*================================= MACROS           =========================*/
@@ -62,7 +67,7 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 //				will still have more work to do.
 //
 //	Found Error: 	I had the frame setup backwards... I decided just to add the frame from the tail to the front..
-//					FCF is the first to be transmiteed my frame is FILO (first in last out)
+//					FCF is the first to be transmitted my frame is FILO (first in last out)
 //                  
 //                  I reversed the frame again(first byte is at fr[0]) now it should look cleaner for the programmer 
 
@@ -71,10 +76,11 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 //  FCF
 //
 //*******************************
-    
+    fr->mac = frame_hdr(mac_hdr);
+	
 	uint16_t *tempfcf = (uint16_t *)&mpdu->fcf;
     
-	SET_FRAME_DATA(fr, *tempfcf, 2);
+	SET_FRAME_DATA(fr->mac, *tempfcf, 2);
 
 //*******************************
 //
@@ -85,7 +91,7 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
     if(mpdu->fcf.MAC_fcf_Frame_Type != MAC_ACK)
 		mpdu->seq_num = get_MAC_seqNum();
     
-	SET_FRAME_DATA(fr, mpdu->seq_num, 1);
+	SET_FRAME_DATA(fr->mac, mpdu->seq_num, 1);
 
 //*******************************************
 //
@@ -99,13 +105,13 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
         case(MAC_none):
 			break;
         case(MAC_SHORT_ADDRESS):
-            SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
-            SET_FRAME_DATA(fr, mpdu->destination.shortAddr, 2);
+            SET_FRAME_DATA(fr->mac, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr->mac, mpdu->destination.shortAddr, 2);
             break;
             
         case(MAC_LONG_ADDRESS):
-            SET_FRAME_DATA(fr, mpdu->destination.PANid, 2);
-            SET_FRAME_DATA(fr, mpdu->destination.extAddr, 8);
+            SET_FRAME_DATA(fr->mac, mpdu->destination.PANid, 2);
+            SET_FRAME_DATA(fr->mac, mpdu->destination.extAddr, 8);
             break;
             
 	}
@@ -125,16 +131,16 @@ mac_status_t MAC_createFrame(mpdu_t *mpdu, frame_t *fr) {
 			break;
 	case(MAC_SHORT_ADDRESS):
 	    if((mpdu->fcf.MAC_fcf_PANid_Compression) == 0){
-            SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
+            SET_FRAME_DATA(fr->mac, mpdu->source.PANid, 2);
 		}		
-		SET_FRAME_DATA(fr, mpdu->source.shortAddr, 2);
+		SET_FRAME_DATA(fr->mac, mpdu->source.shortAddr, 2);
 		break;
 	case(MAC_LONG_ADDRESS):
 	    if((mpdu->fcf.MAC_fcf_PANid_Compression) == 0){
-            SET_FRAME_DATA(fr, mpdu->source.PANid, 2);
+            SET_FRAME_DATA(fr->mac, mpdu->source.PANid, 2);
 
 		}		
-		SET_FRAME_DATA(fr, mpdu->source.extAddr, 8);
+		SET_FRAME_DATA(fr->mac, mpdu->source.extAddr, 8);
 	break;
 
 	}
@@ -178,7 +184,7 @@ void MAC_incomingFrame(frame_t *fr)
 	}
 
 	if(type == MAC_DATA){
-
+		MAC_mcps_dataInd(mpdu, fr);
 	}
 	if(type == MAC_ACK){
 
@@ -208,21 +214,10 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	/****************************
 	 * Incoming fcf
 	 *****************************/
-	/*fcf_temp = GET_FRAME_DATA(fr, 2); I am trying to get the fcf without all the shifting
-
-	mpdu->fcf.MAC_fcf_Frame_Type = ((fcf_temp >> MAC_FCF_FRAME_TYPE_SHIFT)& 0x07);
-	mpdu->fcf.MAC_fcf_Sec_enabled = ((fcf_temp >> MAC_FCF_SEC_ENABLE_SHIFT)& 0x01);
-	mpdu->fcf.MAC_fcf_Frame_Pending = ((fcf_temp >> MAC_FCF_FRAME_PENDING_SHIFT)& 0x01);
-	mpdu->fcf.MAC_fcf_Ack_Request = ((fcf_temp >> MAC_FCF_ACK_REQUEST_SHIFT)& 0x01);
-	mpdu->fcf.MAC_fcf_PANid_Compression = ((fcf_temp >> MAC_FCF_PAN_ID_COMPRESS_SHIFT)& 0x01);
-	mpdu->fcf.MAC_fcf_DstAddr_Mode = ((fcf_temp >> MAC_FCF_DEST_ADDR_MODE_SHIFT)& 0x03);
-	mpdu->fcf.MAC_fcf_Frame_Ver = ((fcf_temp >> MAC_FCF_FRAME_VERSION_SHIFT)& 0x03);
-	mpdu->fcf.MAC_fcf_SrcAddr_Mode = ((fcf_temp >> MAC_FCF_SRC_ADDR_MODE_SHIFT)& 0x03);
-     */
-    fr->ptr = fr->frame;
+    fr->Rx_fr->ptr = fr->Rx_fr->frame;
 	
-    mpdu->fcf = *((mac_fcf_t *)(fr->ptr));
-    fr->ptr += sizeof(mac_fcf_t);
+    mpdu->fcf = *((mac_fcf_t *)(fr->Rx_fr->ptr));
+    fr->Rx_fr->ptr += sizeof(mac_fcf_t);
     
 	//TODO: see if there is any way to set the mpdu->fcf equal to the frame so I won't have to break down the bits
 	uint16_t *temp = &mpdu->fcf;
@@ -232,7 +227,7 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 /***************************************
  * Sequence Number
  ***************************************/
-	mpdu->seq_num = GET_FRAME_DATA(fr, 1);
+	mpdu->seq_num = GET_FRAME_DATA(fr->Rx_fr, 1);
 
 /***************************************
 * Incoming dest PAN ID and Address
@@ -246,17 +241,17 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 	case(MAC_SHORT_ADDRESS):
 		mpdu->destination.mode = MAC_SHORT_ADDRESS;
 
-		mpdu->destination.PANid = GET_FRAME_DATA(fr, 2);
+		mpdu->destination.PANid = GET_FRAME_DATA(fr->Rx_fr, 2);
 
-		mpdu->destination.shortAddr = GET_FRAME_DATA(fr, 2);
+		mpdu->destination.shortAddr = GET_FRAME_DATA(fr->Rx_fr, 2);
 			
 	break;
 	case(MAC_LONG_ADDRESS):
 		mpdu->destination.mode = MAC_LONG_ADDRESS;
 
-		mpdu->destination.PANid = GET_FRAME_DATA(fr, 2);
+		mpdu->destination.PANid = GET_FRAME_DATA(fr->Rx_fr, 2);
 
-		mpdu->destination.extAddr = GET_FRAME_DATA(fr, 8);
+		mpdu->destination.extAddr = GET_FRAME_DATA(fr->Rx_fr, 8);
 
 	break;
 
@@ -286,27 +281,27 @@ mac_filter_t MAC_breakdownFrame(mpdu_t *mpdu, frame_t *fr){
 
 	case(MAC_SHORT_ADDRESS):
 		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
-			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
+			mpdu->source.PANid = GET_FRAME_DATA(fr->Rx_fr, 2);
 		}
 		else
 		{
 			mpdu->source.PANid = mpdu->destination.PANid;
 		}
 
-		mpdu->source.shortAddr = GET_FRAME_DATA(fr, 2);
+		mpdu->source.shortAddr = GET_FRAME_DATA(fr->Rx_fr, 2);
 
 	break;
 	case(MAC_LONG_ADDRESS):
 
 		if(mpdu->fcf.MAC_fcf_PANid_Compression == 0){
-			mpdu->source.PANid = GET_FRAME_DATA(fr, 2);
+			mpdu->source.PANid = GET_FRAME_DATA(fr->Rx_fr, 2);
 		}
 		else
 		{
 			mpdu->source.PANid = mpdu->destination.PANid;
 		}
 
-		mpdu->source.extAddr = GET_FRAME_DATA(fr, 8);
+		mpdu->source.extAddr = GET_FRAME_DATA(fr->Rx_fr, 8);
 	break;
 	}
 
@@ -404,17 +399,19 @@ mac_filter_t MAC_secondLevelFilter(mpdu_t *mpdu){
 void MAC_issueACK(uint8_t seq_num){
 // I am creating a new space in memory so I don't have to use up space in the the frame pool
 	frame_t *fr = (frame_t *)malloc(sizeof(frame_t));
-
+	mac_hdr_t *macHdr = (mac_hdr_t *)malloc(sizeof(mac_hdr_t));
+	fr->mac = macHdr;
+	
     //add fcf
-	SET_FRAME_DATA(fr, 0x0002, 2);
+	SET_FRAME_DATA(fr->mac, 0x0002, 2);
     
     //add sequence num
-	SET_FRAME_DATA(fr, seq_num, 1);
+	SET_FRAME_DATA(fr->mac, seq_num, 1);
     
 	//room for CRC
-	SET_FRAME_DATA(fr, 0x0000, 2);
+	SET_FRAME_DATA(fr->mac, 0x0000, 2);
 
-	rc_send_frame(fr->dataLength, NO);
+	rc_send_frame(fr->mac->length, fr->mac->ptr);
 
 	free(fr);
 }
