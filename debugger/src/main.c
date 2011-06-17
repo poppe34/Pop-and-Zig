@@ -20,6 +20,7 @@
 #include "zigbee_task.h"
 #include "spi_task.h"
 #include "NWK/NWK_prototypes.h"
+#include "NWK/NWK_command.h"
 #include "MAC/mac_prototypes.h"
 #include "MAC/MAC_mlme.h"
 #include "MAC/MAC_command.h"
@@ -30,7 +31,7 @@ void debug_test(void);
 
 int main(void)
 {
-	_delay_ms(1000);
+
 	board_init();
     uint16_t count;
 	// Insert application code here, after the board has been initialized.
@@ -68,8 +69,11 @@ int main(void)
 //	if((MAC_isPanCoord()) == 0)
 	{
 		
-
-	MAC_beaconReqCommand();
+	nwk_leaveCmdOptionField_t temp;
+	temp.removeChild = YES;
+	
+	NWK_cmd_linkStatus();
+	
 /*	_delay_ms(500);
 	MAC_mlme_assocReq(&destShortTemp, 0x00000000, 11, 0x8e, &sec);
 

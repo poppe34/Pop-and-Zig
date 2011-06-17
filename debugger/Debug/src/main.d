@@ -54,14 +54,18 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/util/delay_basic.h \
  ../inc/scheduler.h ../config/conf_scheduler.h ../inc/alarms_task.h \
  ../inc/spi_task.h ../inc/task_master.h ../zigbee/zigbee.h \
- ../zigbee/misc/time.h ../config/conf_zigbee.h ../config/conf_timer.h \
- ../inc/zigbee_task.h ../config/conf_debug.h ../inc/alarms_task.h \
- ../inc/list.h ../inc/spi_task.h ../zigbee/NWK/NWK_prototypes.h \
- ../zigbee/MAC/mac.h ../zigbee/frame.h ../zigbee/PHY/phy.h \
- ../zigbee/misc/security.h ../zigbee/NWK/NWK.h ../inc/list.h \
- ../zigbee/MAC/mac_prototypes.h ../zigbee/phy/phy.h ../zigbee/nwk/NWK.h \
- ../zigbee/mac/mac.h ../zigbee/MAC/MAC_mlme.h ../zigbee/MISC/security.h \
- ../zigbee/MAC/MAC_command.h ../zigbee/RF230/RF230.h
+ ../zigbee/include/misc/time.h ../config/conf_zigbee.h \
+ ../config/conf_timer.h ../inc/zigbee_task.h ../config/conf_debug.h \
+ ../inc/alarms_task.h ../inc/list.h ../inc/spi_task.h \
+ ../zigbee/include/NWK/NWK_prototypes.h ../zigbee/include/MAC/mac.h \
+ ../zigbee/frame.h ../zigbee/include/PHY/phy.h \
+ ../zigbee/include/misc/security.h ../zigbee/include/NWK/NWK.h \
+ ../zigbee/include/MAC/MAC_mlme_scan.h ../zigbee/include/MISC/security.h \
+ ../inc/list.h ../zigbee/include/NWK/NWK_command.h \
+ ../zigbee/include/MAC/mac_prototypes.h ../zigbee/include/phy/phy.h \
+ ../zigbee/include/nwk/NWK.h ../zigbee/include/mac/mac.h \
+ ../zigbee/include/MAC/MAC_mlme.h ../zigbee/include/MAC/MAC_command.h \
+ ../zigbee/include/RF230/RF230.h
 
 ../src/asf.h:
 
@@ -199,7 +203,7 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../zigbee/zigbee.h:
 
-../zigbee/misc/time.h:
+../zigbee/include/misc/time.h:
 
 ../config/conf_zigbee.h:
 
@@ -215,32 +219,36 @@ c:\program\ files\ (x86)\atmel\avr\ studio\ 5.0\extensions\application\avr\ tool
 
 ../inc/spi_task.h:
 
-../zigbee/NWK/NWK_prototypes.h:
+../zigbee/include/NWK/NWK_prototypes.h:
 
-../zigbee/MAC/mac.h:
+../zigbee/include/MAC/mac.h:
 
 ../zigbee/frame.h:
 
-../zigbee/PHY/phy.h:
+../zigbee/include/PHY/phy.h:
 
-../zigbee/misc/security.h:
+../zigbee/include/misc/security.h:
 
-../zigbee/NWK/NWK.h:
+../zigbee/include/NWK/NWK.h:
+
+../zigbee/include/MAC/MAC_mlme_scan.h:
+
+../zigbee/include/MISC/security.h:
 
 ../inc/list.h:
 
-../zigbee/MAC/mac_prototypes.h:
+../zigbee/include/NWK/NWK_command.h:
 
-../zigbee/phy/phy.h:
+../zigbee/include/MAC/mac_prototypes.h:
 
-../zigbee/nwk/NWK.h:
+../zigbee/include/phy/phy.h:
 
-../zigbee/mac/mac.h:
+../zigbee/include/nwk/NWK.h:
 
-../zigbee/MAC/MAC_mlme.h:
+../zigbee/include/mac/mac.h:
 
-../zigbee/MISC/security.h:
+../zigbee/include/MAC/MAC_mlme.h:
 
-../zigbee/MAC/MAC_command.h:
+../zigbee/include/MAC/MAC_command.h:
 
-../zigbee/RF230/RF230.h:
+../zigbee/include/RF230/RF230.h:

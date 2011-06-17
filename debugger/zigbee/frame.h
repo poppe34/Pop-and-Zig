@@ -128,14 +128,14 @@ typedef struct apdu_hdr
 typedef struct 
 {
 	uint8_t pl[100];
-	uint8_t  *ptr;
+	uint8_t	*ptr;
 	uint8_t length;
 }payload_t;
 
 typedef struct
 {
 	uint8_t  frame[128];
-	uint8_t  *ptr;
+	uint8_t	 *ptr;
 	uint8_t  length;
 }frameData_t;
 

@@ -151,77 +151,78 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>BOARD=XPLAIN</Value>
-            <Value>_ASSERT_ENABLE_</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcc.compiler.directories.IncludePaths>
-          <ListValues>
-            <Value>../src</Value>
-            <Value>../src/asf/common/applications/user_application/atxmega128a1_xplain</Value>
-            <Value>../src/asf/common/boards</Value>
-            <Value>../src/asf/common/services/gpio</Value>
-            <Value>../src/asf/common/utils</Value>
-            <Value>../src/asf/xmega/boards</Value>
-            <Value>../src/asf/xmega/boards/xplain</Value>
-            <Value>../src/asf/xmega/drivers/ioport</Value>
-            <Value>../src/asf/xmega/utils</Value>
-            <Value>../src/asf/xmega/utils/preprocessor</Value>
-            <Value>../src/config</Value>
-            <Value>../src/asf/xmega/drivers/cpu</Value>
-            <Value>../src/asf/xmega/drivers/spi</Value>
-            <Value>../src/asf/common/services/spi</Value>
-            <Value>../src/asf/common/services/spi/xmega_spi</Value>
-            <Value>../src/asf/common/services/clock</Value>
-            <Value>../inc</Value>
-            <Value>../config</Value>
-            <Value>../src/asf/xmega/drivers/pmic</Value>
-            <Value>../src/asf/common/services/fifo</Value>
-            <Value>../zigbee</Value>
-            <Value>../src/asf/xmega/drivers/sleep</Value>
-            <Value>../src/asf/xmega/drivers/rtc</Value>
-            <Value>../src/asf/xmega/drivers/tc</Value>
-            <Value>../src/asf/common/services/sleepmgr</Value>
-          </ListValues>
-        </avrgcc.compiler.directories.IncludePaths>
-        <avrgcc.compiler.optimization.OtherFlags>-fdata-sections</avrgcc.compiler.optimization.OtherFlags>
-        <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
-        <avrgcc.compiler.optimization.DebugLevel>Maximum (-g3)</avrgcc.compiler.optimization.DebugLevel>
-        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-        <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax</avrgcc.compiler.miscellaneous.OtherFlags>
-        <avrgcc.linker.optimization.GarbageCollectUnusedSections>True</avrgcc.linker.optimization.GarbageCollectUnusedSections>
-        <avrgcc.linker.optimization.RelaxBranches>True</avrgcc.linker.optimization.RelaxBranches>
-        <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax</avrgcc.linker.miscellaneous.LinkerFlags>
-        <avrgcc.assembler.general.AssemblerFlags>-mrelax</avrgcc.assembler.general.AssemblerFlags>
-        <avrgcc.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>../src</Value>
-            <Value>../src/asf/common/applications/user_application/atxmega128a1_xplain</Value>
-            <Value>../src/asf/common/boards</Value>
-            <Value>../src/asf/common/services/gpio</Value>
-            <Value>../src/asf/common/utils</Value>
-            <Value>../src/asf/xmega/boards</Value>
-            <Value>../src/asf/xmega/boards/xplain</Value>
-            <Value>../src/asf/xmega/drivers/ioport</Value>
-            <Value>../src/asf/xmega/utils</Value>
-            <Value>../src/asf/xmega/utils/preprocessor</Value>
-            <Value>../src/config</Value>
-            <Value>../src/asf/xmega/drivers/cpu</Value>
-            <Value>../src/asf/xmega/drivers/spi</Value>
-            <Value>../src/asf/common/services/spi</Value>
-            <Value>../src/asf/common/services/spi/xmega_spi</Value>
-            <Value>../src/asf/common/services/clock</Value>
-            <Value>../src/asf/xmega/drivers/pmic</Value>
-            <Value>../src/asf/common/services/fifo</Value>
-            <Value>../src/asf/xmega/drivers/sleep</Value>
-            <Value>../src/asf/xmega/drivers/rtc</Value>
-            <Value>../src/asf/xmega/drivers/tc</Value>
-            <Value>../src/asf/common/services/sleepmgr</Value>
-          </ListValues>
-        </avrgcc.assembler.general.IncludePaths>
-      </AvrGcc>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>BOARD=XPLAIN</Value>
+      <Value>_ASSERT_ENABLE_</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../src</Value>
+      <Value>../src/asf/common/applications/user_application/atxmega128a1_xplain</Value>
+      <Value>../src/asf/common/boards</Value>
+      <Value>../src/asf/common/services/gpio</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src/asf/xmega/boards</Value>
+      <Value>../src/asf/xmega/boards/xplain</Value>
+      <Value>../src/asf/xmega/drivers/ioport</Value>
+      <Value>../src/asf/xmega/utils</Value>
+      <Value>../src/asf/xmega/utils/preprocessor</Value>
+      <Value>../src/config</Value>
+      <Value>../src/asf/xmega/drivers/cpu</Value>
+      <Value>../src/asf/xmega/drivers/spi</Value>
+      <Value>../src/asf/common/services/spi</Value>
+      <Value>../src/asf/common/services/spi/xmega_spi</Value>
+      <Value>../src/asf/common/services/clock</Value>
+      <Value>../inc</Value>
+      <Value>../config</Value>
+      <Value>../src/asf/xmega/drivers/pmic</Value>
+      <Value>../src/asf/common/services/fifo</Value>
+      <Value>../zigbee</Value>
+      <Value>../src/asf/xmega/drivers/sleep</Value>
+      <Value>../src/asf/xmega/drivers/rtc</Value>
+      <Value>../src/asf/xmega/drivers/tc</Value>
+      <Value>../src/asf/common/services/sleepmgr</Value>
+      <Value>../zigbee/include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.OtherFlags>-fdata-sections</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.DebugLevel>Maximum (-g3)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.optimization.GarbageCollectUnusedSections>True</avrgcc.linker.optimization.GarbageCollectUnusedSections>
+  <avrgcc.linker.optimization.RelaxBranches>True</avrgcc.linker.optimization.RelaxBranches>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--relax</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.general.AssemblerFlags>-mrelax</avrgcc.assembler.general.AssemblerFlags>
+  <avrgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>../src</Value>
+      <Value>../src/asf/common/applications/user_application/atxmega128a1_xplain</Value>
+      <Value>../src/asf/common/boards</Value>
+      <Value>../src/asf/common/services/gpio</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src/asf/xmega/boards</Value>
+      <Value>../src/asf/xmega/boards/xplain</Value>
+      <Value>../src/asf/xmega/drivers/ioport</Value>
+      <Value>../src/asf/xmega/utils</Value>
+      <Value>../src/asf/xmega/utils/preprocessor</Value>
+      <Value>../src/config</Value>
+      <Value>../src/asf/xmega/drivers/cpu</Value>
+      <Value>../src/asf/xmega/drivers/spi</Value>
+      <Value>../src/asf/common/services/spi</Value>
+      <Value>../src/asf/common/services/spi/xmega_spi</Value>
+      <Value>../src/asf/common/services/clock</Value>
+      <Value>../src/asf/xmega/drivers/pmic</Value>
+      <Value>../src/asf/common/services/fifo</Value>
+      <Value>../src/asf/xmega/drivers/sleep</Value>
+      <Value>../src/asf/xmega/drivers/rtc</Value>
+      <Value>../src/asf/xmega/drivers/tc</Value>
+      <Value>../src/asf/common/services/sleepmgr</Value>
+    </ListValues>
+  </avrgcc.assembler.general.IncludePaths>
+</AvrGcc>
     </ToolchainSettings>
     <MemorySettings>
       <MemorySegments>
@@ -471,229 +472,235 @@
     <Compile Include="src\tasks\zigbee_task.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\APS\aps.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="zigbee\APS\aps.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="zigbee\APS\aps_binding_table.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="zigbee\APS\aps_tx.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="zigbee\frame.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\frame.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC.c">
+    <Compile Include="zigbee\include\APS\aps.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\mac.h">
+    <Compile Include="zigbee\include\MAC\mac.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_ack.c">
+    <Compile Include="zigbee\include\MAC\MAC_command.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_beacon.c">
+    <Compile Include="zigbee\include\MAC\MAC_conf.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_command.c">
+    <Compile Include="zigbee\include\MAC\MAC_mcps.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_command.h">
+    <Compile Include="zigbee\include\MAC\MAC_mlme.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_conf.h">
+    <Compile Include="zigbee\include\MAC\MAC_mlme_scan.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mcps.h">
+    <Compile Include="zigbee\include\MAC\MAC_NWK_binding.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mcps_data.c">
+    <Compile Include="zigbee\include\MAC\mac_prototypes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme.h">
+    <Compile Include="zigbee\include\MAC\MAC_RxQueue.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_associate.c">
+    <Compile Include="zigbee\include\MISC\1-wire.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_beacon_notify.c">
+    <Compile Include="zigbee\include\MISC\debug.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_commStatus.c">
+    <Compile Include="zigbee\include\MISC\file_format.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_disassociate.c">
+    <Compile Include="zigbee\include\MISC\qsm.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_gts.c">
+    <Compile Include="zigbee\include\MISC\security.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_orphan.c">
+    <Compile Include="zigbee\include\MISC\time.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_poll.c">
+    <Compile Include="zigbee\include\MISC\xmega_misc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_reset.c">
+    <Compile Include="zigbee\include\NWK\NWK.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_scan.c">
+    <Compile Include="zigbee\include\NWK\NWK_command.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_set.c">
+    <Compile Include="zigbee\include\NWK\NWK_nlde.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_mlme_start.c">
+    <Compile Include="zigbee\include\NWK\NWK_prototypes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_NWK_binding.c">
+    <Compile Include="zigbee\include\PHY\phy.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_NWK_binding.h">
+    <Compile Include="zigbee\include\PHY\phy_const_def.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_NWK_bridge.c">
+    <Compile Include="zigbee\include\PHY\rc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\mac_prototypes.h">
+    <Compile Include="zigbee\include\PHY\rc_rf230.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_RxQueue.c">
+    <Compile Include="zigbee\include\RF230\at86rf230_registermap.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_RxQueue.h">
+    <Compile Include="zigbee\include\RF230\RF230.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\MAC\MAC_trx.c">
+    <Compile Include="zigbee\include\RF230\RF230_IRQ.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\1-wire.c">
+    <Compile Include="zigbee\include\RF230\RF230_mega1281.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\1-wire.h">
+    <Compile Include="zigbee\include\RF230\RF230_mega1284p.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\debug.h">
+    <Compile Include="zigbee\include\RF230\RF230_xmega_xxx_a3.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\file_format.h">
+    <Compile Include="zigbee\source\APS\aps.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\qsm.c">
+    <Compile Include="zigbee\source\APS\aps_binding_table.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\qsm.h">
+    <Compile Include="zigbee\source\APS\aps_tx.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\security.h">
+    <Compile Include="zigbee\source\MAC\MAC.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\time.h">
+    <Compile Include="zigbee\source\MAC\MAC_ack.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\xmega_interrupt.c">
+    <Compile Include="zigbee\source\MAC\MAC_beacon.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\xmega_misc.h">
+    <Compile Include="zigbee\source\MAC\MAC_command.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\misc\xmega_time.c">
+    <Compile Include="zigbee\source\MAC\MAC_mcps_data.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_associate.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK.h">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_beacon_notify.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_beacon.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_commStatus.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_command.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_disassociate.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_data_service.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_gts.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_neighborTable.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_orphan.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_nlde.h">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_poll.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_nlde_data.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_reset.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_nlme_join.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_scan.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_nlme_netForm.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_set.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_nlme_networkDiscover.c">
+    <Compile Include="zigbee\source\MAC\MAC_mlme_start.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_prototypes.h">
+    <Compile Include="zigbee\source\MAC\MAC_NWK_binding.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\NWK\NWK_trx.c">
+    <Compile Include="zigbee\source\MAC\MAC_NWK_bridge.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\PHY\phy.c">
+    <Compile Include="zigbee\source\MAC\MAC_RxQueue.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy.h">
+    <Compile Include="zigbee\source\MAC\MAC_trx.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy_const_def.h">
+    <Compile Include="zigbee\source\MISC\1-wire.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy_mgmt.c">
+    <Compile Include="zigbee\source\MISC\qsm.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\PHY_plme_get.c">
+    <Compile Include="zigbee\source\MISC\xmega_interrupt.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy_rc_rf230.c">
+    <Compile Include="zigbee\source\MISC\xmega_time.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\phy_trx.c">
+    <Compile Include="zigbee\source\NWK\NWK.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\rc.h">
+    <Compile Include="zigbee\source\NWK\NWK_beacon.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\phy\rc_rf230.h">
+    <Compile Include="zigbee\source\NWK\NWK_command.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\at86rf230_registermap.h">
+    <Compile Include="zigbee\source\NWK\NWK_data_service.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\rf230.c">
+    <Compile Include="zigbee\source\NWK\NWK_neighborTable.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230.h">
+    <Compile Include="zigbee\source\NWK\NWK_nlde_data.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230_irq.c">
+    <Compile Include="zigbee\source\NWK\NWK_nlme_join.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230_IRQ.h">
+    <Compile Include="zigbee\source\NWK\NWK_nlme_netForm.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230_mega1281.h">
+    <Compile Include="zigbee\source\NWK\NWK_nlme_networkDiscover.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230_mega1284p.h">
+    <Compile Include="zigbee\source\NWK\NWK_trx.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="zigbee\RF230\RF230_xmega_xxx_a3.h">
+    <Compile Include="zigbee\source\PHY\phy.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\PHY\phy_mgmt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\PHY\PHY_plme_get.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\PHY\phy_rc_rf230.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\PHY\phy_trx.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\RADIO\rf230.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zigbee\source\RADIO\RF230_irq.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zigbee\zigbee.c">
@@ -740,13 +747,20 @@
     <Folder Include="src\asf\xmega\utils\bit_handling\" />
     <Folder Include="src\asf\xmega\utils\preprocessor\" />
     <Folder Include="src\tasks" />
-    <Folder Include="zigbee\APS" />
-    <Folder Include="zigbee\MAC" />
-    <Folder Include="zigbee\misc" />
-    <Folder Include="zigbee\RF231" />
-    <Folder Include="zigbee\RF230" />
-    <Folder Include="zigbee\PHY" />
-    <Folder Include="zigbee\NWK" />
+    <Folder Include="zigbee\include\MAC" />
+    <Folder Include="zigbee\include\APS" />
+    <Folder Include="zigbee\include\MISC" />
+    <Folder Include="zigbee\include\RF230" />
+    <Folder Include="zigbee\include\PHY" />
+    <Folder Include="zigbee\include\NWK" />
+    <Folder Include="zigbee\include" />
+    <Folder Include="zigbee\source" />
+    <Folder Include="zigbee\source\APS\" />
+    <Folder Include="zigbee\source\MAC\" />
+    <Folder Include="zigbee\source\MISC\" />
+    <Folder Include="zigbee\source\NWK\" />
+    <Folder Include="zigbee\source\PHY\" />
+    <Folder Include="zigbee\source\RADIO\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
 </Project>

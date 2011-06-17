@@ -40,95 +40,95 @@ src\tasks\task_master.c
 
 src\tasks\zigbee_task.c
 
-zigbee\APS\aps.c
-
-zigbee\APS\aps_binding_table.c
-
-zigbee\APS\aps_tx.c
-
 zigbee\frame.c
 
-zigbee\MAC\MAC.c
+zigbee\source\APS\aps.c
 
-zigbee\MAC\MAC_ack.c
+zigbee\source\APS\aps_binding_table.c
 
-zigbee\MAC\MAC_beacon.c
+zigbee\source\APS\aps_tx.c
 
-zigbee\MAC\MAC_command.c
+zigbee\source\MAC\MAC.c
 
-zigbee\MAC\MAC_mcps_data.c
+zigbee\source\MAC\MAC_ack.c
 
-zigbee\MAC\MAC_mlme_associate.c
+zigbee\source\MAC\MAC_beacon.c
 
-zigbee\MAC\MAC_mlme_beacon_notify.c
+zigbee\source\MAC\MAC_command.c
 
-zigbee\MAC\MAC_mlme_commStatus.c
+zigbee\source\MAC\MAC_mcps_data.c
 
-zigbee\MAC\MAC_mlme_disassociate.c
+zigbee\source\MAC\MAC_mlme_associate.c
 
-zigbee\MAC\MAC_mlme_gts.c
+zigbee\source\MAC\MAC_mlme_beacon_notify.c
 
-zigbee\MAC\MAC_mlme_orphan.c
+zigbee\source\MAC\MAC_mlme_commStatus.c
 
-zigbee\MAC\MAC_mlme_poll.c
+zigbee\source\MAC\MAC_mlme_disassociate.c
 
-zigbee\MAC\MAC_mlme_reset.c
+zigbee\source\MAC\MAC_mlme_gts.c
 
-zigbee\MAC\MAC_mlme_scan.c
+zigbee\source\MAC\MAC_mlme_orphan.c
 
-zigbee\MAC\MAC_mlme_set.c
+zigbee\source\MAC\MAC_mlme_poll.c
 
-zigbee\MAC\MAC_mlme_start.c
+zigbee\source\MAC\MAC_mlme_reset.c
 
-zigbee\MAC\MAC_NWK_binding.c
+zigbee\source\MAC\MAC_mlme_scan.c
 
-zigbee\MAC\MAC_NWK_bridge.c
+zigbee\source\MAC\MAC_mlme_set.c
 
-zigbee\MAC\MAC_RxQueue.c
+zigbee\source\MAC\MAC_mlme_start.c
 
-zigbee\MAC\MAC_trx.c
+zigbee\source\MAC\MAC_NWK_binding.c
 
-zigbee\misc\1-wire.c
+zigbee\source\MAC\MAC_NWK_bridge.c
 
-zigbee\misc\qsm.c
+zigbee\source\MAC\MAC_RxQueue.c
 
-zigbee\misc\xmega_interrupt.c
+zigbee\source\MAC\MAC_trx.c
 
-zigbee\misc\xmega_time.c
+zigbee\source\MISC\1-wire.c
 
-zigbee\NWK\NWK.c
+zigbee\source\MISC\qsm.c
 
-zigbee\NWK\NWK_beacon.c
+zigbee\source\MISC\xmega_interrupt.c
 
-zigbee\NWK\NWK_command.c
+zigbee\source\MISC\xmega_time.c
 
-zigbee\NWK\NWK_data_service.c
+zigbee\source\NWK\NWK.c
 
-zigbee\NWK\NWK_neighborTable.c
+zigbee\source\NWK\NWK_beacon.c
 
-zigbee\NWK\NWK_nlde_data.c
+zigbee\source\NWK\NWK_command.c
 
-zigbee\NWK\NWK_nlme_join.c
+zigbee\source\NWK\NWK_data_service.c
 
-zigbee\NWK\NWK_nlme_netForm.c
+zigbee\source\NWK\NWK_neighborTable.c
 
-zigbee\NWK\NWK_nlme_networkDiscover.c
+zigbee\source\NWK\NWK_nlde_data.c
 
-zigbee\NWK\NWK_trx.c
+zigbee\source\NWK\NWK_nlme_join.c
 
-zigbee\PHY\phy.c
+zigbee\source\NWK\NWK_nlme_netForm.c
 
-zigbee\phy\phy_mgmt.c
+zigbee\source\NWK\NWK_nlme_networkDiscover.c
 
-zigbee\phy\PHY_plme_get.c
+zigbee\source\NWK\NWK_trx.c
 
-zigbee\phy\phy_rc_rf230.c
+zigbee\source\PHY\phy.c
 
-zigbee\phy\phy_trx.c
+zigbee\source\PHY\phy_mgmt.c
 
-zigbee\RF230\rf230.c
+zigbee\source\PHY\PHY_plme_get.c
 
-zigbee\RF230\RF230_irq.c
+zigbee\source\PHY\phy_rc_rf230.c
+
+zigbee\source\PHY\phy_trx.c
+
+zigbee\source\RADIO\rf230.c
+
+zigbee\source\RADIO\RF230_irq.c
 
 zigbee\zigbee.c
 

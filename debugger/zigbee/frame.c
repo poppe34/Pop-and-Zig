@@ -108,7 +108,7 @@ void frame_free(frame_t *fr)
 /*--------------------------------------------------------------------------------
  *   function:     frame_sendWithFree
  *
- *   Discription:  This function sends the frame to the phy layer to be sent out 
+ *   Description:  This function sends the frame to the phy layer to be sent out 
  *                  then frees the allocated memory for that frame
  *
  *   Argument 1:   MAC data
@@ -122,12 +122,52 @@ void frame_sendWithFree(frame_t *fr)
 //****************************
 	uint8_t txFrame[128];
 	uint8_t *ptr;
-	uint8_t length;
+	uint8_t length = 0;
 	
-
+	ptr = txFrame;
     SET_FRAME_DATA(fr->payload, 0x0000, 2);
+	if(fr->mac)
+	{
+		fr->mac->ptr = fr->mac->hdr;
 		
-    rc_send_frame(length, txFrame);
+		for(uint8_t x = 0;x<fr->mac->length; x++)
+		{
+			length++;
+			*ptr++ = *fr->mac->ptr++;
+		}
+	}
+		if(fr->nwk)
+	{
+		fr->nwk->ptr = fr->nwk->hdr;
+		
+		for(uint8_t x = 0;x<fr->nwk->length; x++)
+		{
+			length++;
+			*ptr++ = *fr->nwk->ptr++;
+		}
+	}	
+		if(fr->aps)
+	{
+		fr->aps->ptr = fr->aps->hdr;
+		
+		for(uint8_t x = 0;x<fr->aps->length; x++)
+		{
+			length++;
+			*ptr++ = *fr->aps->ptr++;
+		}
+	}
+		if(fr->payload)
+	{
+		fr->payload->ptr = fr->payload->pl;
+		
+		for(uint8_t x = 0;x<fr->payload->length; x++)
+		{
+			length++;
+			*ptr++ = *fr->payload->ptr++;
+		}
+	}			
+	rc_send_frame(length, txFrame);
+	
 	if(fr->mac){free(fr->mac);}
 	if(fr->nwk){free(fr->nwk);}
 	if(fr->aps){free(fr->aps);}	
