@@ -33,6 +33,20 @@ typedef enum
 	bad_key_seq_num_NWK = 0x12,
 }nwk_statusCode_t;
 
+typedef enum
+{
+	NWK_ROUTE_REQUEST = 0x01,
+	NWK_ROUTE_REPLY = 0x02,
+	NWK_NETWORK_STATUS = 0x03,
+	NWK_LEAVE = 0x04,
+	NWK_ROUTE_RECORD = 0x05,
+	NWK_REJOIN_REQUEST = 0x06,
+	NWK_REJOIN_RESPONSE = 0x07,
+	NWK_LINK_STATUS = 0x08,
+	NWK_NETWORK_REPORT = 0x09,
+	NWK_NETWORK_UPDATE = 0xa,
+}nwk_cmd_id;
+
 START_PACK
 typedef struct PACK 
 {

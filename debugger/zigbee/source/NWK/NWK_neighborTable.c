@@ -14,76 +14,7 @@ LIST(neighbor_table);
 void NWK_neighborTableInit(void){
 list_init(neighbor_table);
 }
-/*
-void NWK_addNeighbor(nwk_neigh_t *tbl){
 
-	list_add(neightbor_table, tbl);
-
-	if(table->count == 0){
-		table->first = tbl;
-		table->count = 1;
-		return;
-	}
-
-	temp = table->first;
-
-	if(table->count > 0){
-		for(uint8_t x=1; x<table->count; x++){
-			temp = temp->next;
-		}
-
-		temp->next = tbl;
-	}
-
-
-	table->count++;
-
-}
-
-void NWK_removeNeighbor(nwk_neigh_t *tbl){
-	nwk_neigh_t *temp;
-
-	temp = table->first;
-	if(table->count == 0){ return;}
-	if(table->count == 1){
-		if(table->first == tbl){
-			table->count--;
-			free(table->first);
-		}
-		return;
-	}
-	for(uint8_t x=0; x<table->count; x++){
-		if(tbl == temp->next){
-			temp->next = (temp->next)->next;
-			free(tbl);
-			return;
-		}
-		temp = temp->next;
-	}
-}
-void NWK_updateNeighTable(nwk_neigh_t *tbl){
-	uint8_t x, y, equal;
-	nwk_neigh_t *temp = table->first;
-/*
-	for(x=0; x<table->count; x++){
-		if(temp->shortAddr.shortAddr == tbl->shortAddr.shortAddr){
-			//TODO: I Need to add the update code
-			return;
-		}//end if
-	}//end for
-	for(x=0; x<table->count; x++){
-		if(temp->extendAddr.extAddr == temp->extendAddr.extAddr){
-			return;
-		}//end if
-
-		if(temp->shortAddr.shortAddr == tbl->shortAddr.shortAddr){
-			return;
-		}//end if
-	}//end for
-
-	NWK_addNeighbor(tbl);
-}
-*/
 
 nwk_neigh_t *NWK_getBestAddrForNetwork(uint64_t extendPANid){
 	uint8_t x, lqi= 0x00;
@@ -107,7 +38,6 @@ list_t NWK_getNeighTable(void){
 }
 /*
 nwk_neigh_t *NWK_getNeighTable(void){
-//	led_on_byte(table->first->extendPANid);
 	return table->first;
 }
 

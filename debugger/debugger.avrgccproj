@@ -535,6 +535,9 @@
     <Compile Include="zigbee\include\NWK\NWK_command.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="zigbee\include\NWK\NWK_neighborTable.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="zigbee\include\NWK\NWK_nlde.h">
       <SubType>compile</SubType>
     </Compile>

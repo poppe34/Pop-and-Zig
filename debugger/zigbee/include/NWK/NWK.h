@@ -116,18 +116,7 @@ typedef enum NWK_STATUS_CODE{
 	NWK_BAD_KEY_SEQ_NUM 			= 0x12,
 }nwk_status_code_t;
 
-typedef enum NWK_CMD_ID{
-	NWK_ROUTE_REQUEST = 0x01,
-	NWK_ROUTE_REPLY = 0x02,
-	NWK_NETWORK_STATUS = 0x03,
-	NWK_LEAVE = 0x04,
-	NWK_ROUTE_RECORD = 0x05,
-	NWK_REJOIN_REQUEST = 0x06,
-	NWK_REJOIN_RESPONSE = 0x07,
-	NWK_LINK_STATUS = 0x08,
-	NWK_NETWORK_REPORT = 0x09,
-	NWK_NETWORK_UPDATE = 0xa,
-}nwk_cmd_id;
+
 
 typedef struct NWK_ADDR_MAP{
 //	nwk_addr_map_t	*next;
@@ -150,15 +139,6 @@ typedef enum FRAME_TYPE{
 	NWK_DATA 	= 0x00,
 	NWK_COMMAND = 0x01,
 }nwk_frame_type_t;
-
-typedef enum RELATIONSHIP{
-	parent 			= 0x00,
-	child  			= 0x01,
-	sibling 		= 0x02,
-	bastard			= 0x03,
-	prev_child 		= 0x04,
-	unauth_child 	= 0x05,
-}nwk_relation_t;
 
 typedef enum NWK_DISCOVER_ROUTE {
 	SUPPRESS_DISCOVER,
@@ -282,29 +262,7 @@ typedef struct NWK_NET_DISCOV{
 	nwk_discript_t			*first;
 }nwk_netDisc_t;
 
-typedef struct NEIGHBOR{
-	struct NEIGHBOR		 	*next;
-	addr_t	 				extendAddr;
-	addr_t					shortAddr;
-	uint8_t					type;
-	bool					RxOnWhenIdle;
-	nwk_relation_t			relation;
-	uint8_t					failure;
-	uint8_t					LQI;
-	uint8_t					cost;
-	uint8_t					age;
-	uint32_t				beaconTime;
-	uint32_t				beaconOffset;
-	uint64_t				extendPANid;
-	uint8_t					logicalChannel;
-	uint8_t					depth;
-	uint8_t					beaconOrder;
-	uint8_t					permitJoining;
-	uint8_t					potentialParent;
 
-
-//TODO:	add optional fields
-}nwk_neigh_t;
 
 typedef struct NWK_srcRoute
 {
